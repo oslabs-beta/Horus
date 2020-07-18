@@ -1,0 +1,14 @@
+service CustomerService {
+    rpc CreateCustomer (Customer) returns (Customer){}
+    rpc GetCustomer (Empty) returns (CustomerList){}
+}
+
+message Customer {
+    string name =1;
+    string age =2;
+    string address =3;
+}
+
+message CustomerList{
+    repeated Customer names =1
+}
