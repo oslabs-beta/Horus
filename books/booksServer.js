@@ -49,7 +49,9 @@ server.addService(booksProto.BooksService.service, {
 
     callback(
       null,
-
+      {
+        id: 'id number'
+      }
     )
   }
 });

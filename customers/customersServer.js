@@ -34,11 +34,41 @@ server.addService(customersProto.CustomerService.service, {
     callback(
       null,
       {
-        name: 'name',
+        name: 'name', //strings 'name', 'age', 'address' are place holders until we pass in variables from front-end
         age: 'age',
         address: 'address',
       }
     );
   },
-  
+  GetCustomer: (call, callback) => {
+    console.log('call to GetCustomer')
+
+    //logic to read from database
+
+    callback(
+      null,
+      {
+        names: '[CustomerList]'
+      }
+    );
+  },
+  DeleteCustomer: (call, callback) => {
+    console.log('call to DeleteCustomer')
+
+    //logic to delete customer from Database
+
+    callback(
+      null,
+      {
+        id: 'id number'
+      }
+    );
+  }
 });
+
+server.bind("127.0.0.1:81818", grpc.ServerCredentials.createInsecure());
+console.log("customerServer.js running at http://127.0.0.1:81818");
+
+console.log('call from customer server')
+
+server.start();

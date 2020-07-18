@@ -1,7 +1,7 @@
 service CustomerService {
     rpc CreateCustomer (Customer) returns (Customer){}
     rpc GetCustomer (Empty) returns (CustomerList){}
-    rpc DeleteBook (CustomerID) returns (Empty) {}
+    rpc DeleteCustomer (CustomerID) returns (Empty) {}
 }
 
 message Customer {
