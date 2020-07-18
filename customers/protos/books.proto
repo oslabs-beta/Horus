@@ -1,6 +1,6 @@
 syntax = 'proto3';
 
-service BookService {
+service BooksService {
   rpc CreateBook (Book) returns (Book) {}
   rpc GetBooks (Empty) returns (BookList) {}
   rpc DeleteBook (BookID) returns (Empty) {}
