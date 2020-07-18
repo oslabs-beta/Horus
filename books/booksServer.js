@@ -1,4 +1,5 @@
 const PROTO_PATH = './protos/books.proto';
+const PROTO_PATH_CLIENT = './protos/books.proto';
 const grpc = require('grpc');
 const protoLoader = require('@grpc/proto-loader');
 
@@ -17,15 +18,14 @@ const server = new grpc.Server();
 
 server.addService(booksProto.BooksService.service, {
   CreateBook: (book, callback) => {
-    //using the information from book, add a new book to the database
-    //then, invoke the callback function
     callback(
+      null,
       {
         title: "title1", 
         author:"author1",
         pages: 100,
         publisher: 'Random House',
-        id: 0,
+        id: 0
       }
     );
   }
