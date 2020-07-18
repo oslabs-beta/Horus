@@ -16,7 +16,11 @@ const { v4: uuidv4 } = require("uuid");
 const server = new grpc.Server();
 
 server.addService(booksProto.BooksService.service, {
-  CreateBook: (book, callback) => {
+  CreateBook: (call, callback) => {
+    console.log('call to CreateBook')
+
+    // write to database
+
     callback(
       null,
       {
@@ -27,9 +31,32 @@ server.addService(booksProto.BooksService.service, {
         id: 0
       }
     );
+  },
+  GetBooks: (call, callback) => {
+    console.log('call to GetBooks');
+
+    // read from database
+
+    callback(
+      null,
+         
+    )
+  },
+  DeleteBook: (call, callback) => {
+    console.log('call to DeleteBook');
+
+    // delete from database
+
+    callback(
+      null,
+
+    )
   }
 });
-//  could this be local host?
+
 server.bind("127.0.0.1:30043", grpc.ServerCredentials.createInsecure());
 console.log("booksServer.js running at http://127.0.0.1:30043");
+
+console.log('call from books server')
+
 server.start();
