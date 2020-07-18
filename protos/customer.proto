@@ -16,8 +16,6 @@ message CustomerList{
     repeated Customer names =1;
 }
 
-
-
 message CustomerID {
     int32 id = 1;
 }

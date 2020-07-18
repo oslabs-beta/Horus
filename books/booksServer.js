@@ -1,5 +1,4 @@
-const PROTO_PATH = './protos/books.proto';
-const PROTO_PATH_CLIENT = './protos/books.proto';
+const PROTO_PATH = '../protos/books.proto';
 const grpc = require('grpc');
 const protoLoader = require('@grpc/proto-loader');
 

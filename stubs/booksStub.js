@@ -4,10 +4,10 @@ const grpc = require("grpc");
 const protoLoader = require("@grpc/proto-loader");
 
 const packageDefinition = protoLoader.loadSync(PROTO_PATH, {
-    keepCase: true,
-    longs: String,
-    enums: String,
-    arrays: true
+  keepCase: true,
+  longs: String,
+  enums: String,
+  arrays: true
 });
 
 const BooksService = grpc.loadPackageDefinition(packageDefinition).BooksService;
