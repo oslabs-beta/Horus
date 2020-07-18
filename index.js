@@ -9,6 +9,7 @@ const book = {
   publisher: 'Random House',
   id: 1
 };
+
 const id = 1;
 const callback = (error, data) => {
   console.log('call to callback')
@@ -20,6 +21,7 @@ const getData = (functionName) => {
   else if (functionName === 'GetBooks') return {}
   else if (functionName === 'DeleteBook') return id;
 }
+
 function main (functionName) { 
   bookStub[functionName](getData(functionName), callback);
 }
