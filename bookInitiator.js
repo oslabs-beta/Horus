@@ -26,3 +26,4 @@ const getData = (functionName) => {
 function main (functionName) { 
   bookStub[functionName](getData(functionName), callback);
 }
+main(process.env.function);

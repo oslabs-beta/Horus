@@ -1,4 +1,4 @@
-const PROTO_PATH = "./protos/customer.proto";
+const PROTO_PATH = "./protos/customers.proto";
 
 const grpc = require("grpc");
 const protoLoader = require("@grpc/proto-loader");
@@ -10,12 +10,12 @@ const packageDefinition = protoLoader.loadSync(PROTO_PATH, {
     arrays: true
   });
 
-const CustomerService = grpc.loadPackageDefinition(packageDefinition).CustomerService;
+const CustomersService = grpc.loadPackageDefinition(packageDefinition).CustomersService;
 
 // potential issues to fix 1) making localhost port dynamic 2) docker containerization may cause conflict
 
-const client = new CustomerService (
-  "localhost:58975",
+const client = new CustomersService (
+  "localhost:6000",
   grpc.credentials.createInsecure()
 );
 

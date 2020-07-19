@@ -1,12 +1,14 @@
 //initiator.js files are a way for us to use these functions without using the browser on the front end.
 
-const customerStub = require("./stubs/customerStub.js");
+const customerStub = require("./stubs/customersStub.js");
 
 console.log('process.env vars', process.env.function);
 
 //temporarily hardcoding a test customer until we can update customer info dynamically.
 const customer = {
-  
+  name: 'Bo',
+  age: 100,
+  address: 'Nowherevile'
 };
 
 const id = 1;
@@ -17,8 +19,8 @@ const callback = (error, data) => {
   else console.log('data', data)
 }
 const getData = (functionName) => {
-  if (functionName === 'CreateCustomer') return customer
-  else if (functionName === 'GetCustomers') return {}
+  if (functionName === 'CreateCustomer') return customer;
+  else if (functionName === 'GetCustomers') return {};
   else if (functionName === 'DeleteCustomer') return id;
 }
 

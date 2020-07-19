@@ -9,7 +9,7 @@ const packageDefinition = protoLoader.loadSync(PROTO_PATH, {
   arrays: true
 })
 
-const BookModel = require('./bookModel');
+const BookModel = require('./booksModel.js');
 
 const booksProto = grpc.loadPackageDefinition(packageDefinition);
 
@@ -25,6 +25,7 @@ server.addService(booksProto.BooksService.service, {
 
     callback(
       null,
+      //bookmodel.create
       {
         title: "title1", 
         author:"author1",

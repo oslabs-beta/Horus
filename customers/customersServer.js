@@ -1,4 +1,4 @@
-const PROTO_PATH = '../protos/customer.proto';
+const PROTO_PATH = '../protos/customers.proto';
 const grpc = require('grpc');
 const protoLoader = require('@grpc/proto-loader');
 
@@ -25,7 +25,7 @@ const { v4: uuidv4 } = require("uuid");
 
 const server = new grpc.Server();
 
-server.addService(customersProto.CustomerService.service, {
+server.addService(customersProto.CustomersService.service, {
   CreateCustomer: (call, callback) => {
     console.log('call to CreateCustomer')
 
@@ -40,7 +40,7 @@ server.addService(customersProto.CustomerService.service, {
       }
     );
   },
-  GetCustomer: (call, callback) => {
+  GetCustomers: (call, callback) => {
     console.log('call to GetCustomer')
 
     //logic to read from database
@@ -66,8 +66,8 @@ server.addService(customersProto.CustomerService.service, {
   }
 });
 
-server.bind("127.0.0.1:81818", grpc.ServerCredentials.createInsecure());
-console.log("customerServer.js running at http://127.0.0.1:81818");
+server.bind("127.0.0.1:6000", grpc.ServerCredentials.createInsecure());
+console.log("customerServer.js running at http://127.0.0.1:6000");
 
 console.log('call from customer server')
 
