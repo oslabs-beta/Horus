@@ -1,3 +1,5 @@
+
+
 const bookStub = require("./stubs/booksStub.js");
 
 console.log('process.env vars', process.env.function);
@@ -11,7 +13,6 @@ const book = {
 };
 
 const id = 1;
-const callback = (error, data) => {
   console.log('call to callback')
   if (error) console.log('sorry, there was an error', error)
   else console.log('data', data)

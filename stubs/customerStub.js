@@ -10,7 +10,7 @@ const packageDefinition = protoLoader.loadSync(PROTO_PATH, {
     arrays: true
   });
 
-  const CustomerService = grpc.loadPackageDefinition(packageDefinition).CustomerService;
+const CustomerService = grpc.loadPackageDefinition(packageDefinition).CustomerService;
 
 // potential issues to fix 1) making localhost port dynamic 2) docker containerization may cause conflict
 

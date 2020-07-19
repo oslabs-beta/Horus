@@ -9,6 +9,8 @@ const packageDefinition = protoLoader.loadSync(PROTO_PATH, {
   arrays: true
 })
 
+const BookModel = require('./bookModel');
+
 const booksProto = grpc.loadPackageDefinition(packageDefinition);
 
 const { v4: uuidv4 } = require("uuid");
