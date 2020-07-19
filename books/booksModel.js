@@ -38,4 +38,4 @@ const BooksSchema = new Schema({
 // Database Model creation to be exported
 const BookModel = mongoose.model('BookModel', BooksSchema);
 
-module.exports = BookModel;
+module.exports = bookModel;
