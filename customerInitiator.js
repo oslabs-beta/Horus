@@ -9,7 +9,7 @@ const customer = {
   
 };
 
-const id;
+const id = 1;
 
 const callback = (error, data) => {
   console.log('call to callback')

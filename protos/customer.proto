@@ -1,3 +1,5 @@
+syntax = 'proto3';
+
 service CustomerService {
     rpc CreateCustomer (Customer) returns (Customer){}
     rpc GetCustomer (Empty) returns (CustomerList){}
