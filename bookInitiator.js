@@ -3,11 +3,11 @@ const bookStub = require("./stubs/booksStub.js");
 console.log('process.env vars', process.env.function);
 
 const book = {
-  title: 'Harry Potter', 
-  author: 'J.K Rowlings',
-  pages: 100,
+  title: 'ITttttt', 
+  author: 'Stephen King',
+  numberOfPages: 666,
   publisher: 'Random House',
-  id: 1
+  id: 100
 };
 
 const id = 1;
