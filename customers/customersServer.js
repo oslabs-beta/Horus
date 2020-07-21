@@ -4,6 +4,7 @@ const protoLoader = require('@grpc/proto-loader');
 const express = require('express');
 const controller = require('./customersController.js');
 const app = express();
+
 app.use(express.json());
 
 //packageDefinition loads the protofile and defines some settings of how we want our data to load.
@@ -39,6 +40,7 @@ server.addService(customersProto.CustomersService.service, {
       name: call.request.name, 
       age: call.request.age,
       address: call.request.address,
+      favBookId: call.request.favBookId
     }
 //this actually sends data to customersController.
    controller.createCustomer(sampleAdd);
@@ -47,15 +49,16 @@ server.addService(customersProto.CustomersService.service, {
       null,
       {
         id: `completed for ${call.request.id}`,
-        name: `completed for ${call.request.name}`, //strings 'name', 'age', 'address' are place holders until we pass in variables from front-end
+        name: `completed for ${call.request.name}`,
         age: `completed for ${call.request.name}`,
         address: `completed for ${call.request.address}`,
+        favBookId: `completed for ${call.request.favBookId}`
       }
     );
   },
   GetCustomers: (call, callback) => {
-    console.log('call to GetCustomer')
-
+    
+    console.log('call to GetCustomers')
     //logic to read from database
     controller.getCustomers(callback);
     

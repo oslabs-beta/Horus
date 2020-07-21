@@ -51,11 +51,17 @@ server.addService(booksProto.BooksService.service, {
   },
   GetBooks: (call, callback) => {
     console.log('call to GetBooks');
- 
+    
     // read from database
 
     controller.getBooks(callback);
 
+  },
+  GetBookByID: (call, callback) => {
+    console.log('call to GetBookByID')
+    console.log('CALL.REQUEST IN BOOKSSERVER: ', call.request)
+    const sampleID = {id: call.request.id}
+    controller.getBookByID(sampleID, callback)
   },
   DeleteBook: (call, callback) => {
     //sample will take the call information from the client(stub)

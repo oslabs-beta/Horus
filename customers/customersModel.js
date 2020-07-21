@@ -32,6 +32,11 @@ id: {
     type: String,
     required: true,
   },
+
+  favBookId:{
+    type: Number,
+    required:true,
+  }
 });
 
 // create model and ship out

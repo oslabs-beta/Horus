@@ -3,6 +3,7 @@ syntax = 'proto3';
 service BooksService {
   rpc CreateBook (Book) returns (Book) {}
   rpc GetBooks (Empty) returns (BookList) {}
+  rpc GetBookByID (BookID) returns (Book) {}
   rpc DeleteBook (BookID) returns (Empty) {}
 }
 

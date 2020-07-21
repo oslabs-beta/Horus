@@ -9,7 +9,8 @@ const customer = {
   id: 302,
   name: 'DOG',
   age: 100,
-  address: 'Nowhereville'
+  address: 'Nowhereville',
+  favBookId: 200
 };
 
 const id = {id: 302};
