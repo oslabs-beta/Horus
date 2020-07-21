@@ -1,6 +1,6 @@
 const booksModel = require('./booksModel.js');
 const booksController = {};
-let getBooksResult;
+
 
 // controller Creates Books
 booksController.createBook = (sampleAdd, res, next) => {
@@ -55,18 +55,4 @@ booksController.getBooks = (callback) => {
   });
 };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-module.exports.getBooksResult = getBooksResult;
 module.exports = booksController;
