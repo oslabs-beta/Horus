@@ -14,8 +14,9 @@ booksController.createBook = (sampleAdd, res, next) => {
 
 
 // controller deletes book
-booksController.deleteBook = (req, res, next) => {
-  const { id } = req;
+booksController.deleteBook = (sampleDelete, res, next) => {
+  console.log(sampleDelete)
+  const { id } = sampleDelete;
   booksModel.findOneAndDelete({ id: id }, (error, result) => {
     if (error) {
       console.log(`Deletion was not successful ${error}`);
@@ -25,27 +26,32 @@ booksController.deleteBook = (req, res, next) => {
 };
 
 
-// controller gets a book in the book db
+// controller gets all books in the book db
 booksController.getBooks = (callback) => {
-  booksModel.find({}, (err, result) => {
+  booksModel.find({},(err, result) => {
     if (err) {
       console.log('Book retrieval was not successful', err);
       return res.status(404).json(err);
     }
-    call.data = result;
-    console.log('APP.LOCALS.GETBOOKS FROM CONTROLLER: ', call.data)
-    // console.log('result from get books db. controller:',result[0])
-    // getBooksResult = result;
-    // console.log('getBooksResult:',getBooksResult[1])
-    // return next();
+
+    const arr = [];
+    for( let i=0; i<result.length;i++){
+      arr.push({
+        title: result[i].title, 
+        author: result[i].author,
+        numberOfPages: result[i].numberOfPages,
+        publisher: result[i].publisher,
+        id: result[i].id
+      })            
+    }
+//***********IMPORTANT: MAKE SURE WHEN YOU'RE SENDING DATA BACK TO THE CLIENT THAT YOU ARE FOLLOWING THE PROTOFILE FORMAT EXACTLY!!!
 
     callback(
       null,
       {
-        RESULT: result
+        books: arr
       }
     )
-
   });
 };
 

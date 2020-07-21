@@ -14,31 +14,16 @@ const packageDefinition = protoLoader.loadSync(PROTO_PATH, {
   arrays: true
 })
 
-
-
 const booksProto = grpc.loadPackageDefinition(packageDefinition);
 
 const { v4: uuidv4 } = require("uuid");
 
 const server = new grpc.Server();
 
-  
-//creating createbook variable function to call
-// const serverSample = {
-//   title: 'blank', 
-//   author: ' King',
-//   numberOfPages: 666,
-//   publisher: 'Random House',
-//   id: 1
-// }
-
-// controller.createBook(serverSample)
-
-
 server.addService(booksProto.BooksService.service, {
   CreateBook: (call, callback) => {
     console.log('call to CreateBook')
-    console.log('CALL DATA: ', call)
+
     //sample will take the call information from the client(stub)
     const sampleAdd= {
       title: call.request.title, 
@@ -66,47 +51,24 @@ server.addService(booksProto.BooksService.service, {
   },
   GetBooks: (call, callback) => {
     console.log('call to GetBooks');
-    console.log('RES.LOCALS IN BOOKSSERVER: ', call)
  
-// async function run(){
-//   await controller.getBooks();
-//   await (() =>console.log('getBooksResult made it to the server: ', getBooksResult))
-// }
-
-// run()
     // read from database
 
     controller.getBooks(callback);
 
-    callback(
-      null,
-      {
-        //     is [res.locals.getBooks] correct???
-        //             | | |
-        //             V V V
-        BookList: '[res.locals.getBooks]'
-      }
-         
-    )
   },
   DeleteBook: (call, callback) => {
-    console.log('call to DeleteBook');
-    console.log('DELETE CALL DATA: ', call)
-
     //sample will take the call information from the client(stub)
-    const sampleAdd= {
+    const sampleDelete= {      
       id: call.request.id
     }
+
   //this actually sends data to booksController.
-    controller.deleteBook(sampleAdd);
+    controller.deleteBook(sampleDelete);
 
     // delete from database
-
     callback(
-      null,
-      {
-        message: 'DELETED'
-      }
+      null,{ message: 'DELETED'}
     )
   }
 });
