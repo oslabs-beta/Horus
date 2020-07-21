@@ -27,7 +27,7 @@ booksController.deleteBook = (sampleDelete, res, next) => {
 
 booksController.getBookByID = (sampleID, callback, res, next) => {
   console.log('entered booksController.getBookByID')
-  
+  console.log('callback: ', callback)
   //Double check if the findOne syntax is correct
   const { id } = sampleID;
   console.log('ID GETTING PASSED TO BOOKSCONTROLLER: ', id)

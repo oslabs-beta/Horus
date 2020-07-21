@@ -51,7 +51,6 @@ server.addService(booksProto.BooksService.service, {
   },
   GetBooks: (call, callback) => {
     console.log('call to GetBooks');
-    
     // read from database
 
     controller.getBooks(callback);
@@ -59,8 +58,7 @@ server.addService(booksProto.BooksService.service, {
   },
   GetBookByID: (call, callback) => {
     console.log('call to GetBookByID')
-    console.log('CALL.REQUEST IN BOOKSSERVER: ', call.request)
-    const sampleID = {id: call.request.id}
+    console.log('CALLBACK IN BOOKSSERVER: ', callback)
     controller.getBookByID(sampleID, callback)
   },
   DeleteBook: (call, callback) => {

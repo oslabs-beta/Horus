@@ -59,19 +59,17 @@ customersController.getCustomers = (callback) => {
       const arr = [];
       for(let i = 0; i < result.length; i++){
         let id = result[i].favBookId;
-        if(id === undefined){id = 100}
+        console.log('ID IN LINE 62 OF CC: ', id)
+        
         const gettingBooks = (error, data) => {
         console.log('call to booksServer from customersController')
         if (error) console.log('sorry, there was an error', error)
         else console.log('data coming back to customersController from booksServer: ', data)
       }
   
-        const getData = () => {
-          console.log('ID IN GETDATA IN CUSTOMERSCONTROLLER: ', id)
-          return id;
-      }
         function main () { 
-        bookStub1.GetBookByID(getData(), gettingBooks);
+        bookStub1.GetBookByID(id, gettingBooks);
+        // bookStub1.GetBookByID(getData(), gettingBooks);
       }
        main();
 
@@ -80,7 +78,8 @@ customersController.getCustomers = (callback) => {
           name: result[i].name, 
           age: result[i].age,
           address: result[i].address,
-          favBook: {
+          favBook: /*data*/
+            { 
             title: 'hi',
             author: 'hi',
             numberOfPages: 100,
