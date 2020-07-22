@@ -1,6 +1,6 @@
 const customersModel = require('./customersModel.js');
 const customersController = {};
-const bookStub1 = require('../stubs/booksStub1.js')
+const customersControllerStub = require('../stubs/customersControllerStub.js')
 
 
 // Controller create customer
@@ -48,37 +48,53 @@ customersController.getCustomers = (callback) => {
   //   bookStub[functionName](getData(functionName), getBookCB);
   // }
   // main();
-
     customersModel.find({},(err, result) => {
-      if (err) {
-        console.log('customer retrieval was not successful', err);
-        console.log('RESULT[I]: ',result[i])
-        return res.status(404).json(err);
-      }
-  
+      // const favBookId = {id: 100}
+      // const gettingBooks = (error, data) => {
+      //   console.log('call to booksServer from customersController')
+      //   if (error) console.log('sorry, there was an error', error)
+      //   else console.log('data coming back to customersController from booksServer: ', data)
+      //   }
+
+      // if (err) {
+      //   console.log('customer retrieval was not successful', err);
+      //   return res.status(404).json(err);
+      //   }
+
+      // function main () { 
+      //   console.log('FAVBOOK ID DEF IN MAIN: ', favBookId)
+      //   customersControllerStub.GetBookByID(favBookId, gettingBooks);
+      //  }
+
+      // main();
+      let dataHolder;
       const arr = [];
       for(let i = 0; i < result.length; i++){
-        let id = result[i].favBookId;
-        console.log('ID IN LINE 62 OF CC: ', id)
-        
+        let favBookId = {id: result[i].favBookId};
+        console.log('ID IN LINE 74 OF CC: ', favBookId)
         const gettingBooks = (error, data) => {
-        console.log('call to booksServer from customersController')
-        if (error) console.log('sorry, there was an error', error)
-        else console.log('data coming back to customersController from booksServer: ', data)
-      }
+          console.log('call to booksServer from customersController')
+          if (error) console.log('sorry, there was an error', error)
+          else {console.log('data coming back to customersController from booksServer: ', data); dataHolder = data;}
+        }
+  
+        if (err) {
+          console.log('customer retrieval was not successful', err);
+          return res.status(404).json(err);
+          }
   
         function main () { 
-        bookStub1.GetBookByID(id, gettingBooks);
-        // bookStub1.GetBookByID(getData(), gettingBooks);
-      }
-       main();
-
+          customersControllerStub.GetBookByID(favBookId, gettingBooks);
+        }
+  
+        main();
+        console.log("data holder:", dataHolder);
         arr.push({
           id: result[i].id,
           name: result[i].name, 
           age: result[i].age,
           address: result[i].address,
-          favBook: /*data*/
+          favBook: /*dataHolder*/
             { 
             title: 'hi',
             author: 'hi',

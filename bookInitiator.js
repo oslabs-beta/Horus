@@ -24,6 +24,7 @@ const getData = (functionName) => {
   if (functionName === 'CreateBook') return book
   else if (functionName === 'GetBooks') return {}
   else if (functionName === 'DeleteBook') return id;
+  else if(functionName === 'GetBookByID') return id;
 }
 function main (functionName) { 
   bookStub[functionName](getData(functionName), callback);
