@@ -49,7 +49,6 @@ customersController.getCustomers = (callback) => {
         customerObj.age = result[0].age
         customerObj.address = result[0].address
         customerObj.favBook = data
-        //arr.push(customerObj)
 
         callback (
           null, 
@@ -59,13 +58,11 @@ customersController.getCustomers = (callback) => {
               name: result[0].name,
               age: result[0].age,
               address: result[0].address,
-              favBook: //try something here
-
+              favBook: data
             }]
           }
         )
       }   
-      console.log('call before customersControllerStub')
       customersControllerStub.GetBookByID(favBookId, gettingBooks);
     });  
   };
