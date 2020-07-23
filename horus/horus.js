@@ -11,7 +11,7 @@ class horus {
     this.targetService = null; // represents the location to which the request was made
     this.allRequests = []; // array which stores all requests
   }
-
+ 
   // start should be invoked before the request is made
       // start begins the timer and initializes the request as pending
   start(targetService) {
