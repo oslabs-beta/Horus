@@ -21,4 +21,5 @@ const client = new BooksService (
   grpc.credentials.createInsecure()
 );
 
+console.log("Creating stub inside booksStub");
 module.exports = client;

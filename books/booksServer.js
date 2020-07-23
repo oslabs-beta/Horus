@@ -31,9 +31,19 @@ server.addService(booksProto.BooksService.service, {
       publisher: call.request.publisher,
       id: call.request.id
     }
+
+    controller.createBook(sampleAdd);
+
+
+    let meta = new grpc.Metadata();
+    meta.add('response', 'none')
+    call.sendMetadata(meta);
+
+    console.log("logging call ", call)
+
+
 //this actually sends data to booksController.
-   controller.createBook(sampleAdd);
-    
+  
 
 //Whatever gets passed in as the second argument will be sent back to the client.
     callback(
@@ -51,6 +61,10 @@ server.addService(booksProto.BooksService.service, {
   GetBooks: (call, callback) => {
     console.log('call to GetBooks');
     // read from database
+    let meta = new grpc.Metadata();
+
+    meta.add('response', call.meta);
+    call.sendMetadata(meta);
 
     controller.getBooks(callback);
 
@@ -59,6 +73,10 @@ server.addService(booksProto.BooksService.service, {
     console.log('call to GetBookByID')
     console.log('CALLBACK IN BOOKSSERVER: ', call.request)
     sampleID = {id: call.request.id};
+    //maybe?
+    let meta = new grpc.Metadata();
+    meta.add('response', 'none')
+    call.sendMetadata(meta);
     controller.getBookByID(sampleID, callback)
   },
   DeleteBook: (call, callback) => {
