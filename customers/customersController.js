@@ -1,7 +1,6 @@
 const customersModel = require('./customersModel.js');
 const customersController = {};
-
-
+const customersControllerStub = require('../stubs/customersControllerStub.js')
 
 // Controller create customer
 customersController.createCustomer = (sampleAdd, res, next) => {
@@ -10,7 +9,6 @@ customersController.createCustomer = (sampleAdd, res, next) => {
         console.log(`Customer could not be created in database ${error}`);
         return res.status(404).json(error);
       }
-
     });
   };
 
@@ -31,30 +29,45 @@ customersController.deleteCustomer = (sampleDelete, res, next) => {
 
   // controller gets all customers in the book db
 customersController.getCustomers = (callback) => {
+
+
     customersModel.find({},(err, result) => {
-      if (err) {
-        console.log('customer retrieval was not successful', err);
-        return res.status(404).json(err);
-      }
-  
+
       const arr = [];
-      for(let i = 0; i < result.length; i++){
-        arr.push({
-          id: result[i].id,
-          name: result[i].name, 
-          age: result[i].age,
-          address: result[i].address,
-        })            
-      }
-  //***********IMPORTANT: MAKE SURE WHEN YOU'RE SENDING DATA BACK TO THE CLIENT THAT YOU ARE FOLLOWING THE PROTOFILE FORMAT EXACTLY!!!
-  
-      callback(
-        null,
-        {
-          names: arr
-        }
-      )
-    });
+      let favBookId = {id: result[0].favBookId};
+        
+      function gettingBooks(error, data) {
+
+        console.log('RESULT  ', result)
+        console.log('DATA ', data)
+
+        if (error) console.log('sorry, there was an error', error)
+        
+        const customerObj = {}
+        customerObj.id = result[0].id
+        customerObj.name = result[0].name
+        customerObj.age = result[0].age
+        customerObj.address = result[0].address
+        customerObj.favBook = data
+        //arr.push(customerObj)
+
+        callback (
+          null, 
+          {
+            names: [{
+              id: result[0].id,
+              name: result[0].name,
+              age: result[0].age,
+              address: result[0].address,
+              favBook: //try something here
+
+            }]
+          }
+        )
+      }   
+      console.log('call before customersControllerStub')
+      customersControllerStub.GetBookByID(favBookId, gettingBooks);
+    });  
   };
 
   module.exports = customersController;

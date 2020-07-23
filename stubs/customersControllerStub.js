@@ -1,6 +1,6 @@
-//use this for bookInitiator
+//use this for customersController
 
-const PROTO_PATH = "./protos/books.proto";
+const PROTO_PATH = "../protos/books.proto";
 
 const grpc = require("grpc");
 const protoLoader = require("@grpc/proto-loader");

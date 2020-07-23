@@ -3,7 +3,6 @@ const grpc = require('grpc');
 const protoLoader = require('@grpc/proto-loader');
 const express = require('express');
 const controller = require('./booksController.js');
-const getBooksResult = controller.getBooksResult
 const app = express();
 app.use(express.json());
 
@@ -51,11 +50,16 @@ server.addService(booksProto.BooksService.service, {
   },
   GetBooks: (call, callback) => {
     console.log('call to GetBooks');
- 
     // read from database
 
     controller.getBooks(callback);
 
+  },
+  GetBookByID: (call, callback) => {
+    console.log('call to GetBookByID')
+    console.log('CALLBACK IN BOOKSSERVER: ', call.request)
+    sampleID = {id: call.request.id};
+    controller.getBookByID(sampleID, callback)
   },
   DeleteBook: (call, callback) => {
     //sample will take the call information from the client(stub)
