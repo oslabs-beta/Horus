@@ -2,7 +2,6 @@ const customersModel = require('./customersModel.js');
 const customersController = {};
 const customersControllerStub = require('../stubs/customersControllerStub.js')
 
-
 // Controller create customer
 customersController.createCustomer = (sampleAdd, res, next) => {
     customersModel.create(sampleAdd, (error, result) => {
@@ -10,7 +9,6 @@ customersController.createCustomer = (sampleAdd, res, next) => {
         console.log(`Customer could not be created in database ${error}`);
         return res.status(404).json(error);
       }
-
     });
   };
 
@@ -31,88 +29,45 @@ customersController.deleteCustomer = (sampleDelete, res, next) => {
 
   // controller gets all customers in the book db
 customersController.getCustomers = (callback) => {
-  //grab customer's favorite book from booksServer
-  
 
-  // const id = sampleID;
-  // const getBookCB = (error, data) => {
-  //   console.log('call to booksServer from customersController')
-  //   if (error) console.log('sorry, there was an error', error)
-  //   else console.log('data coming back to customersController from booksServer: ', data)
-  // }
-  
-  // const getData = (functionName) => {
-  // if (functionName === 'GetBookByID') return id
-  // }
-  // function main (functionName) { 
-  //   bookStub[functionName](getData(functionName), getBookCB);
-  // }
-  // main();
+
     customersModel.find({},(err, result) => {
-      // const favBookId = {id: 100}
-      // const gettingBooks = (error, data) => {
-      //   console.log('call to booksServer from customersController')
-      //   if (error) console.log('sorry, there was an error', error)
-      //   else console.log('data coming back to customersController from booksServer: ', data)
-      //   }
 
-      // if (err) {
-      //   console.log('customer retrieval was not successful', err);
-      //   return res.status(404).json(err);
-      //   }
-
-      // function main () { 
-      //   console.log('FAVBOOK ID DEF IN MAIN: ', favBookId)
-      //   customersControllerStub.GetBookByID(favBookId, gettingBooks);
-      //  }
-
-      // main();
-      let dataHolder;
       const arr = [];
-      for(let i = 0; i < result.length; i++){
-        let favBookId = {id: result[i].favBookId};
-        console.log('ID IN LINE 74 OF CC: ', favBookId)
-        const gettingBooks = (error, data) => {
-          console.log('call to booksServer from customersController')
-          if (error) console.log('sorry, there was an error', error)
-          else {console.log('data coming back to customersController from booksServer: ', data); dataHolder = data;}
-        }
-  
-        if (err) {
-          console.log('customer retrieval was not successful', err);
-          return res.status(404).json(err);
+      let favBookId = {id: result[0].favBookId};
+        
+      function gettingBooks(error, data) {
+
+        console.log('RESULT  ', result)
+        console.log('DATA ', data)
+
+        if (error) console.log('sorry, there was an error', error)
+        
+        const customerObj = {}
+        customerObj.id = result[0].id
+        customerObj.name = result[0].name
+        customerObj.age = result[0].age
+        customerObj.address = result[0].address
+        customerObj.favBook = data
+        //arr.push(customerObj)
+
+        callback (
+          null, 
+          {
+            names: [{
+              id: result[0].id,
+              name: result[0].name,
+              age: result[0].age,
+              address: result[0].address,
+              favBook: //try something here
+
+            }]
           }
-  
-        function main () { 
-          customersControllerStub.GetBookByID(favBookId, gettingBooks);
-        }
-  
-        main();
-        console.log("data holder:", dataHolder);
-        arr.push({
-          id: result[i].id,
-          name: result[i].name, 
-          age: result[i].age,
-          address: result[i].address,
-          favBook: /*dataHolder*/
-            { 
-            title: 'hi',
-            author: 'hi',
-            numberOfPages: 100,
-            publisher: 'hi',
-            id: 5
-          }
-        })            
-      }
-  //***********IMPORTANT: MAKE SURE WHEN YOU'RE SENDING DATA BACK TO THE CLIENT THAT YOU ARE FOLLOWING THE PROTOFILE FORMAT EXACTLY!!!
-  
-      callback(
-        null,
-        {
-          names: arr
-        }
-      )
-    });
+        )
+      }   
+      console.log('call before customersControllerStub')
+      customersControllerStub.GetBookByID(favBookId, gettingBooks);
+    });  
   };
 
   module.exports = customersController;
