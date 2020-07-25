@@ -47,9 +47,13 @@ server.addService(customersProto.CustomersService.service, {
       address: call.request.address,
       favBookId: call.request.favBookId,
     };
-    
+
     //this actually sends data to customersController.
     controller.createCustomer(sampleAdd);
+
+    let meta = new grpc.Metadata();
+    meta.add('response', 'none');
+    call.sendMetadata(meta);
 
     callback(null, {
       id: `completed for ${call.request.id}`,
@@ -66,13 +70,14 @@ server.addService(customersProto.CustomersService.service, {
   DeleteCustomer: (call, callback) => {
     console.log("call to DeleteCustomer");
 
-    const sampleDelete = {
-      id: call.request.id,
-    };
-    //logic to delete customer from Database
-    controller.deleteCustomer(sampleDelete);
+    let meta = new grpc.Metadata();
+    meta.add('response', 'none');
+    call.sendMetadata(meta);
 
-    callback(null, { message: "CUSTOMER DELETED" });
+    //logic to delete customer from Database
+    controller.deleteCustomer(call.request.id);
+
+    callback(null, {});
   },
 });
 

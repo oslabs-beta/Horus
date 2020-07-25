@@ -12,18 +12,22 @@ const book = {
 };
 
 const customer = {
-  id: "123",
+  id: 123,
   name: "Lily",
   age: 23,
   address: "Blablabla",
   favBookId: 100
 };
 
+const customerId = {
+  id: 123
+}
+
 let ht = new horusTracer("main");
 
 
 function getCustomers() {
-  ht.start("customers");
+  ht.start('customers');
   customersStub.GetCustomers({}, (error, response) => {
       if (error) console.log("there was an error ", error);
       ht.end();
@@ -35,13 +39,29 @@ function getCustomers() {
 }
 
 function createCustomer () {
+  ht.start('customers')
   customersStub.CreateCustomer(customer, (error, response) => {
     if (error) console.log('there was an error ', error)
-
+    ht.end();
+    ht.displayRequests();
+    ht.writeToFile();
   }).on("metadata", (metadata) => {
-    
+      ht.grabTrace(metadata.get('response')[0]);
   });
 }
 
+function deleteCustomer() {
+  ht.start('customers')
+  customersStub.DeleteCustomer(customerId, (error, response) => {
+    if (error) console.log("there was an error ", error);
+    ht.end();
+    ht.displayRequests();
+    ht.writeToFile();
+  }).on('metadata', (metadata) => {
+    ht.grabTrace(metadata.get('response')[0]);
+  });
 
-createCustomer()
+}
+
+
+deleteCustomer()

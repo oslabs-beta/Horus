@@ -10,23 +10,19 @@ const horusTracer = require("../horus/horus.js");
 let ht = new horusTracer("customers");
 
 // Controller create customer
-customersController.createCustomer = (sampleAdd, res, next) => {
+customersController.createCustomer = (sampleAdd) => {
   customersModel.create(sampleAdd, (error, result) => {
     if (error) console.log('there was an error writing to the mongo db from the createCustomer controller function  :  ', error);
-    console.log('results')
   });
 };
 
 //**********/may have to add id for customer in protofile
 
 // controller deletes customer
-customersController.deleteCustomer = (sampleDelete, res, next) => {
-  console.log(sampleDelete);
-  const { id } = sampleDelete;
+customersController.deleteCustomer = (id) => {
   customersModel.findOneAndDelete({ id: id }, (error, result) => {
     if (error) {
-      console.log(`Deletion was not successful ${error}`);
-      return res.status(404).json(error);
+      console.log('there was an error writing to the mongo db from the deleteCustomer controller function  :  ', error);
     }
   });
 };
