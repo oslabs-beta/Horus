@@ -43,14 +43,11 @@ booksController.getBookByID = (sampleID, callback, res, next) => {
 
 // controller gets all books in the book db
 booksController.getBooks = (callback) => {
-  booksModel.find({},(err, result) => {
-    if (err) {
-      console.log('Book retrieval was not successful', err);
-      return res.status(404).json(err);
-    }
-
+  booksModel.find({},(error, result) => {
+    if (error) console.log('there was an error from the books controller delete book function  :  ', error);
+    console.log('received resposne from mongodb results ', result)
     const arr = [];
-    for( let i=0; i<result.length;i++){
+    for( let i = 0; i < result.length; i++){
       arr.push({
         title: result[i].title, 
         author: result[i].author,
@@ -59,8 +56,6 @@ booksController.getBooks = (callback) => {
         id: result[i].id
       })            
     }
-//***********IMPORTANT: MAKE SURE WHEN YOU'RE SENDING DATA BACK TO THE CLIENT THAT YOU ARE FOLLOWING THE PROTOFILE FORMAT EXACTLY!!!
-
     callback(
       null,
       {

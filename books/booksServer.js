@@ -56,8 +56,7 @@ server.addService(booksProto.BooksService.service, {
     console.log("call to GetBooks");
     // read from database
     let meta = new grpc.Metadata();
-
-    meta.add("response", call.meta);
+    meta.add('response', 'none');
     call.sendMetadata(meta);
 
     controller.getBooks(callback);

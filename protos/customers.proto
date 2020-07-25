@@ -2,7 +2,7 @@ syntax = 'proto3';
 
 service CustomersService {
     rpc CreateCustomer (CustomerReq) returns (CustomerReq){}
-    rpc GetCustomer (CustomerID) returns (CustomerRes){}
+    rpc GetCustomer (CustomerID) returns (CustomerRes) {}
     rpc DeleteCustomer (CustomerID) returns (Empty) {}
 }
 

@@ -29,7 +29,6 @@ const customerId = {
 
 let ht = new horusTracer("main");
 
-
 function getCustomer() {
   ht.start('customers');
   customersStub.GetCustomer(customerId, (error, response) => {
@@ -91,4 +90,17 @@ function DeleteBook () {
   });
 }
 
-DeleteBook();
+function GetBooks () {
+  ht.start('books')
+  booksStub.GetBooks(bookId, (error, response) => {
+    if (error) console.log("there was an error ", error);
+    console.log('logging response inside getBooks', response);
+    ht.end();
+    ht.displayRequests();
+    ht.writeToFile();
+  }).on('metadata', (metadata) => {
+    ht.grabTrace(metadata.get('response')[0]);
+  });
+}
+
+GetBooks();
