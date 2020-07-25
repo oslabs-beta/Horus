@@ -63,9 +63,9 @@ server.addService(customersProto.CustomersService.service, {
       favBookId: `completed for ${call.request.favBookId}`,
     });
   },
-  GetCustomers: (call, callback) => {
-    console.log("call to GetCustomers");
-    controller.getCustomers(callback, call);
+  GetCustomer: (call, callback) => {
+    console.log("call to GetCustomer");
+    controller.getCustomer(callback, call);
   },
   DeleteCustomer: (call, callback) => {
     console.log("call to DeleteCustomer");

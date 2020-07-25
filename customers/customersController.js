@@ -28,32 +28,28 @@ customersController.deleteCustomer = (id) => {
 };
 
 // controller gets all customers in the book db
-customersController.getCustomers = (callback, call) => {
-  customersModel.find({}, (err, result) => {
+customersController.getCustomer = (callback, call) => {
+  const id = call.request.id;
+  customersModel.findOne({id: id}, (err, result) => {
 
     function gettingBooks(error, data) {
+
+      console.log('result is ', result)
 
       ht.end();
       if (error) console.log("sorry, there was an error", error);      
 
       const customerObj = {};
-      customerObj.id = result[0].id;
-      customerObj.name = result[0].name;
-      customerObj.age = result[0].age;
-      customerObj.address = result[0].address;
+      customerObj.id = result.id;
+      customerObj.name = result.name;
+      customerObj.age = result.age;
+      customerObj.address = result.address;
       customerObj.favBook = data;
 
-      callback(null, {
-        names: [
-          {
-            id: result[0].id,
-            name: result[0].name,
-            age: result[0].age,
-            address: result[0].address,
-            favBook: data,
-          },
-        ],
-      });
+      callback(
+        null, 
+        customerObj
+      );
     }
     const favBookId = {id: 100};
     ht.start('books', call);
