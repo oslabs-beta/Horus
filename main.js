@@ -63,5 +63,16 @@ function deleteCustomer() {
   });
 }
 
+function CreateBook () {
+  ht.start('books')
+  booksStub.CreateBook(book, (error, response) => {
+    if (error) console.log("there was an error ", error);
+    ht.end();
+    ht.displayRequests();
+    ht.writeToFile();
+  }).on('metadata', (metadata) => {
+    ht.grabTrace(metadata.get('response')[0]);
+  });
+}
 
-getCustomer();
+CreateBook();

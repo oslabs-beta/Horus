@@ -33,9 +33,6 @@ customersController.getCustomer = (callback, call) => {
   customersModel.findOne({id: id}, (err, result) => {
 
     function gettingBooks(error, data) {
-
-      console.log('result is ', result)
-
       ht.end();
       if (error) console.log("sorry, there was an error", error);      
 

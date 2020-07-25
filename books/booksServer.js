@@ -26,7 +26,7 @@ server.addService(booksProto.BooksService.service, {
     console.log("call to CreateBook");
 
     //sample will take the call information from the client(stub)
-    const sampleAdd = {
+    const book = {
       title: call.request.title,
       author: call.request.author,
       numberOfPages: call.request.numberOfPages,
@@ -34,14 +34,12 @@ server.addService(booksProto.BooksService.service, {
       id: call.request.id,
     };
 
-    controller.createBook(sampleAdd);
+    controller.createBook(book);
 
     let meta = new grpc.Metadata();
     meta.add("response", "none");
     call.sendMetadata(meta);
 
-    console.log("logging call ", call);
-    
     callback(
       null,
       //bookmodel.create
