@@ -11,14 +11,10 @@ booksController.createBook = (book) => {
 
 
 // controller deletes book
-booksController.deleteBook = (sampleDelete, res, next) => {
-  console.log(sampleDelete)
-  const { id } = sampleDelete;
+booksController.deleteBook = (bookID, res, next) => {
+  const { id } = bookID;
   booksModel.findOneAndDelete({ id: id }, (error, result) => {
-    if (error) {
-      console.log(`Deletion was not successful ${error}`);
-      return res.status(404).json(error);
-    }
+    if (error) console.log('there was an error from the books controller delete book function  :  ', error);
   });
 };
 

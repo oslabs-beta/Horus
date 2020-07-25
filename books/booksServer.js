@@ -69,21 +69,23 @@ server.addService(booksProto.BooksService.service, {
     let sampleID = {id: 100};
 
     let meta = new grpc.Metadata();
-
     meta.add('response', 'none');
-
     call.sendMetadata(meta);
 
     controller.getBookByID(sampleID, callback);
   },
   DeleteBook: (call, callback) => {
     //sample will take the call information from the client(stub)
-    const sampleDelete = {
+    const bookID = {
       id: call.request.id,
     };
 
     //this actually sends data to booksController.
-    controller.deleteBook(sampleDelete);
+    controller.deleteBook(bookID);
+
+    let meta = new grpc.Metadata();
+    meta.add('response', 'none');
+    call.sendMetadata(meta);
 
     // delete from database
     callback(null, { message: "DELETED" });

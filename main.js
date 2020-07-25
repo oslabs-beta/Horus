@@ -11,6 +11,10 @@ const book = {
   id: 200,
 };
 
+const bookId = {
+  id: 200
+}
+
 const customer = {
   id: 123,
   name: "Lily",
@@ -75,4 +79,16 @@ function CreateBook () {
   });
 }
 
-CreateBook();
+function DeleteBook () {
+  ht.start('books')
+  booksStub.DeleteBook(bookId, (error, response) => {
+    if (error) console.log("there was an error ", error);
+    ht.end();
+    ht.displayRequests();
+    ht.writeToFile();
+  }).on('metadata', (metadata) => {
+    ht.grabTrace(metadata.get('response')[0]);
+  });
+}
+
+DeleteBook();
