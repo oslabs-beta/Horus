@@ -30,6 +30,7 @@ function getCustomers() {
   ht.start('customers');
   customersStub.GetCustomers({}, (error, response) => {
       if (error) console.log("there was an error ", error);
+      console.log('logging response inside getCustomers ', response)
       ht.end();
       ht.displayRequests();
     })
@@ -63,5 +64,4 @@ function deleteCustomer() {
 
 }
 
-
-deleteCustomer()
+getCustomers();

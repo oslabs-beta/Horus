@@ -1,9 +1,9 @@
 const customersModel = require("./customersModel.js");
 const customersController = {};
 const path = require('path');
-const customersControllerStub = require(path.join(__dirname, "../stubs/customersControllerStub.js"));
+const booksStub = require(path.join(__dirname, "../stubs/booksStub.js"));
 const grpc = require('grpc')
-// const customersControllerStub = require("../stubs/customersControllerStub.js");
+// const booksStub = require("../stubs/booksStub.js");
 
 const horusTracer = require("../horus/horus.js");
 
@@ -57,7 +57,7 @@ customersController.getCustomers = (callback, call) => {
     }
     const favBookId = {id: 100};
     ht.start('books', call);
-    customersControllerStub
+    booksStub
       .GetBookByID(favBookId, gettingBooks)
       .on("metadata", (metadata) => {
         ht.grabTrace(metadata.get('response')[0])
