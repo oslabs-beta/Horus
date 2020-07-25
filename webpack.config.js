@@ -1,5 +1,4 @@
 const path = require('path')
-const test = require('./')
 
 module.exports = {
     entry: './main.js',
@@ -26,12 +25,12 @@ module.exports = {
             exclude: path.resolve(__dirname, './node_modules/'),
             use: ['style-loader', 'css-loader', 'sass-loader'],
           },
-          {
-            test: /\.proto$/,
-            exclude: path.resolve(__dirname, './node_modules'),
-            loader: 'grpc-loader',
+          // {
+          //   test: /\.proto$/,
+          //   exclude: path.resolve(__dirname, './node_modules'),
+          //   loader: 'grpc-loader',
               
-          }
+          // }
         ],
       },
 }

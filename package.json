@@ -1,8 +1,8 @@
 {
-  "name": "customers",
+  "name": "main",
   "version": "1.0.0",
-  "description": "npm file for customers microservice",
-  "main": "./customers/customersServer.js",
+  "description": "Main",
+  "main": "main.js",
   "scripts": {
     "build": "NODE_ENV=production webpack",
     "start": "nodemon server.js",
