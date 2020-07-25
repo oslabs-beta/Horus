@@ -51,15 +51,11 @@ function getFavBookRequest() {
         console.log("sorry, there was an error ", error);
       }
       ht.end();
-      // console.log("traceeee ", ht.allRequests);
     })
     .on("metadata", (metadata) => {
       setTimeout(() => {
         console.log("meta data coming back ", metadata);
         ht.grabTrace(metadata.get("response")[0]);
-        // console.log("traceeee ", ht.allRequests);
-        ht.displayRequests();
-        ht.writeToFile();
       }, 1000);
     });
 }

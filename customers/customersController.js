@@ -2,6 +2,7 @@ const customersModel = require("./customersModel.js");
 const customersController = {};
 const path = require('path');
 const customersControllerStub = require(path.join(__dirname, "../stubs/customersControllerStub.js"));
+const grpc = require('grpc')
 // const customersControllerStub = require("../stubs/customersControllerStub.js");
 
 const horusTracer = require("../horus/horus.js");
@@ -33,16 +34,21 @@ customersController.deleteCustomer = (sampleDelete, res, next) => {
 };
 
 // controller gets all customers in the book db
-customersController.getCustomers = (callback) => {
+customersController.getCustomers = (callback, call) => {
   customersModel.find({}, (err, result) => {
-    const arr = [];
-    let favBookId = { id: result[0].favBookId };
 
     function gettingBooks(error, data) {
-      console.log("RESULT  ", result);
-      console.log("DATA ", data);
+      ht.end();
 
-      if (error) console.log("sorry, there was an error", error);
+      let meta = new grpc.Metadata();
+
+      meta.add('response', 'temp response');
+
+      call.sendMetadata(meta);
+
+      console.log('logging ht.request from getting books', ht.request);
+
+      if (error) console.log("sorry, there was an error", error);      
 
       const customerObj = {};
       customerObj.id = result[0].id;
@@ -63,17 +69,17 @@ customersController.getCustomers = (callback) => {
         ],
       });
     }
-    hT.start("books");
-    // customersControllerStub.GetBookByID(favBookId, gettingBooks);
+    const favBookId = {id: 100};
+    ht.start('books');
     customersControllerStub
       .GetBookByID(favBookId, gettingBooks)
       .on("metadata", (metadata) => {
-        setTimeout(() => {
-          // console.log("meta data coming back ", metadata);
-          ht.grabTrace(metadata.get("response")[0]);
-          ht.displayRequests();
-          // ht.writeToFile();
-        }, 1000);
+
+        console.log('logging ht.request from customers at customer controller stub', ht.request);
+        ht.grabTrace(metadata.get('response')[0])
+
+        let meta = new grpc.Metadata();
+        meta.add('response', metadata.get('response')[0]);
       });
   });
 };

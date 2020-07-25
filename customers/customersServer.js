@@ -60,15 +60,7 @@ server.addService(customersProto.CustomersService.service, {
   },
   GetCustomers: (call, callback) => {
     console.log("call to GetCustomers");
-    //logic to read from database
-    // hT.start("books");
-    // let meta = new grpc.Metadata();
-    // meta.add('response', 'none')
-    // call.sendMetadata(meta);
-
-    console.log("logging call in getCustomers", call);
-    controller.getCustomers(callback);
-    hT.end();
+    controller.getCustomers(callback, call);
   },
   DeleteCustomer: (call, callback) => {
     console.log("call to DeleteCustomer");
