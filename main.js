@@ -16,6 +16,7 @@ const customer = {
   name: "Lily",
   age: 23,
   address: "Blablabla",
+  favBookId: 100
 };
 
 let ht = new horusTracer("main");
@@ -23,18 +24,24 @@ let ht = new horusTracer("main");
 
 function getCustomers() {
   ht.start("customers");
-  customersStub
-    .GetCustomers({}, (error, response) => {
-      if (error) {
-        console.log("sorry, there was an error ", error);
-      }
+  customersStub.GetCustomers({}, (error, response) => {
+      if (error) console.log("there was an error ", error);
       ht.end();
       ht.displayRequests();
     })
     .on("metadata", (metadata) => {
-      console.log("meta data coming back ", metadata);
       ht.grabTrace(metadata.get("response")[0]);
     });
 }
 
+function createCustomer () {
+  customersStub.CreateCustomer(customer, (error, response) => {
+    if (error) console.log('there was an error ', error)
 
+  }).on("metadata", (metadata) => {
+    
+  });
+}
+
+
+createCustomer()

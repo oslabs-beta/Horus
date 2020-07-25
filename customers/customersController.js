@@ -12,10 +12,8 @@ let ht = new horusTracer("customers");
 // Controller create customer
 customersController.createCustomer = (sampleAdd, res, next) => {
   customersModel.create(sampleAdd, (error, result) => {
-    if (error) {
-      console.log(`Customer could not be created in database ${error}`);
-      return res.status(404).json(error);
-    }
+    if (error) console.log('there was an error writing to the mongo db from the createCustomer controller function  :  ', error);
+    console.log('results')
   });
 };
 

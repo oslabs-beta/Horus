@@ -47,6 +47,7 @@ server.addService(customersProto.CustomersService.service, {
       address: call.request.address,
       favBookId: call.request.favBookId,
     };
+    
     //this actually sends data to customersController.
     controller.createCustomer(sampleAdd);
 
