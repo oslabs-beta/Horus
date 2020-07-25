@@ -5,8 +5,8 @@ require('dotenv').config();
 const { Schema } = mongoose;
 
 // DB link for books data.
-// const book_db_URI = `${process.env.BOOKS_DB}`;
-const book_db_URI = 'mongodb+srv://tinyturtle2:horuspass@cluster0-4egmg.mongodb.net/books?retryWrites=true&w=majority'
+const book_db_URI = `${process.env.BOOKS_DB}`;
+// const book_db_URI = 'mongodb+srv://tinyturtle2:horuspass@cluster0-4egmg.mongodb.net/books?retryWrites=true&w=majority'
 
 // const URI = process.env.MONGO_URI || myURI;
 
