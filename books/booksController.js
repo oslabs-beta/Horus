@@ -3,38 +3,25 @@ const booksController = {};
 
 
 // controller Creates Books
-booksController.createBook = (sampleAdd, res, next) => {
-    booksModel.create(sampleAdd,(err, result) => {
-      if (err) {
-        console.log(`This is the error I am getting back ${err}`);
-        return res.send(404).json(err);
-      }
+booksController.createBook = (book) => {
+    booksModel.create(book,(error, result) => {
+      if (error) console.log('there was an error from the books controller create book function  :  ', error);
     });
 };
 
 
 // controller deletes book
-booksController.deleteBook = (sampleDelete, res, next) => {
-  console.log(sampleDelete)
-  const { id } = sampleDelete;
+booksController.deleteBook = (bookID, res, next) => {
+  const { id } = bookID;
   booksModel.findOneAndDelete({ id: id }, (error, result) => {
-    if (error) {
-      console.log(`Deletion was not successful ${error}`);
-      return res.status(404).json(error);
-    }
+    if (error) console.log('there was an error from the books controller delete book function  :  ', error);
   });
 };
 
 booksController.getBookByID = (sampleID, callback, res, next) => {
-  console.log('entered booksController.getBookByID')
-  //Double check if the findOne syntax is correct
   const { id } = sampleID;
-  console.log('ID GETTING PASSED TO BOOKSCONTROLLER: ', sampleID)
   booksModel.findOne({id: id}, (error, result) => {
-    if (error) {
-      console.log(`Unable to find book by id ${error}`);
-      return res.status(404).json(error)
-    }
+    if (error) console.log('there was an error from the books controller get books by id function  :  ', error);
     callback(
       null,
       {
@@ -50,14 +37,11 @@ booksController.getBookByID = (sampleID, callback, res, next) => {
 
 // controller gets all books in the book db
 booksController.getBooks = (callback) => {
-  booksModel.find({},(err, result) => {
-    if (err) {
-      console.log('Book retrieval was not successful', err);
-      return res.status(404).json(err);
-    }
-
+  booksModel.find({},(error, result) => {
+    if (error) console.log('there was an error from the books controller get book function  :  ', error);
+    console.log('received resposne from mongodb results ', result)
     const arr = [];
-    for( let i=0; i<result.length;i++){
+    for( let i = 0; i < result.length; i++){
       arr.push({
         title: result[i].title, 
         author: result[i].author,
@@ -66,8 +50,6 @@ booksController.getBooks = (callback) => {
         id: result[i].id
       })            
     }
-//***********IMPORTANT: MAKE SURE WHEN YOU'RE SENDING DATA BACK TO THE CLIENT THAT YOU ARE FOLLOWING THE PROTOFILE FORMAT EXACTLY!!!
-
     callback(
       null,
       {

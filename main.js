@@ -11,82 +11,109 @@ const book = {
   id: 200,
 };
 
+const bookId = {
+  id: 200
+}
+
 const customer = {
-  id: "123",
+  id: 123,
   name: "Lily",
   age: 23,
   address: "Blablabla",
+  favBookId: 100
 };
+
+const customerId = {
+  id: 123
+}
 
 let ht = new horusTracer("main");
 
-// function CreateBook() {
-//   ht.start("books");
-//   booksStub
-//     .CreateBook(book, (error, response) => {
-//       if (error) {
-//         console.log("sorry, there was an error ", error);
-//       }
-
-//       ht.end();
-//       // console.log("traceeee ", ht.allRequests);
-//     })
-//     .on("metadata", (metadata) => {
-//       setTimeout(() => {
-//         console.log("meta data coming back ", metadata);
-
-//         ht.grabTrace(metadata.get("response")[0]);
-//         // console.log("traceeee ", ht.allRequests);
-//         ht.displayRequests();
-//         ht.writeToFile();
-//       }, 1000);
-//     });
-// }
-
-function getFavBookRequest() {
-  ht.start("customers");
-  customersStub
-    .GetCustomers({}, (error, response) => {
-      if (error) {
-        console.log("sorry, there was an error ", error);
-      }
+function getCustomer() {
+  ht.start('customers');
+  customersStub.GetCustomer(customerId, (error, response) => {
+      if (error) console.log("there was an error ", error);
+      console.log('logging response inside getCustomer ', response)
       ht.end();
-      // console.log("traceeee ", ht.allRequests);
+      ht.displayRequests();
     })
     .on("metadata", (metadata) => {
-      setTimeout(() => {
-        console.log("meta data coming back ", metadata);
-        ht.grabTrace(metadata.get("response")[0]);
-        // console.log("traceeee ", ht.allRequests);
-        ht.displayRequests();
-        ht.writeToFile();
-      }, 1000);
+      ht.grabTrace(metadata.get("response")[0]);
     });
 }
 
-//getCustomers
-//main();
-getFavBookRequest();
+function createCustomer () {
+  ht.start('customers')
+  customersStub.CreateCustomer(customer, (error, response) => {
+    if (error) console.log('there was an error ', error)
+    ht.end();
+    ht.displayRequests();
+    ht.writeToFile();
+  }).on("metadata", (metadata) => {
+      ht.grabTrace(metadata.get('response')[0]);
+  });
+}
 
-// ht.start('customers');
-// customersStub.CreateCustomer(customer, (error, response) => {
-//     ht.end();
-// }).on('metadata', metadata => {
-//     setTimeout(() => {
-//         ht.grabTrace(metadata.get('response')[0]);
-//         ht.displayRequests();
-//         ht.writeToFile();
-//     }, 2000);
-// });
+function deleteCustomer() {
+  ht.start('customers')
+  customersStub.DeleteCustomer(customerId, (error, response) => {
+    if (error) console.log("there was an error ", error);
+    ht.end();
+    ht.displayRequests();
+    ht.writeToFile();
+  }).on('metadata', (metadata) => {
+    ht.grabTrace(metadata.get('response')[0]);
+  });
+}
 
-// booksStub.GetBooks({}, (error, response) => {
-//     ht.end();
-//     // console.log("traceeee ", ht.allRequests);
-// }).on('metadata', metadata => {
-//     setTimeout(() => {
-//         ht.grabTrace(metadata.get('response')[0]);
-//         // console.log("traceeee ", ht.allRequests);
-//         ht.displayRequests();
-//         ht.writeToFile();
-//     }, 2000);
-// });
+function CreateBook () {
+  ht.start('books')
+  booksStub.CreateBook(book, (error, response) => {
+    if (error) console.log("there was an error ", error);
+    ht.end();
+    ht.displayRequests();
+    ht.writeToFile();
+  }).on('metadata', (metadata) => {
+    ht.grabTrace(metadata.get('response')[0]);
+  });
+}
+
+function DeleteBook () {
+  ht.start('books')
+  booksStub.DeleteBook(bookId, (error, response) => {
+    if (error) console.log("there was an error ", error);
+    ht.end();
+    ht.displayRequests();
+    ht.writeToFile();
+  }).on('metadata', (metadata) => {
+    ht.grabTrace(metadata.get('response')[0]);
+  });
+}
+
+function GetBooks () {
+  ht.start('books')
+  booksStub.GetBooks({}, (error, response) => {
+    if (error) console.log("there was an error ", error);
+    console.log('logging response inside getBooks', response);
+    ht.end();
+    ht.displayRequests();
+    ht.writeToFile();
+  }).on('metadata', (metadata) => {
+    ht.grabTrace(metadata.get('response')[0]);
+  });
+}
+
+function getBookByID() {
+  ht.start('books')
+  booksStub.GetBooks(bookId, (error, response) => {
+    if (error) console.log("there was an error ", error);
+    console.log('logging response inside getBookByID', response);
+    ht.end();
+    ht.displayRequests();
+    ht.writeToFile();
+  }).on('metadata', (metadata) => {
+    ht.grabTrace(metadata.get('response')[0]);
+  });
+}
+
+getBookByID();
