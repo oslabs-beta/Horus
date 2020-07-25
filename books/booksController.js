@@ -19,15 +19,9 @@ booksController.deleteBook = (bookID, res, next) => {
 };
 
 booksController.getBookByID = (sampleID, callback, res, next) => {
-  console.log('entered booksController.getBookByID')
-  //Double check if the findOne syntax is correct
   const { id } = sampleID;
-  console.log('ID GETTING PASSED TO BOOKSCONTROLLER: ', sampleID)
   booksModel.findOne({id: id}, (error, result) => {
-    if (error) {
-      console.log(`Unable to find book by id ${error}`);
-      return res.status(404).json(error)
-    }
+    if (error) console.log('there was an error from the books controller get books by id function  :  ', error);
     callback(
       null,
       {
@@ -44,7 +38,7 @@ booksController.getBookByID = (sampleID, callback, res, next) => {
 // controller gets all books in the book db
 booksController.getBooks = (callback) => {
   booksModel.find({},(error, result) => {
-    if (error) console.log('there was an error from the books controller delete book function  :  ', error);
+    if (error) console.log('there was an error from the books controller get book function  :  ', error);
     console.log('received resposne from mongodb results ', result)
     const arr = [];
     for( let i = 0; i < result.length; i++){

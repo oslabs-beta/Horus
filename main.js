@@ -92,7 +92,7 @@ function DeleteBook () {
 
 function GetBooks () {
   ht.start('books')
-  booksStub.GetBooks(bookId, (error, response) => {
+  booksStub.GetBooks({}, (error, response) => {
     if (error) console.log("there was an error ", error);
     console.log('logging response inside getBooks', response);
     ht.end();
@@ -103,4 +103,17 @@ function GetBooks () {
   });
 }
 
-GetBooks();
+function getBookByID() {
+  ht.start('books')
+  booksStub.GetBooks(bookId, (error, response) => {
+    if (error) console.log("there was an error ", error);
+    console.log('logging response inside getBookByID', response);
+    ht.end();
+    ht.displayRequests();
+    ht.writeToFile();
+  }).on('metadata', (metadata) => {
+    ht.grabTrace(metadata.get('response')[0]);
+  });
+}
+
+getBookByID();
