@@ -38,16 +38,8 @@ customersController.getCustomers = (callback, call) => {
   customersModel.find({}, (err, result) => {
 
     function gettingBooks(error, data) {
+
       ht.end();
-
-      let meta = new grpc.Metadata();
-
-      meta.add('response', 'temp response');
-
-      call.sendMetadata(meta);
-
-      console.log('logging ht.request from getting books', ht.request);
-
       if (error) console.log("sorry, there was an error", error);      
 
       const customerObj = {};
@@ -70,16 +62,11 @@ customersController.getCustomers = (callback, call) => {
       });
     }
     const favBookId = {id: 100};
-    ht.start('books');
+    ht.start('books', call);
     customersControllerStub
       .GetBookByID(favBookId, gettingBooks)
       .on("metadata", (metadata) => {
-
-        console.log('logging ht.request from customers at customer controller stub', ht.request);
         ht.grabTrace(metadata.get('response')[0])
-
-        let meta = new grpc.Metadata();
-        meta.add('response', metadata.get('response')[0]);
       });
   });
 };

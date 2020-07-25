@@ -1,4 +1,5 @@
 const fs = require('fs');
+const grpc = require('grpc');
 const path = require('path');
 
 class horus {
@@ -10,22 +11,23 @@ class horus {
     // this.requestId = 1; // NEED TO FIX !!!
     this.targetService = null; // represents the location to which the request was made
     this.allRequests = []; // array which stores all requests
+    this.call;
   }
  
   // start should be invoked before the request is made
       // start begins the timer and initializes the request as pending
-  start(targetService) {
+  start(targetService, call) {
     this.startTime = Number(process.hrtime.bigint());
     this.request[targetService] = 'pending'; // {books: 'pending', responseTime: 'pending'} 
     this.request.responseTime = 'pending';
     this.targetService = targetService;
-    // console.log("Before request: ", this.requestId);
+    this.call = call;
   }
   // end should be invoked when the request has returned
   end() {
     this.endTime = Number(process.hrtime.bigint());
     this.request.responseTime = ((this.endTime - this.startTime)/ 1000000).toFixed(3); //converting into ms.
-    // this.requestId++;
+    this.sendResponse();
   }
   // grabTrace accepts inserts trace into request
       // trace represents the "journey" of the request
@@ -40,7 +42,7 @@ class horus {
       this.request[this.targetService] = metaData;
     }
     this.allRequests.push(this.request);
-    this.request = {};
+    this.sendResponse();
   }
   // displayRequests logs to the console all stored requests
     // setTimeout builds in deliberate latency since metadata may be sent before or after a request is done processing
@@ -52,6 +54,15 @@ class horus {
       console.log(request);
     });
     console.log('\n\n');
+  }
+  // sends response via metadata if service is in the middle of a chain
+  sendResponse() {
+    if (this.request.responseTime === 'pending' || 
+      this.request[this.targetService] === 'pending' ||
+      this.call === undefined) return;
+    let meta = new grpc.Metadata();
+    meta.add('response', JSON.stringify(this.request));
+    this.call.sendMetadata(meta);
   }
   writeToFile() {
     let strRequests = '';
