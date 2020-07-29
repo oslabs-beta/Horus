@@ -2,7 +2,7 @@
   "name": "customers",
   "version": "1.0.0",
   "description": "npm file for customers microservice",
-  "main": "main.js",
+  "main": "index.js",
   "scripts": {
     "webpack": "webpack",
     "start": "nodemon server.js",

@@ -2,14 +2,6 @@ const booksStub = require("./stubs/booksStub.js");
 const customersStub = require("./stubs/customersStub.js");
 // const grpc = require("grpc");
 const horusTracer = require("./horus/horus.js");
-import React from 'react';
-import { render } from 'react-dom';
-import App from './MockFrontEnd/component/App.jsx';
-
-render(
-  <App />,
-  document.getElementById('root')
-);
 
 const book = {
   title: "ITttttt",
@@ -73,7 +65,7 @@ function getFavBookRequest() {
 }
 
 //getCustomers
-CreateBook();
+// CreateBook();
 // getFavBookRequest();
 
 // ht.start('customers');

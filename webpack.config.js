@@ -1,7 +1,7 @@
 const path = require('path')
 
 module.exports = {
-    entry: './main.js',
+    entry: './MockFrontEnd/index.js',
     target: 'node',
     output: {
         filename: 'bundle.js',
