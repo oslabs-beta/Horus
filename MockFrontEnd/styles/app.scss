@@ -24,6 +24,14 @@ body {
     border-right: solid 1px;
     height: 100%;
     width: 33%;
+    .createCustomerForm {
+        background: rgb(224, 110, 110);
+        #createCustomerButton {
+            background: blue;
+            color: white;
+            border-radius: 5px;
+        }
+    }
 }
 
 .MainContainer {
