@@ -2,8 +2,10 @@
   "name": "customers",
   "version": "1.0.0",
   "description": "npm file for customers microservice",
-  "main": "customersServer.js",
+  "main": "main.js",
   "scripts": {
+    "booksServer": "nodemon books/booksServer.js",
+    "customersServer": "nodemon customers/customersServer.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Horus",

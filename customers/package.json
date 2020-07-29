@@ -11,12 +11,13 @@
   "dependencies": {
     "@grpc/proto-loader": "^0.5.5",
     "body-parser": "^1.19.0",
-    "express": "^4.17.1",
-    "grpc-caller": "^0.13.0",
-    "grpc": "^1.24.3",
-    "path": "^0.12.7",
-    "uuid": "^8.2.0",
     "dotenv": "^8.2.0",
-    "mongoose": "^5.8.1"
+    "express": "^4.17.1",
+    "grpc": "^1.24.3",
+    "grpc-caller": "^0.13.0",
+    "mongoose": "^5.8.1",
+    "nodemon": "^2.0.4",
+    "path": "^0.12.7",
+    "uuid": "^8.2.0"
   }
 }

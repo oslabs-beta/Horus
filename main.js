@@ -33,9 +33,10 @@ function getCustomer() {
   ht.start('customers');
   customersStub.GetCustomer(customerId, (error, response) => {
       if (error) console.log("there was an error ", error);
-      console.log('logging response inside getCustomer ', response)
+      //console.log('logging response inside getCustomer ', response)
       ht.end();
-      ht.displayRequests();
+      ht.writeToFile();
+      //ht.displayRequests();
     })
     .on("metadata", (metadata) => {
       ht.grabTrace(metadata.get("response")[0]);
@@ -45,9 +46,10 @@ function getCustomer() {
 function createCustomer () {
   ht.start('customers')
   customersStub.CreateCustomer(customer, (error, response) => {
-    if (error) console.log('there was an error ', error)
+    //if (error) console.log('there was an error ', error)
+    //console.log('response from createCustomer ', response)
     ht.end();
-    ht.displayRequests();
+    //ht.displayRequests();
     ht.writeToFile();
   }).on("metadata", (metadata) => {
       ht.grabTrace(metadata.get('response')[0]);
@@ -116,4 +118,4 @@ function getBookByID() {
   });
 }
 
-getBookByID();
+getCustomer();

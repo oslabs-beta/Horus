@@ -1,0 +1,60 @@
+Request ID: 1596037313731
+"customers" service -> Response received in 92.074 ms (Total)
+Timestamp: 07/29/2020 11:41:53
+"books" service -> Response received in 42.681 ms
+Timestamp: 07/29/2020 11:41:14
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Request ID: 1596037353833
+"customers" service -> Response received in 90.384 ms (Total)
+Timestamp: 07/29/2020 11:42:33
+"books" service -> Response received in 41.705 ms
+Timestamp: 07/29/2020 11:41:53
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Request ID: 1596037356368
+"customers" service -> Response received in 91.422 ms (Total)
+Timestamp: 07/29/2020 11:42:36
+"books" service -> Response received in 42.897 ms
+Timestamp: 07/29/2020 11:42:33
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Request ID: 1596037392594
+"customers" service -> Response received in 88.746 ms (Total)
+Timestamp: 07/29/2020 11:43:12
+"books" service -> Response received in 40.929 ms
+Timestamp: 07/29/2020 11:42:36
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Request ID: 1596037466970
+"customers" service -> Response received in 90.312 ms (Total)
+Timestamp: 07/29/2020 11:44:27
+"books" service -> Response received in 37.811 ms
+Timestamp: 07/29/2020 11:43:12
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Request ID: 1596037717274
+"customers" service -> Response received in 576.856 ms (Total)
+Timestamp: 07/29/2020 11:48:37
+"books" service -> Response received in 273.109 ms
+Timestamp: undefined
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Request ID: 1596037736092
+"customers" service -> Response received in 106.499 ms (Total)
+Timestamp: 07/29/2020 11:48:56
+"books" service -> Response received in 45.119 ms
+Timestamp: 07/29/2020 11:48:37
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Request ID: 1596037821302
+"customers" service -> Response received in 354.785 ms (Total)
+Timestamp: 07/29/2020 11:50:21
+"books" service -> Response received in 44.120 ms
+Timestamp: undefined
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Request ID: 1596037860178
+"customers" service -> Response received in 99.340 ms (Total)
+Timestamp: 07/29/2020 11:51:00
+"books" service -> Response received in 44.382 ms
+Timestamp: 07/29/2020 11:50:21
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Request ID: 1596037896818
+"customers" service -> Response received in 90.154 ms (Total)
+Timestamp: 07/29/2020 11:51:36
+"books" service -> Response received in 39.784 ms
+Timestamp: 07/29/2020 11:51:00
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
