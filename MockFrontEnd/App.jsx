@@ -9,10 +9,8 @@ class App extends React.Component{
     render(){
         return(
             <div>
-              <div className='TopContainer'>
-                <TopContainer />
-              </div>
-              <div>
+              <TopContainer />
+              <div className='MainBody'>
                 <LeftContainer />
                 <MainContainer />
               </div>

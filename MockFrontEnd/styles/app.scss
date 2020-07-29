@@ -2,6 +2,30 @@
     background: rgb(144, 221, 238);
 }
 
+body {
+    margin: 0;
+}
+
+.MainBody {
+    display: flex;
+    height: 100%;
+}
+
 .TopContainer {
-    border-bottom: solid 1px;
+    border-bottom: solid 1px black;
+    background: navy;
+    height: 100px;
+    width: 100%;
+    color: white;
+}
+
+.LeftContainer {
+    background: rgb(224, 110, 110);
+    border-right: solid 1px;
+    height: 100%;
+    width: 33%;
+}
+
+.MainContainer {
+    width: 67%;
 }
