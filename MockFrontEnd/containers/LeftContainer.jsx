@@ -1,9 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import styles from '../styles/app.scss'
-const customerStub = require("/Users/PolumboStudio/Documents/GitHub/mockAppWithHorus/stubs/customersStub.js");
 
 class LeftContainer extends React.Component {
+    constructor() {
+        super();
+        this.state ={};
+        this.handleCreateCustomerButton = this.handleCreateCustomerButton.bind(this);
+    }
+
+    handleCreateCustomerButton(e) {
+        console.log('call to create customer')
+        // let url = 'http://localhost:3000/customers'
+        fetch('http://localhost:3000/customers', {
+            method: 'POST',
+            body: JSON.stringify({})
+        }).then(res => res.json())
+        .then(data => console.log('Data retrieved: ',data))
+    }
+
     render(){
         return(
             <div className='LeftContainer'>
@@ -25,7 +40,7 @@ class LeftContainer extends React.Component {
                     <label>Favorite Book ID:  </label>
                     <input id="favBookID" type="text"></input>
                     <br />
-                    <button type="button" id="createCustomerButton">Create Customer</button>
+                    <button type="button" id="createCustomerButton" onClick={this.handleCreateCustomerButton}>Create Customer</button>
                 </form>
             </div>
         )

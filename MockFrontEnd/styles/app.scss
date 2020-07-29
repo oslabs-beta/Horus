@@ -1,7 +1,3 @@
-* {
-    background: rgb(144, 221, 238);
-}
-
 body {
     margin: 0;
 }
@@ -9,6 +5,10 @@ body {
 .MainBody {
     display: flex;
     height: 100%;
+}
+
+.MainContainer {
+    background: rgb(144, 221, 238);
 }
 
 .TopContainer {
@@ -27,9 +27,11 @@ body {
     .createCustomerForm {
         background: rgb(224, 110, 110);
         #createCustomerButton {
-            background: blue;
+            font-family: sans-serif;
+            background: rgb(26, 115, 232);
             color: white;
             border-radius: 5px;
+            padding: 5px 5px 5px 5px;
         }
     }
 }

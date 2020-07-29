@@ -25,12 +25,6 @@ module.exports = {
             exclude: path.resolve(__dirname, './node_modules/'),
             use: ['style-loader', 'css-loader', 'sass-loader'],
           },
-          // {
-          //   test: /\.proto$/,
-          //   exclude: path.resolve(__dirname, './node_modules'),
-          //   loader: 'grpc-loader',
-              
-          // }
         ],
       },
 }

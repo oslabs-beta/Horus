@@ -1,8 +1,10 @@
 const express = require('express');
 const customerInitiator = require('/Users/PolumboStudio/Documents/GitHub/mockAppWithHorus/customerInitiator.js')
-const router = express.Router();
+const customersRouter = express.Router();
 
-router.post('/customers', customerInitiator.createCustomer, (req, res) => {
+customersRouter.post('/', customerInitiator.createCustomer, (req, res) => {
     console.log('create customer in customer Router')
-    return res.status(200).json(res.locals.user)
+    return res.status(200).json(res.locals.customers)
 })
+
+module.exports = customersRouter;
