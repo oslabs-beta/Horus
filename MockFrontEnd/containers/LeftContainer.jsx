@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import styles from '../styles/app.scss'
+const customerStub = require("/Users/PolumboStudio/Documents/GitHub/mockAppWithHorus/stubs/customersStub.js");
 
 class LeftContainer extends React.Component {
     render(){
@@ -20,6 +21,9 @@ class LeftContainer extends React.Component {
                     <br />
                     <label>Customer Address:  </label>
                     <input id="custAddress" type="text"></input>
+                    <br />
+                    <label>Favorite Book ID:  </label>
+                    <input id="favBookID" type="text"></input>
                     <br />
                     <button type="button" id="createCustomerButton">Create Customer</button>
                 </form>
