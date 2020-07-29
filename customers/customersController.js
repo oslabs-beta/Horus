@@ -34,6 +34,7 @@ customersController.getCustomer = (callback, call) => {
 
     function gettingBooks(error, data) {
       ht.end();
+      ht.writeToFile();
       if (error) console.log("sorry, there was an error", error);      
 
       const customerObj = {};

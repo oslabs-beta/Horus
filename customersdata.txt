@@ -1,0 +1,11 @@
+Request ID: 1596037896864
+"books" service -> Response received in 39.784 ms (Total)
+Timestamp: 07/29/2020 11:51:36
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Request ID: 1596037896864
+"books" service -> Response received in 39.784 ms (Total)
+Timestamp: 07/29/2020 11:51:36
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Request ID: 1596037896864
+"books" service -> Response received in 39.784 ms (Total)
+Timestamp: 07/29/2020 11:51:36
