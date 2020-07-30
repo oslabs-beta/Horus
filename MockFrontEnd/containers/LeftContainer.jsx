@@ -139,6 +139,7 @@ class LeftContainer extends React.Component {
                     <button type="submit" id="createCustomerButton">Create Customer</button>
                     {/* <button type="button" id="createCustomerButton" onClick={this.handleCreateCustomerButton}>Create Customer</button> */}
                 </form>
+                <button type="button" id="getCustomerbutton">Get Last Customer</button>
                 <form onSubmit={this.handleBookSubmit} className='CreateBookForm'>
                     <h4>Add Book to Bookstore</h4>
                     <label>Title: </label>
@@ -194,6 +195,7 @@ class LeftContainer extends React.Component {
                     <br/>
                     <button type="submit" id="createBookButton">Create Book</button>
                 </form>
+                <button type="button" id="getBooksbutton">Get All Books</button>
             </div>
         )
     }
