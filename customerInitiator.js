@@ -7,17 +7,18 @@ console.log('process.env vars', process.env.function);
 
 customerInitiator.createCustomer = (req, res, next) => {
   console.log('Inside of create customer in customerInitiator')
+  console.log('REQ INSIDE CUST INITIATOR: ', req)
   const customer = {
-    // id: req.body.id,
-    // name: req.body.name,
-    // age: req.body.age,
-    // address: req.body.address,
-    // favBookId: req.body.favBookId
-    id: 501,
-    name: 'Homer Simpson',
-    age: 36,
-    address: '742 Evergreen Terr',
-    favBookId: 200
+    id: req.body.id,
+    name: req.body.name,
+    age: req.body.age,
+    address: req.body.address,
+    favBookId: req.body.favBookId
+    // id: 501,
+    // name: 'Homer Simpson',
+    // age: 36,
+    // address: '742 Evergreen Terr',
+    // favBookId: 200
   };
 
   const callback = (error, data) => {
