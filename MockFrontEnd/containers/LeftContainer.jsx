@@ -16,10 +16,15 @@ class LeftContainer extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleCustomerSubmit = this.handleCustomerSubmit.bind(this);
         this.handleBookSubmit = this.handleBookSubmit.bind(this)
+        this.handleReset = this.handleReset.bind(this)
     }
 
        handleChange(e) {
          this.setState({ [e.target.name]: e.target.value });
+       }
+
+       handleReset(e) {
+           this.setState({[e.target.name]: ''})
        }
 
        handleCustomerSubmit(e) {
@@ -40,6 +45,13 @@ class LeftContainer extends React.Component {
            .then(data => {
                console.log('Data retrieved: ', data)
            })
+           this.setState({
+               custId: '',
+               name: '',
+               age: '',
+               address: '',
+               favBookId: ''
+           })
        }
 
        handleBookSubmit(e) {
@@ -59,6 +71,13 @@ class LeftContainer extends React.Component {
            .then(data => {
                console.log('Book Created: ', data)
            })
+           this.setState(
+               {title: '',
+               author: '',
+               numberOfPages: '',
+               publisher: '',
+               bookId: ''
+            })
        }
 
     render(){
@@ -130,6 +149,7 @@ class LeftContainer extends React.Component {
                     value={this.state.title}
                     placeholder="Enter Title"
                     onChange={this.handleChange}
+                    onSubmit={this.handleReset}
                     />
                     <br/>
                     <label>Author: </label>
@@ -157,7 +177,7 @@ class LeftContainer extends React.Component {
                     id="publisher"
                     type="text"
                     name="publisher"
-                    value={this.state.pusblisher}
+                    value={this.state.publisher}
                     placeholder="Enter Name of Publisher"
                     onChange={this.handleChange}
                     />
