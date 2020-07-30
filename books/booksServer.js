@@ -26,7 +26,7 @@ server.addService(booksProto.BooksService.service, {
     console.log("call to CreateBook");
 
     //sample will take the call information from the client(stub)
-    const sampleAdd = {
+    const book = {
       title: call.request.title,
       author: call.request.author,
       numberOfPages: call.request.numberOfPages,
@@ -34,17 +34,12 @@ server.addService(booksProto.BooksService.service, {
       id: call.request.id,
     };
 
-    controller.createBook(sampleAdd);
+    controller.createBook(book);
 
     let meta = new grpc.Metadata();
     meta.add("response", "none");
     call.sendMetadata(meta);
 
-    console.log("logging call ", call);
-
-    //this actually sends data to booksController.
-
-    //Whatever gets passed in as the second argument will be sent back to the client.
     callback(
       null,
       //bookmodel.create
@@ -61,31 +56,34 @@ server.addService(booksProto.BooksService.service, {
     console.log("call to GetBooks");
     // read from database
     let meta = new grpc.Metadata();
-
-    meta.add("response", call.meta);
+    meta.add('response', 'none');
     call.sendMetadata(meta);
 
     controller.getBooks(callback);
   },
   GetBookByID: (call, callback) => {
     console.log("call to GetBookByID");
-    console.log("CALLBACK IN BOOKSSERVER: ", call.request);
-    sampleID = { id: call.request.id };
-    //maybe?
+    
+    let sampleID = {id: 100};
+
     let meta = new grpc.Metadata();
-    meta.add("response", "none");
+    meta.add('response', 'none');
     call.sendMetadata(meta);
 
     controller.getBookByID(sampleID, callback);
   },
   DeleteBook: (call, callback) => {
     //sample will take the call information from the client(stub)
-    const sampleDelete = {
+    const bookID = {
       id: call.request.id,
     };
 
     //this actually sends data to booksController.
-    controller.deleteBook(sampleDelete);
+    controller.deleteBook(bookID);
+
+    let meta = new grpc.Metadata();
+    meta.add('response', 'none');
+    call.sendMetadata(meta);
 
     // delete from database
     callback(null, { message: "DELETED" });

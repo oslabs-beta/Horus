@@ -25,7 +25,7 @@ customerInitiator.createCustomer = (req, res, next) => {
     console.log('DATA: ', data)
     res.locals.customers = data
     if (error) console.log('sorry, there was an error', error)
-  
+    return next()
     // console.log('logging data.names ', data.names)
     // console.log('logging favorite books ', data.names[0].favBook)
   }
