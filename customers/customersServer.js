@@ -56,7 +56,7 @@ server.addService(customersProto.CustomersService.service, {
     call.sendMetadata(meta);
 
     callback(null, {
-      id: `completed for ${call.request.custId}`,
+      custId: `completed for ${call.request.custId}`,
       name: `completed for ${call.request.name}`,
       age: `completed for ${call.request.age}`,
       address: `completed for ${call.request.address}`,

@@ -18,7 +18,7 @@ mongoose.connect(book_db_URI, { useNewUrlParser: true, useUnifiedTopology: true 
 
 //  Schema for the database
 const BooksSchema = new Schema({
-  id: {
+  bookId: {
     type: Number,
     required: true,
   },
