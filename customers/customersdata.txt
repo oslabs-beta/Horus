@@ -370,3 +370,23 @@ Request ID: 1596124007950
 "books" service -> Response received in 167.180 ms (Total)
 Timestamp: 07/30/2020 11:46:48
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Request ID: 1596125114668
+"books" service -> Response received in 151.989 ms (Total)
+Timestamp: 07/30/2020 12:05:14
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Request ID: 1596125114668
+"books" service -> Response received in 151.989 ms (Total)
+Timestamp: 07/30/2020 12:05:14
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Request ID: 1596126278938
+"books" service -> Response received in 183.817 ms (Total)
+Timestamp: 07/30/2020 12:24:39
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Request ID: 1596126321892
+"books" service -> Response received in 23.829 ms (Total)
+Timestamp: 07/30/2020 12:25:21
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Request ID: 1596126321892
+"books" service -> Response received in 23.829 ms (Total)
+Timestamp: 07/30/2020 12:25:21
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -7,14 +7,14 @@ service CustomersService {
 }
 
 // message Customer {
-//     int32 id = 1;
+//     int32 custId = 1;
 //     string name = 2;
 //     string age = 3;
 //     string address = 4;
 // }
 
 message CustomerReq {
-    int32 id = 1;
+    int32 custId = 1;
     string name = 2;
     string age = 3;
     string address = 4;
@@ -31,7 +31,7 @@ message Book {
   }
 
 message CustomerRes {
-    int32 id = 1;
+    int32 custId = 1;
     string name = 2;
     string age = 3;
     string address = 4;
@@ -45,5 +45,5 @@ message CustomerList{
 }
 
 message CustomerID {
-    int32 id = 1;
+    int32 custId = 1;
 }

@@ -16,7 +16,7 @@ mongoose.connect(customers_db_uri, { useNewUrlParser: true, useUnifiedTopology: 
 
 //  Schema for the database
 const CustomerSchema = new Schema({
-id: {
+  custId: {
     type: Number,
     required: true,
     },

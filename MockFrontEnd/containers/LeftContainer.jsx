@@ -6,7 +6,7 @@ class LeftContainer extends React.Component {
     constructor() {
         super();
         this.state ={
-            id: '',
+            custId: '',
             name: '',
             age: '',
             address: '',
@@ -14,21 +14,21 @@ class LeftContainer extends React.Component {
         };
         //this.handleCreateCustomerButton = this.handleCreateCustomerButton.bind(this);
         this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleCustomerSubmit = this.handleCustomerSubmit.bind(this);
     }
 
        handleChange(e) {
          this.setState({ [e.target.name]: e.target.value });
        }
 
-       handleSubmit(e) {
+       handleCustomerSubmit(e) {
            e.preventDefault();
            let url = 'http://localhost:3000/customers';
            fetch(url, {
                method: 'POST',
                headers: {'Content-Type': 'application/json'},
                body: JSON.stringify({
-                   id: this.state.id,
+                custId: this.state.custId,
                    name: this.state.name,
                    age: this.state.age,
                    address: this.state.address,
@@ -46,7 +46,7 @@ class LeftContainer extends React.Component {
     //     fetch('http://localhost:3000/customers', {
     //         method: 'POST',
     //         body: JSON.stringify({
-    //             id: this.state.id,
+    //             custId: this.state.custId,
     //             name: this.state.name,
     //             age: this.state.age,
     //             address: this.state.address,
@@ -60,14 +60,14 @@ class LeftContainer extends React.Component {
         return(
             <div className='LeftContainer'>
                 Hello LeftContainer
-                <form onSubmit={this.handleSubmit} className='CreateCustomerForm'>
+                <form onSubmit={this.handleCustomerSubmit} className='CreateCustomerForm'>
                     <h4>Create New Customer</h4>
                     <label>Customer ID:  </label>
                     <input 
                         id="custId"
                         type="text"
-                        name="id"
-                        value={this.state.id}
+                        name="custId"
+                        value={this.state.custId}
                         placeholder='Enter Customer ID'
                         onChange={this.handleChange}
                     />
@@ -114,6 +114,24 @@ class LeftContainer extends React.Component {
                     <br />
                     <button type="submit" id="createCustomerButton">Create Customer</button>
                     {/* <button type="button" id="createCustomerButton" onClick={this.handleCreateCustomerButton}>Create Customer</button> */}
+                </form>
+                <form onSubmit={this.handleBookSubmit} className='CreateBookForm'>
+                    <h4>Add Book to Bookstore</h4>
+                    <label>Title: </label>
+                    <input />
+                    <br/>
+                    <label>Author: </label>
+                    <input />
+                    <br/>
+                    <label># of Pages: </label>
+                    <input />
+                    <br/>
+                    <label>Publisher: </label>
+                    <input />
+                    <br/>
+                    <label>Book ID #: </label>
+                    <input />
+                    <br/>
                 </form>
             </div>
         )

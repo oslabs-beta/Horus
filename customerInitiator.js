@@ -9,12 +9,12 @@ customerInitiator.createCustomer = (req, res, next) => {
   console.log('Inside of create customer in customerInitiator')
   console.log('REQ INSIDE CUST INITIATOR: ', req)
   const customer = {
-    id: req.body.id,
+    custId: req.body.custId,
     name: req.body.name,
     age: req.body.age,
     address: req.body.address,
     favBookId: req.body.favBookId
-    // id: 501,
+    // custId: 501,
     // name: 'Homer Simpson',
     // age: 36,
     // address: '742 Evergreen Terr',
@@ -31,23 +31,18 @@ customerInitiator.createCustomer = (req, res, next) => {
     // console.log('logging favorite books ', data.names[0].favBook)
   }
   customerStub.CreateCustomer(customer, callback)
-  // .then(data => {
-  //   console.log(`Creating Customer ${data} in customerInitiator.`)
-  //   res.locals.customer = data
-  //   return next(err);
-  // });
 }
 
 //temporarily hardcoding a test customer until we can update customer info dynamically.
 // const customer = {
-//   id: 302,
+//   custId: 302,
 //   name: 'DOG',
 //   age: 100,
 //   address: 'Nowhereville',
 //   favBookId: 200
 // };
 
-const id = {id: 302};
+const custId = {custId: 302};
 
 const callback = (error, data) => {
   console.log('call to callback')
@@ -60,7 +55,7 @@ const callback = (error, data) => {
 const getData = (functionName) => {
   if (functionName === 'CreateCustomer') return customer;
   else if (functionName === 'GetCustomers') return {};
-  else if (functionName === 'DeleteCustomer') return id;
+  else if (functionName === 'DeleteCustomer') return custId;
 }
 
 // function main (functionName) { 

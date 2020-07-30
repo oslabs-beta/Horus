@@ -19,8 +19,8 @@ customersController.createCustomer = (sampleAdd) => {
 //**********/may have to add id for customer in protofile
 
 // controller deletes customer
-customersController.deleteCustomer = (id) => {
-  customersModel.findOneAndDelete({ id: id }, (error, result) => {
+customersController.deleteCustomer = (custId) => {
+  customersModel.findOneAndDelete({ custId: custId }, (error, result) => {
     if (error) {
       console.log('there was an error writing to the mongo db from the deleteCustomer controller function  :  ', error);
     }
@@ -29,8 +29,8 @@ customersController.deleteCustomer = (id) => {
 
 // controller gets all customers in the book db
 customersController.getCustomer = (callback, call) => {
-  const id = call.request.id;
-  customersModel.findOne({id: id}, (err, result) => {
+  const custId = call.request.custId;
+  customersModel.findOne({custId: custId}, (err, result) => {
 
     function gettingBooks(error, data) {
       ht.end();
@@ -38,7 +38,7 @@ customersController.getCustomer = (callback, call) => {
       if (error) console.log("sorry, there was an error", error);      
 
       const customerObj = {};
-      customerObj.id = result.id;
+      customerObj.custId = result.custId;
       customerObj.name = result.name;
       customerObj.age = result.age;
       customerObj.address = result.address;
