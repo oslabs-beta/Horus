@@ -41,7 +41,7 @@ server.addService(customersProto.CustomersService.service, {
 
     //sample will take the call information from the client(stub)
     const sampleAdd = {
-      id: call.request.id,
+      id: call.request.custId,
       name: call.request.name,
       age: call.request.age,
       address: call.request.address,
@@ -56,9 +56,9 @@ server.addService(customersProto.CustomersService.service, {
     call.sendMetadata(meta);
 
     callback(null, {
-      id: `completed for ${call.request.id}`,
+      id: `completed for ${call.request.custId}`,
       name: `completed for ${call.request.name}`,
-      age: `completed for ${call.request.name}`,
+      age: `completed for ${call.request.age}`,
       address: `completed for ${call.request.address}`,
       favBookId: `completed for ${call.request.favBookId}`,
     });
@@ -75,7 +75,7 @@ server.addService(customersProto.CustomersService.service, {
     call.sendMetadata(meta);
 
     //logic to delete customer from Database
-    controller.deleteCustomer(call.request.id);
+    controller.deleteCustomer(call.request.custId);
 
     callback(null, {});
   },
