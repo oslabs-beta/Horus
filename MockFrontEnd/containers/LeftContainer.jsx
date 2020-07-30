@@ -12,7 +12,6 @@ class LeftContainer extends React.Component {
             address: '',
             favBookId: ''
         };
-        //this.handleCreateCustomerButton = this.handleCreateCustomerButton.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleCustomerSubmit = this.handleCustomerSubmit.bind(this);
         this.handleBookSubmit = this.handleBookSubmit.bind(this)
@@ -63,7 +62,7 @@ class LeftContainer extends React.Component {
                body: JSON.stringify({
                    title: this.state.title,
                    author: this.state.author,
-                   numberOfPages: this.state.age,
+                   numberOfPages: this.state.numberOfPages,
                    publisher: this.state.publisher,
                    bookId: this.state.bookId
                })
@@ -89,7 +88,7 @@ class LeftContainer extends React.Component {
            })
            .then(res => res.json())
            .then(data => {
-               console.log(data)
+               this.props.handleGetBooks(data)
            })
        }
 

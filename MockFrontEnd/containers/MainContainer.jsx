@@ -4,7 +4,9 @@ import styles from '../styles/app.scss'
 import Book from '../component/Book.jsx'
 
 class MainContainer extends React.Component {
+    
     render(){
+        console.log('DATA IN MAIN CONTAINER: ', this.props.data)
         // const items = [];
         // for (let i = 0; i < bookList.length; i++){
         //   items.push(
