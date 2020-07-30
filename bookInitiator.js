@@ -9,24 +9,20 @@ bookInitiator.createBook = (req, res, next) => {
     author: req.body.author,
     numberOfPages: req.body.numberOfPages,
     publisher: req.body.publisher,
-    id: req.body.id
+    bookId: req.body.bookId
   }
   const callback = (error, data) => {
     console.log('call to callback')
+    console.log('BOOK DATA: ', data)
+    res.locals.book = data
     if (error) console.log('sorry, there was an error', error)
-  
-    console.log('logging data.names ', data.names)
-    console.log('logging favorite books ', data.names[0].favBook)
+    return next()
   }
-  bookStub.CreateBook(book, callback).then(data => {
-    console.log(`Creating User ${data} in bookInitiator.`)
-    res.locals.book = data;
-    return next(err);
-  });
+  bookStub.CreateBook(book, callback)
 }
 
 //hard coding id# to test out DeleteBook
-const id = {id:100};
+const bookId = {bookId:100};
 
 const callback = (error, data) => {
   console.log('call to callback')
@@ -37,8 +33,8 @@ const callback = (error, data) => {
 const getData = (functionName) => {
   if (functionName === 'CreateBook') return book
   else if (functionName === 'GetBooks') return {}
-  else if (functionName === 'DeleteBook') return id;
-  else if(functionName === 'GetBookByID') return id;
+  else if (functionName === 'DeleteBook') return bookId;
+  else if(functionName === 'GetBookByID') return bookId;
 }
 // function main (functionName) { 
 //   bookStub[functionName](getData(functionName), callback);

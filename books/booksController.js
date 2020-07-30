@@ -11,16 +11,15 @@ booksController.createBook = (book) => {
 
 
 // controller deletes book
-booksController.deleteBook = (bookID, res, next) => {
-  const { id } = bookID;
-  booksModel.findOneAndDelete({ id: id }, (error, result) => {
+booksController.deleteBook = (bookId, res, next) => {
+  booksModel.findOneAndDelete({ bookId: bookId }, (error, result) => {
     if (error) console.log('there was an error from the books controller delete book function  :  ', error);
   });
 };
 
 booksController.getBookByID = (sampleID, callback, res, next) => {
-  const { id } = sampleID;
-  booksModel.findOne({id: id}, (error, result) => {
+  const { bookId } = sampleID;
+  booksModel.findOne({bookId: bookId}, (error, result) => {
     if (error) console.log('there was an error from the books controller get books by id function  :  ', error);
     callback(
       null,
@@ -29,7 +28,7 @@ booksController.getBookByID = (sampleID, callback, res, next) => {
         author: result.author,
         numberOfPages: result.numberOfPages,
         publisher: result.publisher,
-        id: result.id
+        bookId: result.bookId
       }
     )
   })
@@ -47,7 +46,7 @@ booksController.getBooks = (callback) => {
         author: result[i].author,
         numberOfPages: result[i].numberOfPages,
         publisher: result[i].publisher,
-        id: result[i].id
+        bookId: result[i].bookId
       })            
     }
     callback(

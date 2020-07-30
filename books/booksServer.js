@@ -31,7 +31,7 @@ server.addService(booksProto.BooksService.service, {
       author: call.request.author,
       numberOfPages: call.request.numberOfPages,
       publisher: call.request.publisher,
-      id: call.request.id,
+      bookId: call.request.bookId,
     };
 
     controller.createBook(book);
@@ -48,7 +48,7 @@ server.addService(booksProto.BooksService.service, {
         author: `completed for: ${call.request.author}`,
         numberOfPages: `completed for: ${call.request.numberOfPages}`,
         publisher: `completed for: ${call.request.publisher}`,
-        id: `completed for: ${call.request.id}`,
+        bookId: `completed for: ${call.request.bookId}`,
       }
     );
   },
@@ -64,7 +64,7 @@ server.addService(booksProto.BooksService.service, {
   GetBookByID: (call, callback) => {
     console.log("call to GetBookByID");
     
-    let sampleID = {id: 100};
+    let sampleID = {bookId: 100};
 
     let meta = new grpc.Metadata();
     meta.add('response', 'none');
@@ -75,7 +75,7 @@ server.addService(booksProto.BooksService.service, {
   DeleteBook: (call, callback) => {
     //sample will take the call information from the client(stub)
     const bookID = {
-      id: call.request.id,
+      bookId: call.request.bookId,
     };
 
     //this actually sends data to booksController.
