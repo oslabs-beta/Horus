@@ -21,6 +21,16 @@ bookInitiator.createBook = (req, res, next) => {
   bookStub.CreateBook(book, callback)
 }
 
+bookInitiator.getBooks = (req, res, next) => {
+  const callback = (error, data) => {
+    console.log('LIST OF BOOKS FROM GET BOOKS: ', data)
+    res.locals.books = data
+    if (error) console.log('sorry, there was an error', error)
+    return next()
+  }
+  bookStub.GetBooks({}, callback)
+}
+
 //hard coding id# to test out DeleteBook
 const bookId = {bookId:100};
 

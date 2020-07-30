@@ -5,16 +5,16 @@ import Book from '../component/Book.jsx'
 
 class MainContainer extends React.Component {
     render(){
-        const items = [];
-        for (let i = 0; i < bookList.length; i++){
-          items.push(
-              <Book key={'book'+i} title={bookList[i].title} author={bookList[i].author} numberOfPages={bookList[i].numberOfPages} publisher={bookList[i].publisher} bookId={bookList[i].bookId} />
-          )
-        }
+        // const items = [];
+        // for (let i = 0; i < bookList.length; i++){
+        //   items.push(
+        //       <Book key={'book'+i} title={bookList[i].title} author={bookList[i].author} numberOfPages={bookList[i].numberOfPages} publisher={bookList[i].publisher} bookId={bookList[i].bookId} />
+        //   )
+        // }
         return(
             <div className='MainContainer'>
                 Hello Main Container:
-                {items}
+                {/* {items} */}
             </div>
         )
     }

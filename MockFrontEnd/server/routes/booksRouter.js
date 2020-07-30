@@ -7,7 +7,7 @@ booksRouter.post('/', bookInitiator.createBook, (req, res) => {
     return res.status(200).json(res.locals.book)
 })
 
-bookInitiator.get('/', bookInitiator.getBooks, (req, res) => {
+booksRouter.get('/', bookInitiator.getBooks, (req, res) => {
     console.log('getting books in Books Router')
     return res.status(200).json(res.locals.books)
 })
