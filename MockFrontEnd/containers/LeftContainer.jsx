@@ -80,6 +80,18 @@ class LeftContainer extends React.Component {
             })
        }
 
+       handleGetBooks(e){
+           e.preventDefault();
+           fetch('http://localhost:3000/books', {
+               method: 'GET',
+
+           })
+           .then(res => res.json())
+           .then(data => {
+               console.log(data)
+           })
+       }
+
     render(){
         return(
             <div className='LeftContainer'>
