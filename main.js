@@ -16,7 +16,7 @@ const bookId = {
 }
 
 const customer = {
-  id: 123,
+  custId: 123,
   name: "Lily",
   age: 23,
   address: "Blablabla",
@@ -24,7 +24,7 @@ const customer = {
 };
 
 const customerId = {
-  id: 123
+  custId: 123
 }
 
 let ht = new horusTracer("main");
@@ -44,20 +44,20 @@ function getCustomer() {
     });
 }
 
-function createCustomer () {
+function CreateCustomer () {
   ht.start('customers')
   customersStub.CreateCustomer(customer, (error, response) => {
-    //if (error) console.log('there was an error ', error)
-    //console.log('response from createCustomer ', response)
+    if (error) console.log('there was an error ', error)
+    console.log('response from createCustomer ', response)
     ht.end();
-    //ht.displayRequests();
+    ht.displayRequests();
     ht.writeToFile();
   }).on("metadata", (metadata) => {
       ht.grabTrace(metadata.get('response')[0]);
   });
 }
 
-function deleteCustomer() {
+function DeleteCustomer() {
   ht.start('customers')
   customersStub.DeleteCustomer(customerId, (error, response) => {
     if (error) console.log("there was an error ", error);
@@ -119,4 +119,4 @@ function getBookByID() {
   });
 }
 
-getCustomer();
+CreateCustomer();
