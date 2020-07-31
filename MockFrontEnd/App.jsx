@@ -12,30 +12,45 @@ class App extends React.Component{
       data: '',
       bookId: ''
     }
-    // this.deleteBook = this.deleteBook.bind(this)
+    this.deleteBook = this.deleteBook.bind(this)
+    this.handleGetBooks = this.handleGetBooks.bind(this)
   }
 
-  handleGetBooks(data) {
-    this.setState({data: data})
-  }
-
-  // deleteBook(e) {
-  //   event.preventDefault();
-  //   console.log(`Delete Book for ${this.state.bookId} clicked.`)
-  //   let bookId = this.state.bookId
-  //   fetch(`http://localhost:3000/books/${bookId}`, {
-  //     method: 'DELETE'
-  //   })
-  //   .then(console.log(`${bookId} DELETED`))
+  // handleGetBooks(data) {
+  //   this.setState({data: data})
   // }
 
+  handleGetBooks(e){
+    e.preventDefault();
+    fetch('http://localhost:3000/books', {
+        method: 'GET',
+
+    })
+    .then(res => res.json())
+    .then(data => {
+        this.setState({data: data})
+    })
+  }
+
+  deleteBook(e) {
+    e.preventDefault();
+    console.log('THIS: ', this)
+    console.log(`Delete Book for ${this.state.bookId} clicked.`)
+    let bookId = this.state.data
+    fetch(`http://localhost:3000/books/${bookId}`, {
+      method: 'DELETE'
+    })
+    .then(console.log(`${this.state.data}`))
+  }
+
     render(){
+      console.log("PROPS IN APP: ", this.props)
         return(
             <div>
               <TopContainer />
               <div className='MainBody'>
-                <LeftContainer handleGetBooks={this.handleGetBooks.bind(this)}/>
-                <MainContainer data={this.state.data} deleteProfile={this.deleteBook} />
+                <LeftContainer handleGetBooks={this.handleGetBooks}/>
+                <MainContainer data={this.state.data} deleteBook={this.deleteBook} />
               </div>
             </div>
         )

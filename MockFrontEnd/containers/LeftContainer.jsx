@@ -16,7 +16,7 @@ class LeftContainer extends React.Component {
         this.handleCustomerSubmit = this.handleCustomerSubmit.bind(this);
         this.handleBookSubmit = this.handleBookSubmit.bind(this)
         this.handleReset = this.handleReset.bind(this)
-        this.handleGetBooks = this.handleGetBooks.bind(this)
+        // this.handleGetBooks = this.handleGetBooks.bind(this)
     }
 
        handleChange(e) {
@@ -80,17 +80,17 @@ class LeftContainer extends React.Component {
             })
        }
 
-       handleGetBooks(e){
-           e.preventDefault();
-           fetch('http://localhost:3000/books', {
-               method: 'GET',
+    //    handleGetBooks(e){
+    //        e.preventDefault();
+    //        fetch('http://localhost:3000/books', {
+    //            method: 'GET',
 
-           })
-           .then(res => res.json())
-           .then(data => {
-               this.props.handleGetBooks(data)
-           })
-       }
+    //        })
+    //        .then(res => res.json())
+    //        .then(data => {
+    //            this.props.handleGetBooks(data)
+    //        })
+    //    }
 
     render(){
         return(
@@ -207,7 +207,7 @@ class LeftContainer extends React.Component {
                     <br/>
                     <button type="submit" id="createBookButton">Create Book</button>
                 </form>
-                <button type="button" id="getBooksbutton" onClick={this.handleGetBooks}>Get All Books</button>
+                <button type="button" id="getBooksbutton" onClick={this.props.handleGetBooks}>Get All Books</button>
             </div>
         )
     }
