@@ -64,7 +64,7 @@ server.addService(booksProto.BooksService.service, {
   GetBookByID: (call, callback) => {
     console.log("call to GetBookByID");
     
-    let sampleID = {bookId: 100};
+    let sampleID = {bookId: call.request.bookId};
 
     let meta = new grpc.Metadata();
     meta.add('response', 'none');

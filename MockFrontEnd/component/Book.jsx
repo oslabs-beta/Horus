@@ -10,7 +10,7 @@ class Book extends React.Component {
                <li>Published By: {this.props.numberOfPages}</li>
                <li>Book ID#: {this.props.bookId}</li>
              </ul>
-             <button type="button" id="deleteBooksbutton">Delete Book</button>
+             <button type="button" id="deleteBooksbutton" onClick={this.props.deleteBook}>Delete Book</button>
            </div>
   }
 }
