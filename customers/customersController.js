@@ -17,15 +17,13 @@ customersController.createCustomer =  async (customer) => {
     })
 };
 
-//**********/may have to add id for customer in protofile
-
-// controller deletes customer
-customersController.deleteCustomer = (custId) => {
-  customersModel.findOneAndDelete({ custId: custId }, (error, result) => {
-    if (error) {
-      console.log('there was an error writing to the mongo db from the deleteCustomer controller function  :  ', error);
-    }
-  });
+customersController.deleteCustomer = async (custId) => {
+  return await customersModel.findOneAndDelete(custId)
+    .then((response) => response)
+    .catch((error) => {
+      console.log('ERROR from deleteCustomer controller : ', error);
+      return 'error';
+    })
 };
 
 // controller gets all customers in the book db

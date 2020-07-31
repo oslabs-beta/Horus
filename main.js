@@ -35,7 +35,17 @@ function CreateCustomer() {
     if (error) console.log('ERROR from the CreateCustomer stub : ', error);
     ht.end();
   }).on('metadata', (metadata) => {
-      ht.grabTrace(metadata.get('response')[0]);
+    ht.grabTrace(metadata.get('response')[0]);
+  });
+}
+
+function DeleteCustomer() {
+  ht.start('customers');
+  customersStub.DeleteCustomer(customerId, (error, response) => {
+    if (error) console.log('ERROR from the DeleteCustomer stub', error);
+    ht.end();
+  }).on('metadata', (metadata) => {
+    ht.grabTrace(metadata.get('response')[0]);
   });
 }
 
@@ -51,17 +61,7 @@ function GetCustomer() {
     });
 }
 
-function DeleteCustomer() {
-  ht.start('customers')
-  customersStub.DeleteCustomer(customerId, (error, response) => {
-    if (error) console.log("there was an error ", error);
-    ht.end();
-    ht.displayRequests();
-    ht.writeToFile();
-  }).on('metadata', (metadata) => {
-    ht.grabTrace(metadata.get('response')[0]);
-  });
-}
+
 
 function CreateBook () {
   ht.start('books')
@@ -112,4 +112,4 @@ function GetBookByID() {
   });
 }
 
-CreateCustomer();
+DeleteCustomer();

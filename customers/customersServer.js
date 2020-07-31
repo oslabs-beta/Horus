@@ -16,22 +16,16 @@ const server = new grpc.Server();
 
 server.addService(customersProto.CustomersService.service, {
   CreateCustomer: async (call, callback) => {
-
-    console.log('call to create customer')
-
     const result = await controller.createCustomer(call.request);
-
-    console.log('result ', result)
-
     const meta = new grpc.Metadata();
     meta.add('response', 'none');
     call.sendMetadata(meta);
 
-    if (result === 'error') { 
+    if (result === 'error') {
       return callback({ 
         code: grpc.status.STATUS_UNKNOWN,
         message: 'There was an error writing to the database',
-      })
+      });
     }
     callback(null, {
       custId: result.custId,
@@ -41,22 +35,25 @@ server.addService(customersProto.CustomersService.service, {
       favBookId: result.favBookId,
     });
   },
+  DeleteCustomer: async (call, callback) => {
+    const result = await controller.deleteCustomer(call.request.custId);
+    const meta = new grpc.Metadata();
+    meta.add('response', 'none');
+    call.sendMetadata(meta);
+
+    if (result === 'error') {
+      return callback({ 
+        code: grpc.status.STATUS_UNKNOWN,
+        message: 'There was an error deleting from the database',
+      });
+    }
+    callback(null, {});
+  },
   GetCustomer: (call, callback) => {
     console.log("call to GetCustomer");
     controller.getCustomer(callback, call);
   },
-  DeleteCustomer: (call, callback) => {
-    console.log("call to DeleteCustomer");
 
-    let meta = new grpc.Metadata();
-    meta.add('response', 'none');
-    call.sendMetadata(meta);
-
-    //logic to delete customer from Database
-    controller.deleteCustomer(call.request.custId);
-
-    callback(null, {});
-  },
 }); 
 
 
