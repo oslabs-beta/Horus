@@ -11,7 +11,7 @@ class MainContainer extends React.Component {
         if (bookList){
           for (let i = 0; i < bookList.length; i++){
             items.push(
-                <Book key={'book'+i} title={bookList[i].title} author={bookList[i].author} numberOfPages={bookList[i].numberOfPages} publisher={bookList[i].publisher} bookId={bookList[i].bookId} />
+                <Book key={'book'+i} title={bookList[i].title} author={bookList[i].author} numberOfPages={bookList[i].numberOfPages} publisher={bookList[i].publisher} bookId={bookList[i].bookId} deleteProfile={this.props.deleteProfile} />
             )
           }
         }

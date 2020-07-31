@@ -12,21 +12,22 @@ class App extends React.Component{
       data: '',
       bookId: ''
     }
-    this.deleteBook = this.deleteBook.bind(this)
+    // this.deleteBook = this.deleteBook.bind(this)
   }
 
   handleGetBooks(data) {
     this.setState({data: data})
   }
 
-  deleteBook(e) {
-    event.preventDefault();
-    let bookId = this.state.bookId
-    fetch(`http://localhost:3000/books/${bookId}`, {
-      method: 'DELETE'
-    })
-    .then(console.log(`${bookId} DELETED`))
-  }
+  // deleteBook(e) {
+  //   event.preventDefault();
+  //   console.log(`Delete Book for ${this.state.bookId} clicked.`)
+  //   let bookId = this.state.bookId
+  //   fetch(`http://localhost:3000/books/${bookId}`, {
+  //     method: 'DELETE'
+  //   })
+  //   .then(console.log(`${bookId} DELETED`))
+  // }
 
     render(){
         return(

@@ -32,6 +32,9 @@ bookInitiator.getBooks = (req, res, next) => {
 }
 
 bookInitiator.deleteBook = (req, res, next) => {
+  console.log('entered deleteBook in bookInitiator')
+  console.log('REQ.PARAMS.BOOKID: ', req.params.bookId)
+  bookId = {bookId: req.params.bookId}
   const callback = (error, data) => {
     console.log('Data coming back from deleteBook? : ', data)
     if (error) console.log('sorry, there was an error', error)
@@ -41,7 +44,7 @@ bookInitiator.deleteBook = (req, res, next) => {
 }
 
 //hard coding id# to test out DeleteBook
-const bookId = {bookId:100};
+//const bookId = {bookId: req.body.bookId};
 
 const callback = (error, data) => {
   console.log('call to callback')

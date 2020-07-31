@@ -12,7 +12,7 @@ booksController.createBook = (book) => {
 
 // controller deletes book
 booksController.deleteBook = (bookId, res, next) => {
-  booksModel.findOneAndDelete({ bookId: bookId }, (error, result) => {
+  booksModel.findOneAndDelete(bookId, (error, result) => {
     if (error) console.log('there was an error from the books controller delete book function  :  ', error);
   });
 };

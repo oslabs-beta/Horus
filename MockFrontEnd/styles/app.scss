@@ -9,6 +9,7 @@ body {
 
 .MainContainer {
     background: rgb(144, 221, 238);
+    width: 67%;
 }
 
 .TopContainer {
@@ -64,6 +65,13 @@ body {
     }
 }
 
-.MainContainer {
-    width: 67%;
+.bookBox {
+    border: solid black;
+    #deleteBooksbutton {
+        background: #de5246;
+        color: white;
+        border-radius: 5px;
+        border: none;
+        padding: 5px 5px 5px 5px;
+    }
 }
