@@ -29,8 +29,10 @@ customersController.deleteCustomer = (custId) => {
 
 // controller gets all customers in the book db
 customersController.getCustomer = (callback, call) => {
-  const custId = call.request.custId;
-  customersModel.findOne({custId: custId}, (err, result) => {
+
+  customersModel.findOne(call.request, (err, result) => {
+
+    //console.log('result ', result)
 
     function gettingBooks(error, data) {
       ht.end();
@@ -49,10 +51,11 @@ customersController.getCustomer = (callback, call) => {
         customerObj
       );
     }
-    const favBookId = {id: 100};
+    console.log('book id ', {bookId: result.favBookId})
+
     ht.start('books', call);
     booksStub
-      .GetBookByID(favBookId, gettingBooks)
+      .GetBookByID({ bookId: result.favBookId }, gettingBooks)
       .on("metadata", (metadata) => {
         ht.grabTrace(metadata.get('response')[0])
       });

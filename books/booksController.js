@@ -11,16 +11,17 @@ booksController.createBook = (book) => {
 
 
 // controller deletes book
-booksController.deleteBook = (bookId, res, next) => {
-  booksModel.findOneAndDelete({ bookId: bookId }, (error, result) => {
+booksController.deleteBook = (bookId) => {
+  booksModel.findOneAndDelete(bookId, (error, result) => {
     if (error) console.log('there was an error from the books controller delete book function  :  ', error);
   });
 };
 
-booksController.getBookByID = (sampleID, callback, res, next) => {
-  const { bookId } = sampleID;
-  booksModel.findOne({bookId: bookId}, (error, result) => {
+booksController.getBookByID = (sampleID, callback) => {
+  console.log('sample id ', sampleID);
+  booksModel.findOne(sampleID, (error, result) => {
     if (error) console.log('there was an error from the books controller get books by id function  :  ', error);
+    console.log("response obj ", result);
     callback(
       null,
       {
