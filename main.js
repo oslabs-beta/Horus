@@ -8,7 +8,7 @@ const book = {
   author: "Stephen King",
   numberOfPages: 666,
   publisher: "Random House",
-  id: 200,
+  bookId: 200,
 };
 
 const bookId = {
@@ -28,6 +28,7 @@ const customerId = {
 }
 
 let ht = new horusTracer("main");
+ht.neo4jInit('neo4j', 'password')
 
 function getCustomer() {
   ht.start('customers');
@@ -118,4 +119,4 @@ function getBookByID() {
   });
 }
 
-// getCustomer();
+getCustomer();

@@ -1,6 +1,7 @@
 const fs = require("fs");
 const grpc = require("grpc");
 const path = require("path");
+const neo4j = require("./neo4j");
 
 class horus {
   constructor(name) {
@@ -18,6 +19,15 @@ class horus {
     // primitive value - number of millisecond since midnight January 1, 1970 UTC
     // add service name/ initials to the beginning of reqId?
     return new Date().valueOf();
+  }
+  neo4jInit(username, password) {
+    this.username = username;
+    this.password = password;
+    this.neo4j = true;
+  }
+  sendNeo4jQuery() {
+    let neo4jObject = new neo4j(this.serviceName, this.targetService, this.request, this.username, this.password);
+    neo4jObject.makeQueries();
   }
 
   // start should be invoked before the request is made
@@ -68,15 +78,15 @@ class horus {
   }
   // sends response via metadata if service is in the middle of a chain
   sendResponse() {
-    if (
-      this.request.responseTime === "pending" ||
-      this.request[this.targetService] === "pending" ||
-      this.call === undefined
-    )
-      return;
-    let meta = new grpc.Metadata();
-    meta.add("response", JSON.stringify(this.request));
-    this.call.sendMetadata(meta);
+    if (this.request.responseTime !== "pending" && this.request[this.targetService] !== "pending" && this.call !== undefined
+    ) {
+      let meta = new grpc.Metadata();
+      meta.add("response", JSON.stringify(this.request));
+      this.call.sendMetadata(meta);
+    } else if (this.request.responseTime !== "pending" && this.request[this.targetService] !== "pending" && this.neo4j) {
+      this.sendNeo4jQuery();
+    }
+
   }
   writeToFile() {
     console.log("call to writeToFile");

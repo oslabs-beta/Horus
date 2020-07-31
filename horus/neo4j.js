@@ -1,18 +1,24 @@
 const neo4j = require('neo4j-driver');
-const driver = neo4j.driver('bolt://localhost', neo4j.auth.basic('neo4j', 'password'))
 
-class Neo4j {
-  constructor(serviceName, targetService, request) {
+class Neo4jObject {
+  constructor(serviceName, targetService, request, username, password) {
     this.serviceName = serviceName;
     this.targetService = targetService;
     this.request= request;
-    this.session = driver.session();
+    this.driver = neo4j.driver('bolt://localhost', neo4j.auth.basic(username, password));
+    this.session = this.driver.session();
     this.loader = []; 
   }
   makeQueries() {
+    
+    let responseTime = this.request.responseTime;
+    let index = responseTime.indexOf('.');
+    if (index !== -1) responseTime = responseTime.substr(0, index);
+    responseTime += 'ms'
+    
     this.loader.push(`CREATE(${this.serviceName}:Service {name: "${this.serviceName}"})\n`);
     this.loader.push(`CREATE(${this.targetService}:Service {name: "${this.targetService}"})\n`);
-    this.loader.push(`MERGE (${this.serviceName}) -[${this.serviceName + '_' + this.targetService}:${'ResponseTime_' + this.request.responseTime}]-> (${this.targetService})\n`);  
+    this.loader.push(`MERGE (${this.serviceName}) -[${this.serviceName + '_' + this.targetService}:${'ResponseTime_' + responseTime}]-> (${this.targetService})\n`);  
 
     if (this.request[this.targetService] !== 'none') {
       console.log(this.targetService)
@@ -22,6 +28,7 @@ class Neo4j {
     let query = this.loader.reduce((acc, ele) => {
       return acc + ele;
     })
+
     console.log(query)
     this.session.run(query)
       .catch((error) => {
@@ -34,6 +41,11 @@ class Neo4j {
       if (ele === 'responseTime') responseTime = nestedRequest[ele];
       else targetName = ele;
     })
+
+    let index = responseTime.indexOf('.');
+    if (index !== -1) responseTime = responseTime.substr(0, index);
+    responseTime += 'ms';
+
     this.loader.push(`CREATE(${targetName}:Service {name: "${targetName}"})\n`);
     this.loader.push(`MERGE (${parentNodeName}) -[${parentNodeName + '_' + targetName}:${'ResponseTime_' + responseTime}]-> (${targetName})\n`); 
     if (nestedRequest[targetName] !== 'none') {
@@ -42,16 +54,5 @@ class Neo4j {
   }
 }
 
-const request = {
-  books: {
-    main: 'none' 
-    responseTime: 10
-  },
-  responseTime: 20
-}
 
-let ht = new Horus('main', 'books', request)
-
-//ht.makeQueries();
-
-ht.makeQueries(request, 'books')
+module.exports = Neo4jObject;
