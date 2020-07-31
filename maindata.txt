@@ -546,3 +546,7 @@ Timestamp: 07/31/2020 10:57:00
 "books" service -> Response received in 53.535 ms
 Timestamp: 07/31/2020 10:54:39
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Request ID: 1596208665624
+"books" service -> Response received in 61.559 ms (Total)
+Timestamp: 07/31/2020 11:17:45
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

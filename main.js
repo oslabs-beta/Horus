@@ -28,16 +28,14 @@ const customerId = {
 }
 
 let ht = new horusTracer("main");
-//ht.neo4jInit('neo4j', 'password')
+ht.neo4jInit('neo4j', 'password')
 
 function GetCustomer() {
   ht.start('customers');
   customersStub.GetCustomer(customerId, (error, response) => {
       if (error) console.log("there was an error ", error);
-      console.log('logging response inside getCustomer ', response)
       ht.end();
-      ht.writeToFile();
-      //ht.displayRequests();
+      //ht.writeToFile();
     })
     .on("metadata", (metadata) => {
       ht.grabTrace(metadata.get("response")[0]);

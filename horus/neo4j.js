@@ -10,6 +10,8 @@ class Neo4jObject {
     this.loader = []; 
   }
   makeQueries() {
+
+    console.log('logging request at make query', this.request)
     
     let responseTime = this.request.responseTime;
     let index = responseTime.indexOf('.');
@@ -36,10 +38,11 @@ class Neo4jObject {
       })
   }
   handleNestedRequest(nestedRequest, parentNodeName) {
+    console.log('incoming nested request', nestedRequest)
     let targetName; let responseTime;
     Object.keys(nestedRequest).forEach((ele) => {
       if (ele === 'responseTime') responseTime = nestedRequest[ele];
-      else targetName = ele;
+      else if (ele !== 'timeCompleted' && ele !=='requestId') targetName = ele;
     })
 
     let index = responseTime.indexOf('.');
