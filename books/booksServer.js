@@ -18,9 +18,14 @@ const server = new grpc.Server();
 
 server.addService(booksProto.BooksService.service, {
   CreateBook: async (call, callback) => {
-    console.log("call to CreateBook");
-
     const result = await controller.createBook(call.request);
+
+    if (result === 'error') {
+      return callback({ 
+        code: grpc.status.STATUS_UNKNOWN,
+        message: 'There was an error writing to the database',
+      });
+    }
 
     const meta = new grpc.Metadata();
     meta.add("response", "none");
@@ -29,13 +34,29 @@ server.addService(booksProto.BooksService.service, {
     callback(
       null,
       {
-        title: `completed for: ${call.request.title}`,
-        author: `completed for: ${call.request.author}`,
-        numberOfPages: `completed for: ${call.request.numberOfPages}`,
-        publisher: `completed for: ${call.request.publisher}`,
-        bookId: `completed for: ${call.request.bookId}`,
+        title: result.title,
+        author: result.author,
+        numberOfPages: result.numberOfPages,
+        publisher: result.publisher,
+        bookId: result.bookId,
       }
     );
+  },
+  DeleteBook: async (call, callback) => {
+    const result = controller.deleteBook(call.request);
+
+    if (result === 'error') {
+      return callback({ 
+        code: grpc.status.STATUS_UNKNOWN,
+        message: 'There was an error deleting from the database',
+      });
+    }
+
+    let meta = new grpc.Metadata();
+    meta.add('response', 'none');
+    call.sendMetadata(meta);
+
+    callback(null, {});
   },
   GetBooks: (call, callback) => {
     console.log("call to GetBooks");
@@ -55,22 +76,7 @@ server.addService(booksProto.BooksService.service, {
 
     controller.getBookByID(call.request, callback);
   },
-  DeleteBook: (call, callback) => {
-    //sample will take the call information from the client(stub)
-    const bookID = {
-      bookId: call.request.bookId,
-    };
 
-    //this actually sends data to booksController.
-    controller.deleteBook(bookID);
-
-    let meta = new grpc.Metadata();
-    meta.add('response', 'none');
-    call.sendMetadata(meta);
-
-    // delete from database
-    callback(null, { message: "DELETED" });
-  },
 });
 
 server.bind("127.0.0.1:30043", grpc.ServerCredentials.createInsecure());

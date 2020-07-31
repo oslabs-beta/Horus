@@ -10,10 +10,13 @@ booksController.createBook = async (book) => {
     })
 };
 
-booksController.deleteBook = (bookId) => {
-  booksModel.findOneAndDelete(bookId, (error, result) => {
-    if (error) console.log('there was an error from the books controller delete book function  :  ', error);
-  });
+booksController.deleteBook = async (bookId) => {
+  return await booksModel.findOneAndDelete(bookId)
+    .then((response) => response)
+    .catch((error) => {
+      console.log('ERROR from deleteBook controller : ', error);
+      return 'error';
+    })
 };
 
 booksController.getBookByID = (sampleID, callback) => {

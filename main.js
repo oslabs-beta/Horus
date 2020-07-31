@@ -65,8 +65,6 @@ function CreateBook () {
   booksStub.CreateBook(book, (error, response) => {
     if (error) console.log("there was an error ", error);
     ht.end();
-    ht.displayRequests();
-    ht.writeToFile();
   }).on('metadata', (metadata) => {
     ht.grabTrace(metadata.get('response')[0]);
   });
@@ -77,8 +75,6 @@ function DeleteBook () {
   booksStub.DeleteBook(bookId, (error, response) => {
     if (error) console.log("there was an error ", error);
     ht.end();
-    ht.displayRequests();
-    ht.writeToFile();
   }).on('metadata', (metadata) => {
     ht.grabTrace(metadata.get('response')[0]);
   });
@@ -89,8 +85,6 @@ function GetBooks () {
   booksStub.GetBooks({}, (error, response) => {
     if (error) console.log("there was an error ", error);
     ht.end();
-    ht.displayRequests();
-    ht.writeToFile();
   }).on('metadata', (metadata) => {
     ht.grabTrace(metadata.get('response')[0]);
   });
@@ -109,4 +103,4 @@ function GetBookByID() {
   });
 }
 
-CreateBook();
+DeleteBook();
