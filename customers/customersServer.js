@@ -81,7 +81,8 @@ server.addService(customersProto.CustomersService.service, {
 
     callback(null, {});
   },
-});
+}); 
+
 
 server.bind("127.0.0.1:6000", grpc.ServerCredentials.createInsecure());
 console.log("customerServer.js running at http://127.0.0.1:6000");

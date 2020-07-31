@@ -12,7 +12,7 @@ const book = {
 };
 
 const bookId = {
-  id: 200
+  bookId: 200
 }
 
 const customer = {
@@ -119,4 +119,4 @@ function getBookByID() {
   });
 }
 
-CreateCustomer();
+DeleteBook();
