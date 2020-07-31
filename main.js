@@ -1,7 +1,6 @@
-const booksStub = require("./stubs/booksStub.js");
-const customersStub = require("./stubs/customersStub.js");
-// const grpc = require("grpc");
-const horusTracer = require("./horus/horus.js");
+const booksStub = require('./stubs/booksStub.js');
+const customersStub = require('./stubs/customersStub.js');
+const HorusTracer = require('./horus/horus.js');
 
 const book = {
   title: "ITttttt",
@@ -17,26 +16,25 @@ const bookId = {
 
 const customer = {
   custId: 123,
-  name: "Lily",
+  name: 'Lily',
   age: 23,
-  address: "Blablabla",
-  favBookId: 200
+  address: 'Blablabla',
+  favBookId: 200,
 };
 
 const customerId = {
   custId: 123
 }
 
-let ht = new horusTracer("main");
-ht.neo4jInit('neo4j', 'password')
+const ht = new HorusTracer('main');
+// ht.neo4jInit('neo4j', 'password');
 
-
-function CreateCustomer () {
-  ht.start('customers')
+function CreateCustomer() {
+  ht.start('customers');
   customersStub.CreateCustomer(customer, (error, response) => {
-    if (error) console.log('There was an error from the CreateCustomer stub : ', error)
+    if (error) console.log('ERROR from the CreateCustomer stub : ', error);
     ht.end();
-  }).on("metadata", (metadata) => {
+  }).on('metadata', (metadata) => {
       ht.grabTrace(metadata.get('response')[0]);
   });
 }
@@ -114,4 +112,4 @@ function GetBookByID() {
   });
 }
 
-GetCustomer();
+CreateCustomer();

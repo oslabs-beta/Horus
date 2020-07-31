@@ -1,68 +1,44 @@
-// const PROTO_PATH = "../protos/customers.proto";
 const path = require('path');
+const grpc = require('grpc');
+const protoLoader = require('@grpc/proto-loader');
+const controller = require('./customersController.js');
+
 const PROTO_PATH = path.join(__dirname, '../protos/customers.proto');
-const grpc = require("grpc");
-const protoLoader = require("@grpc/proto-loader");
-const express = require("express");
-const controller = require("./customersController.js");
-const horusTracer = require("../horus/horus.js");
-const app = express();
-
-const hT = new horusTracer("customers");
-
-app.use(express.json());
-
-//packageDefinition loads the protofile and defines some settings of how we want our data to load.
 const packageDefinition = protoLoader.loadSync(PROTO_PATH, {
   keepCase: true,
   longs: String,
   enums: String,
   arrays: true,
 });
-
-/*
-Load a gRPC package definition as a gRPC object hierarchy
-
-@param packageDef — The package definition object
-
-@return — The resulting gRPC object
-*/
 const customersProto = grpc.loadPackageDefinition(packageDefinition);
-
-//uuid generates a unique identifier
-//use this to generate id's for items in the database
-const { v4: uuidv4 } = require("uuid");
 
 const server = new grpc.Server();
 
 server.addService(customersProto.CustomersService.service, {
-  CreateCustomer: (call, callback) => {
-    console.log("call to CreateCustomer");
+  CreateCustomer: async (call, callback) => {
 
-    //sample will take the call information from the client(stub)
-    const sampleAdd = {
-      custId: call.request.custId,
-      name: call.request.name,
-      age: call.request.age,
-      address: call.request.address,
-      favBookId: call.request.favBookId,
-    };
+    console.log('call to create customer')
 
-    console.log('data in create customer ', sampleAdd)
+    const result = await controller.createCustomer(call.request);
 
-    //this actually sends data to customersController.
-    controller.createCustomer(sampleAdd);
+    console.log('result ', result)
 
-    let meta = new grpc.Metadata();
+    const meta = new grpc.Metadata();
     meta.add('response', 'none');
     call.sendMetadata(meta);
 
+    if (result === 'error') { 
+      return callback({ 
+        code: grpc.status.STATUS_UNKNOWN,
+        message: 'There was an error writing to the database',
+      })
+    }
     callback(null, {
-      custId: `completed for ${call.request.custId}`,
-      name: `completed for ${call.request.name}`,
-      age: `completed for ${call.request.age}`,
-      address: `completed for ${call.request.address}`,
-      favBookId: `completed for ${call.request.favBookId}`,
+      custId: result.custId,
+      name: result.name,
+      age: result.age,
+      address: result.address,
+      favBookId: result.favBookId,
     });
   },
   GetCustomer: (call, callback) => {

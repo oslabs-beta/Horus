@@ -3,17 +3,18 @@ const customersController = {};
 const path = require('path');
 const booksStub = require(path.join(__dirname, "../stubs/booksStub.js"));
 const grpc = require('grpc')
-// const booksStub = require("../stubs/booksStub.js");
 
 const horusTracer = require("../horus/horus.js");
 
-let ht = new horusTracer("customers");
+const ht = new horusTracer("customers");
 
-// Controller create customer
-customersController.createCustomer = (sampleAdd) => {
-  customersModel.create(sampleAdd, (error, result) => {
-    if (error) console.log('there was an error writing to the mongo db from the createCustomer controller function  :  ', error);
-  });
+customersController.createCustomer =  async (customer) => {
+  return await customersModel.create(customer)
+    .then((response) => response)
+    .catch((error) => {
+      console.log('ERROR from createCustomer controller : ', error);
+      return 'error';
+    })
 };
 
 //**********/may have to add id for customer in protofile
