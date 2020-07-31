@@ -52,16 +52,13 @@ function DeleteCustomer() {
 function GetCustomer() {
   ht.start('customers');
   customersStub.GetCustomer(customerId, (error, response) => {
-      if (error) console.log("there was an error ", error);
+    if (error) console.log('ERROR from the DeleteCustomer stub', error);
+    console.log('response ', response)
       ht.end();
-      //ht.writeToFile();
-    })
-    .on("metadata", (metadata) => {
-      ht.grabTrace(metadata.get("response")[0]);
-    });
+  }) .on("metadata", (metadata) => {
+    ht.grabTrace(metadata.get("response")[0]);
+  });
 }
-
-
 
 function CreateBook () {
   ht.start('books')
@@ -112,4 +109,4 @@ function GetBookByID() {
   });
 }
 
-DeleteCustomer();
+GetCustomer();

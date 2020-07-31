@@ -1,4 +1,3 @@
-//use this for bookInitiator
 const path = require('path');
 const PROTO_PATH = path.join(__dirname, "../protos/books.proto");
 

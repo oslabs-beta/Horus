@@ -8,6 +8,15 @@ const horusTracer = require("../horus/horus.js");
 
 const ht = new horusTracer("customers");
 
+function GetBookIdAsPromise (bookId) {
+  return new Promise((resolve, reject) => {
+    booksStub.GetBookByID(bookId, (error, response) => {
+      if (error) resolve(error);
+      resolve(response);
+    })
+  })
+}
+
 customersController.createCustomer =  async (customer) => {
   return await customersModel.create(customer)
     .then((response) => response)
@@ -26,39 +35,23 @@ customersController.deleteCustomer = async (custId) => {
     })
 };
 
-// controller gets all customers in the book db
-customersController.getCustomer = (callback, call) => {
+customersController.getCustomer = async (custId) => {
+  const customer = await customersModel.findOne(custId)
+    .catch((error) => {
+      console.log('ERROR from getCustomer controller : ', error)
+      return 'error';
+    })
 
-  customersModel.findOne(call.request, (err, result) => {
+  const book = await GetBookIdAsPromise({ bookId: customer.favBookId });
 
-    //console.log('result ', result)
+  const customerWithFavBook = {};
+  customerWithFavBook.custId = customer.custId;
+  customerWithFavBook.name = customer.name;
+  customerWithFavBook.age = customer.age;
+  customerWithFavBook.address = customer.address;
+  customerWithFavBook.favBook = book;
 
-    function gettingBooks(error, data) {
-      ht.end();
-      ht.writeToFile();
-      if (error) console.log("sorry, there was an error", error);      
-
-      const customerObj = {};
-      customerObj.custId = result.custId;
-      customerObj.name = result.name;
-      customerObj.age = result.age;
-      customerObj.address = result.address;
-      customerObj.favBook = data;
-
-      callback(
-        null, 
-        customerObj
-      );
-    }
-    console.log('book id ', {bookId: result.favBookId})
-
-    ht.start('books', call);
-    booksStub
-      .GetBookByID({ bookId: result.favBookId }, gettingBooks)
-      .on("metadata", (metadata) => {
-        ht.grabTrace(metadata.get('response')[0])
-      });
-  });
-};
+  return customerWithFavBook;
+}
 
 module.exports = customersController;

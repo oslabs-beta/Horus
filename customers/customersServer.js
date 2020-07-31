@@ -49,17 +49,28 @@ server.addService(customersProto.CustomersService.service, {
     }
     callback(null, {});
   },
-  GetCustomer: (call, callback) => {
-    console.log("call to GetCustomer");
-    controller.getCustomer(callback, call);
-  },
+  GetCustomer: async (call, callback) => {
+    const result = await controller.getCustomer(call.request);
+    const meta = new grpc.Metadata();
+    meta.add('response', 'none');
+    call.sendMetadata(meta);
 
+    if (result === 'error') {
+      return callback({ 
+        code: grpc.status.STATUS_UNKNOWN,
+        message: 'There was an error querying the database',
+      });
+    }
+    callback(
+      null,
+      result,
+    );
+  },
 }); 
 
 
-server.bind("127.0.0.1:6000", grpc.ServerCredentials.createInsecure());
-console.log("customerServer.js running at http://127.0.0.1:6000");
-
-console.log("call from customer server");
+server.bind('127.0.0.1:6000', grpc.ServerCredentials.createInsecure());
+console.log('customerServer.js running at http://127.0.0.1:6000');
+console.log('call from customer server');
 
 server.start();
