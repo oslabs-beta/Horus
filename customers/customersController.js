@@ -2,8 +2,6 @@ const customersModel = require("./customersModel.js");
 const customersController = {};
 const path = require('path');
 
-
-
 customersController.createCustomer =  async (customer) => {
   return await customersModel.create(customer)
     .then((response) => response)

@@ -1,16 +1,15 @@
 const booksModel = require('./booksModel.js');
 const booksController = {};
 
-
-// controller Creates Books
-booksController.createBook = (book) => {
-    booksModel.create(book,(error, result) => {
-      if (error) console.log('there was an error from the books controller create book function  :  ', error);
-    });
+booksController.createBook = async (book) => {
+  return await booksModel.create(book)
+    .then((response) => response)
+    .catch((error) => {
+      console.log('ERROR from createBook controller : ', error);
+      return 'error';
+    })
 };
 
-
-// controller deletes book
 booksController.deleteBook = (bookId) => {
   booksModel.findOneAndDelete(bookId, (error, result) => {
     if (error) console.log('there was an error from the books controller delete book function  :  ', error);
@@ -35,7 +34,6 @@ booksController.getBookByID = (sampleID, callback) => {
   })
 }
 
-// controller gets all books in the book db
 booksController.getBooks = (callback) => {
   booksModel.find({},(error, result) => {
     if (error) console.log('there was an error from the books controller get book function  :  ', error);

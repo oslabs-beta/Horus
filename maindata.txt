@@ -550,3 +550,11 @@ Request ID: 1596208665624
 "books" service -> Response received in 61.559 ms (Total)
 Timestamp: 07/31/2020 11:17:45
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Request ID: 1596233971137
+"books" service -> Response received in 24.979 ms (Total)
+Timestamp: 07/31/2020 18:19:31
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Request ID: 1596234148299
+"books" service -> Response received in 383.490 ms (Total)
+Timestamp: 07/31/2020 18:22:28
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

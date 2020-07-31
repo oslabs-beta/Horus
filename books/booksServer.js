@@ -1,12 +1,9 @@
-// const PROTO_PATH = "../protos/books.proto";
 const path = require('path');
-const PROTO_PATH = path.join(__dirname, '../protos/books.proto');
 const grpc = require("grpc");
 const protoLoader = require("@grpc/proto-loader");
-const express = require("express");
 const controller = require("./booksController.js");
-const app = express();
-app.use(express.json());
+
+const PROTO_PATH = path.join(__dirname, '../protos/books.proto');
 
 const packageDefinition = protoLoader.loadSync(PROTO_PATH, {
   keepCase: true,
@@ -17,32 +14,20 @@ const packageDefinition = protoLoader.loadSync(PROTO_PATH, {
 
 const booksProto = grpc.loadPackageDefinition(packageDefinition);
 
-const { v4: uuidv4 } = require("uuid");
-
 const server = new grpc.Server();
 
 server.addService(booksProto.BooksService.service, {
-  CreateBook: (call, callback) => {
+  CreateBook: async (call, callback) => {
     console.log("call to CreateBook");
 
-    //sample will take the call information from the client(stub)
-    const book = {
-      title: call.request.title,
-      author: call.request.author,
-      numberOfPages: call.request.numberOfPages,
-      publisher: call.request.publisher,
-      bookId: call.request.bookId,
-    };
- 
-    controller.createBook(book);
+    const result = await controller.createBook(call.request);
 
-    let meta = new grpc.Metadata();
+    const meta = new grpc.Metadata();
     meta.add("response", "none");
     call.sendMetadata(meta);
 
     callback(
       null,
-      //bookmodel.create
       {
         title: `completed for: ${call.request.title}`,
         author: `completed for: ${call.request.author}`,
