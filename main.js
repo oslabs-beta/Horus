@@ -30,6 +30,17 @@ const customerId = {
 let ht = new horusTracer("main");
 ht.neo4jInit('neo4j', 'password')
 
+
+function CreateCustomer () {
+  ht.start('customers')
+  customersStub.CreateCustomer(customer, (error, response) => {
+    if (error) console.log('There was an error from the CreateCustomer stub : ', error)
+    ht.end();
+  }).on("metadata", (metadata) => {
+      ht.grabTrace(metadata.get('response')[0]);
+  });
+}
+
 function GetCustomer() {
   ht.start('customers');
   customersStub.GetCustomer(customerId, (error, response) => {
@@ -40,19 +51,6 @@ function GetCustomer() {
     .on("metadata", (metadata) => {
       ht.grabTrace(metadata.get("response")[0]);
     });
-}
-
-function CreateCustomer () {
-  ht.start('customers')
-  customersStub.CreateCustomer(customer, (error, response) => {
-    if (error) console.log('there was an error ', error)
-    console.log('response from createCustomer ', response)
-    ht.end();
-    ht.displayRequests();
-    ht.writeToFile();
-  }).on("metadata", (metadata) => {
-      ht.grabTrace(metadata.get('response')[0]);
-  });
 }
 
 function DeleteCustomer() {
