@@ -19,8 +19,7 @@ const CustomerSchema = new Schema({
   custId: {
     type: Number,
     required: true,
-    },
-
+  },
   name: {
     type: String,
     required: true,
@@ -33,7 +32,6 @@ const CustomerSchema = new Schema({
     type: String,
     required: true,
   },
-
   favBookId:{
     type: Number,
     required:true,

@@ -41,12 +41,14 @@ server.addService(customersProto.CustomersService.service, {
 
     //sample will take the call information from the client(stub)
     const sampleAdd = {
-      id: call.request.custId,
+      custId: call.request.custId,
       name: call.request.name,
       age: call.request.age,
       address: call.request.address,
       favBookId: call.request.favBookId,
     };
+
+    console.log('data in create customer ', sampleAdd)
 
     //this actually sends data to customersController.
     controller.createCustomer(sampleAdd);
@@ -79,7 +81,8 @@ server.addService(customersProto.CustomersService.service, {
 
     callback(null, {});
   },
-});
+}); 
+
 
 server.bind("127.0.0.1:6000", grpc.ServerCredentials.createInsecure());
 console.log("customerServer.js running at http://127.0.0.1:6000");
