@@ -464,3 +464,85 @@ Request ID: 1596205610548
 "books" service -> Response received in 6.972 ms (Total)
 Timestamp: 07/31/2020 10:26:50
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Request ID: 1596205710684
+"books" service -> Response received in 7.256 ms (Total)
+Timestamp: 07/31/2020 10:28:30
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Request ID: 1596205724116
+"books" service -> Response received in 6.473 ms (Total)
+Timestamp: 07/31/2020 10:28:44
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Request ID: 1596205745797
+"books" service -> Response received in 61.660 ms (Total)
+Timestamp: 07/31/2020 10:29:05
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Request ID: 1596205913756
+"customers" service -> Response received in 878.010 ms (Total)
+Timestamp: 07/31/2020 10:31:54
+"books" service -> Response received in 471.348 ms
+Timestamp: undefined
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Request ID: 1596206455116
+"customers" service -> Response received in 399.369 ms (Total)
+Timestamp: 07/31/2020 10:40:55
+"books" service -> Response received in 36.713 ms
+Timestamp: undefined
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Request ID: 1596206630153
+"customers" service -> Response received in 1065.770 ms (Total)
+Timestamp: 07/31/2020 10:43:51
+"books" service -> Response received in 444.412 ms
+Timestamp: undefined
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Request ID: 1596206675041
+"customers" service -> Response received in 912.962 ms (Total)
+Timestamp: 07/31/2020 10:44:35
+"books" service -> Response received in 487.937 ms
+Timestamp: undefined
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Request ID: 1596206757670
+"customers" service -> Response received in 847.784 ms (Total)
+Timestamp: 07/31/2020 10:45:58
+"books" service -> Response received in 472.107 ms
+Timestamp: undefined
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Request ID: 1596206942210
+"customers" service -> Response received in 924.885 ms (Total)
+Timestamp: 07/31/2020 10:49:03
+"books" service -> Response received in 462.573 ms
+Timestamp: undefined
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Request ID: 1596206988396
+"customers" service -> Response received in 20.581 ms (Total)
+Timestamp: 07/31/2020 10:49:48
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Request ID: 1596207019202
+"customers" service -> Response received in 453.742 ms (Total)
+Timestamp: 07/31/2020 10:50:19
+"books" service -> Response received in 383.787 ms
+Timestamp: undefined
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Request ID: 1596207124762
+"customers" service -> Response received in 808.112 ms (Total)
+Timestamp: 07/31/2020 10:52:05
+"books" service -> Response received in 433.308 ms
+Timestamp: undefined
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Request ID: 1596207186167
+"customers" service -> Response received in 804.532 ms (Total)
+Timestamp: 07/31/2020 10:53:06
+"books" service -> Response received in 431.355 ms
+Timestamp: undefined
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Request ID: 1596207279187
+"customers" service -> Response received in 794.271 ms (Total)
+Timestamp: 07/31/2020 10:54:39
+"books" service -> Response received in 388.535 ms
+Timestamp: undefined
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Request ID: 1596207420874
+"customers" service -> Response received in 114.657 ms (Total)
+Timestamp: 07/31/2020 10:57:00
+"books" service -> Response received in 53.535 ms
+Timestamp: 07/31/2020 10:54:39
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

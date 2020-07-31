@@ -20,7 +20,7 @@ const customer = {
   name: "Lily",
   age: 23,
   address: "Blablabla",
-  favBookId: 100
+  favBookId: 200
 };
 
 const customerId = {
@@ -28,13 +28,13 @@ const customerId = {
 }
 
 let ht = new horusTracer("main");
-ht.neo4jInit('neo4j', 'password')
+//ht.neo4jInit('neo4j', 'password')
 
-function getCustomer() {
+function GetCustomer() {
   ht.start('customers');
   customersStub.GetCustomer(customerId, (error, response) => {
       if (error) console.log("there was an error ", error);
-      //console.log('logging response inside getCustomer ', response)
+      console.log('logging response inside getCustomer ', response)
       ht.end();
       ht.writeToFile();
       //ht.displayRequests();
@@ -97,7 +97,6 @@ function GetBooks () {
   ht.start('books')
   booksStub.GetBooks({}, (error, response) => {
     if (error) console.log("there was an error ", error);
-    console.log('logging response inside getBooks', response);
     ht.end();
     ht.displayRequests();
     ht.writeToFile();
@@ -106,7 +105,7 @@ function GetBooks () {
   });
 }
 
-function getBookByID() {
+function GetBookByID() {
   ht.start('books')
   booksStub.GetBooks(bookId, (error, response) => {
     if (error) console.log("there was an error ", error);
@@ -119,4 +118,4 @@ function getBookByID() {
   });
 }
 
-DeleteBook();
+GetCustomer();
