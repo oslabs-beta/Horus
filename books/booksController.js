@@ -19,7 +19,7 @@ booksController.deleteBook = async (bookId) => {
     })
 };
 
-booksController.getBookByID = (sampleID, callback) => {
+booksController.getBookByID =  (sampleID, callback) => {
   console.log('sample id ', sampleID);
   booksModel.findOne(sampleID, (error, result) => {
     if (error) console.log('there was an error from the books controller get books by id function  :  ', error);
@@ -37,27 +37,24 @@ booksController.getBookByID = (sampleID, callback) => {
   })
 }
 
-booksController.getBooks = (callback) => {
-  booksModel.find({},(error, result) => {
-    if (error) console.log('there was an error from the books controller get book function  :  ', error);
-    console.log('received resposne from mongodb results ', result)
-    const arr = [];
-    for( let i = 0; i < result.length; i++){
-      arr.push({
-        title: result[i].title, 
-        author: result[i].author,
-        numberOfPages: result[i].numberOfPages,
-        publisher: result[i].publisher,
-        bookId: result[i].bookId
-      })            
-    }
-    callback(
-      null,
-      {
-        books: arr
+booksController.getBooks = async () => {
+  return await booksModel.find({})
+    .then((response) => {
+      let arr = [];
+      for (let i = 0; i < response.length; i++) {
+        arr.push({
+          title: response[i].title, 
+          author: response[i].author,
+          numberOfPages: response[i].numberOfPages,
+          publisher: response[i].publisher,
+          bookId: response[i].bookId
+        })            
       }
-    )
-  });
+      console.log('arr ', arr)
+      return arr;
+    }).catch((error) => {
+      console.log('ERROR from the getBooks controller : ', error);
+    })
 };
 
 module.exports = booksController;

@@ -58,14 +58,17 @@ server.addService(booksProto.BooksService.service, {
 
     callback(null, {});
   },
-  GetBooks: (call, callback) => {
-    console.log("call to GetBooks");
-    // read from database
+  GetBooks: async (call, callback) => {
+    const result = await controller.getBooks();
+
     let meta = new grpc.Metadata();
     meta.add('response', 'none');
     call.sendMetadata(meta);
 
-    controller.getBooks(callback);
+    callback (
+      null, 
+      { books: result },
+    )
   },
   GetBookByID: (call, callback) => {
     console.log("call to GetBookByID");
@@ -76,7 +79,6 @@ server.addService(booksProto.BooksService.service, {
 
     controller.getBookByID(call.request, callback);
   },
-
 });
 
 server.bind("127.0.0.1:30043", grpc.ServerCredentials.createInsecure());
