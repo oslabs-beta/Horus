@@ -10,7 +10,8 @@ class App extends React.Component{
     super(props);
     this.state = {
       data: '',
-      bookId: ''
+      bookId: '',
+      bookList: ''
     }
     this.deleteBook = this.deleteBook.bind(this)
     this.handleGetBooks = this.handleGetBooks.bind(this)
@@ -35,8 +36,7 @@ class App extends React.Component{
     console.log('State ', this)
     fetch(`http://localhost:3000/books/${bookId}`, {
         method: 'Delete'
-    }).then(
-    this.setState({data: newBookList}))
+    })
   }
 
     render(){
