@@ -2,10 +2,12 @@ const fs = require("fs");
 const grpc = require("grpc");
 const path = require("path");
 const neo4j = require("./neo4j");
-
+const request = require("request");
 class horus {
   constructor(name) {
     this.serviceName = name; // represents the name of the microservices
+    // temp !
+    this.threshold = null;
     this.startTime = null;
     this.endTime = null;
     this.request = {};
@@ -14,7 +16,6 @@ class horus {
     this.timeCompleted = null;
     this.call;
   }
-
   static getReqId() {
     // primitive value - number of millisecond since midnight January 1, 1970 UTC
     // add service name/ initials to the beginning of reqId?
@@ -26,10 +27,15 @@ class horus {
     this.neo4j = true;
   }
   sendNeo4jQuery() {
-    let neo4jObject = new neo4j(this.serviceName, this.targetService, this.request, this.username, this.password);
+    let neo4jObject = new neo4j(
+      this.serviceName,
+      this.targetService,
+      this.request,
+      this.username,
+      this.password
+    );
     neo4jObject.makeQueries();
   }
-
   // start should be invoked before the request is made
   // start begins the timer and initializes the request as pending
   start(targetService, call) {
@@ -43,13 +49,77 @@ class horus {
   // end should be invoked when the request has returned
   end() {
     this.endTime = Number(process.hrtime.bigint());
+    // rt
     this.request.responseTime = (
       (this.endTime - this.startTime) /
       1000000
     ).toFixed(3); //converting into ms.
+    // check if time is proper(within range)
+    // update with new checker when we have logic for calculating avg and stdev
+    if (this.threshold <= this.request.responseTime) {
+      horus.slackAlert(this.request.responseTime, this.targetService);
+    }
+    //if falls outside of threshold then execute alertslackmessage
     this.sendResponse();
     this.request.timeCompleted = this.getCurrentTime();
   }
+  //static method to exeucte slack alerting message
+  static slackAlert(responseTime, service) {
+    const obj = {
+      text: "\n :interrobang: \n ALERT \n :interrobang: \n ",
+      blocks: [
+        {
+          type: "section",
+          block_id: "section567",
+          text: {
+            type: "mrkdwn",
+            text: `\n :interrobang: \n Check your ${service} container, your time is ${responseTime}ms which is above the 2 Standard Deviation Treshold   \n :interrobang: \n`,
+          },
+          accessory: {
+            type: "image",
+            image_url:
+              "https://cdn.britannica.com/76/193576-050-693A982E/Eye-of-Horus.jpg",
+            alt_text: "Haunted hotel image",
+          },
+        },
+        {
+          type: "section",
+          text: {
+            type: "mrkdwn",
+            text: `the Average time is: tbd...; two standard deviaton: tbd...`,
+          },
+        },
+      ],
+    };
+    const slackURL =
+      "https://hooks.slack.com/services/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";
+    request.post({
+      uri: "https://hooks.slack.com/services/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",
+      body: JSON.stringify(obj),
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  }
+/***************************** tbd*****************
+// write in database to store values:
+// take all response times into an array
+// example ...array of time values
+let arrayTime=[2,4,6,100]
+// defining Normal Behavfor set the average time
+ average= (arrayTime) => {
+    return arrayTime.reduce((a, b) => (a + b)) / arrayTime.length
+}
+let averageResult= average(arrayTime)
+// Standard deviation
+let getSD = function (arrayTime) {
+    return Math.sqrt(arrayTime.reduce(function (sq, n) {
+            return sq + Math.pow(n - averageResult, 2);
+        }, 0) / (arrayTime.length - 1));
+};
+let twoSd=(2*getSD(arrayTime))
+* */
   // grabTrace accepts inserts trace into request
   // trace represents the "journey" of the request
   // trace expects metaData to be 'none when the server made no additional requests
@@ -78,15 +148,21 @@ class horus {
   }
   // sends response via metadata if service is in the middle of a chain
   sendResponse() {
-    if (this.request.responseTime !== "pending" && this.request[this.targetService] !== "pending" && this.call !== undefined
+    if (
+      this.request.responseTime !== "pending" &&
+      this.request[this.targetService] !== "pending" &&
+      this.call !== undefined
     ) {
       let meta = new grpc.Metadata();
       meta.add("response", JSON.stringify(this.request));
       this.call.sendMetadata(meta);
-    } else if (this.request.responseTime !== "pending" && this.request[this.targetService] !== "pending" && this.neo4j) {
+    } else if (
+      this.request.responseTime !== "pending" &&
+      this.request[this.targetService] !== "pending" &&
+      this.neo4j
+    ) {
       this.sendNeo4jQuery();
     }
-
   }
   writeToFile() {
     console.log("call to writeToFile");
@@ -113,12 +189,17 @@ class horus {
       strRequests +=
         "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
     }
-    console.log('strRequests', strRequests)
-    fs.writeFile(this.serviceName + 'data' + '.txt', strRequests, { flag: "a+" }, (err) => {
-      if (err) {
-        console.error(err);
+    console.log("strRequests", strRequests);
+    fs.writeFile(
+      this.serviceName + "data" + ".txt",
+      strRequests,
+      { flag: "a+" },
+      (err) => {
+        if (err) {
+          console.error(err);
+        }
       }
-    }); //'a+' is append mode
+    ); //'a+' is append mode
   }
   getCurrentTime() {
     let date = new Date();
@@ -149,5 +230,4 @@ class horus {
     );
   }
 }
-
 module.exports = horus;
