@@ -54,7 +54,9 @@ function GetCustomer() {
   customersStub.GetCustomer(customerId, (error, response) => {
     if (error) console.log('ERROR from the DeleteCustomer stub', error);
     console.log('response ', response)
-      ht.end();
+    ht.displayRequests();
+    ht.writeToFile();
+    ht.end();
   }) .on("metadata", (metadata) => {
     ht.grabTrace(metadata.get("response")[0]);
   });
@@ -103,4 +105,4 @@ function GetBookByID() {
   });
 }
 
-GetBooks();
+GetCustomer();

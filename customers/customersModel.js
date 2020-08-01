@@ -34,7 +34,7 @@ const CustomerSchema = new Schema({
   },
   favBookId:{
     type: Number,
-    required:true,
+    required:true
   }
 });
 

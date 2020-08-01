@@ -80,6 +80,7 @@ class horus {
   sendResponse() {
     if (this.request.responseTime !== "pending" && this.request[this.targetService] !== "pending" && this.call !== undefined
     ) {
+      console.log('sending response')
       let meta = new grpc.Metadata();
       meta.add("response", JSON.stringify(this.request));
       this.call.sendMetadata(meta);

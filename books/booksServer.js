@@ -43,7 +43,7 @@ server.addService(booksProto.BooksService.service, {
     );
   },
   DeleteBook: async (call, callback) => {
-    const result = controller.deleteBook(call.request);
+    const result = await controller.deleteBook(call.request);
 
     if (result === 'error') {
       return callback({ 

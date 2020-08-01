@@ -2,6 +2,7 @@ const path = require('path');
 const grpc = require('grpc');
 const protoLoader = require('@grpc/proto-loader');
 const controller = require('./customersController.js');
+const HorusTracer = require('../horus/horus.js');
 const booksStub = require(path.join(__dirname, "../stubs/booksStub.js"));
 
 const PROTO_PATH = path.join(__dirname, '../protos/customers.proto');
@@ -15,12 +16,16 @@ const customersProto = grpc.loadPackageDefinition(packageDefinition);
 
 const server = new grpc.Server();
 
-function GetBookIdAsPromise (bookId) {
+const ht = new HorusTracer();
+
+function GetBookIdAsPromise (bookId, call) {
+  let metadataBack = 'pending'; 
+  console.log('call to get book id as promise ')
   return new Promise((resolve, reject) => {
     booksStub.GetBookByID(bookId, (error, response) => {
-      if (error) reject(error);
-      resolve(response);
-    })
+      if (error) resolve('error')
+      resolve({book: response, metadata: metadataBack});
+    }).on('metadata', (metadata) => metadataBack = metadata);
   })
 }
 
@@ -60,27 +65,39 @@ server.addService(customersProto.CustomersService.service, {
     callback(null, {});
   },
   GetCustomer: async (call, callback) => {
+    // make request to get customer info
     const customer = await controller.getCustomer(call.request);
-    
+    // check for error
     if (customer === 'error') {
       return callback({ 
         code: grpc.status.STATUS_UNKNOWN,
         message: 'There was an error querying the database',
       });
     }
+    ht.start('books', call)
+    // make request to get book id based on customer's favBookId
+      // this contains as properties the book itself, and the metadata of the request  
+    const responseFromGetBookById = await GetBookIdAsPromise({ bookId: customer.favBookId });
+    console.log('response ', responseFromGetBookById.metadata.get('response')[0])
+  
+    if (responseFromGetBookById === 'error') {
+      ht.end();
+      ht.grabTrace('none')
+      return callback({ 
+        code: grpc.status.STATUS_UNKNOWN,
+        message: 'There was an error making an intraservice request to books',
+      });
+    }
 
-    const book = await GetBookIdAsPromise({ bookId: customer.favBookId });
+    ht.grabTrace(responseFromGetBookById.metadata.get('response')[0]);
+    ht.end();
 
     const customerWithFavBook = {};
     customerWithFavBook.custId = customer.custId;
     customerWithFavBook.name = customer.name;
     customerWithFavBook.age = customer.age;
     customerWithFavBook.address = customer.address;
-    customerWithFavBook.favBook = book;
-  
-    const meta = new grpc.Metadata();
-    meta.add('response', 'none');
-    call.sendMetadata(meta);
+    customerWithFavBook.favBook = responseFromGetBookById.book;
 
     callback(
       null,
