@@ -10,16 +10,12 @@ class MainContainer extends React.Component {
         this.state = {
             items: ''
         }
-        // this.deleteBook = this.deleteBook.bind(this)
+        this.handleDeleteBook = this.handleDeleteBook.bind(this)
       }
-    //   handleGetBooks(data) {
-    //     console.log('MAIN CONTAINER PROPS: ', this.props)
-    //     this.setState({data: this.props.data})
-    //   }
-      
-    //   deleteBook(bookId) {
-    //     this.setState()
-    //   }
+
+      handleDeleteBook(e, bookId){
+        this.props.deleteBook(e, bookId)
+      }
     
     render(){
         const bookList = this.props.data.books
@@ -27,7 +23,7 @@ class MainContainer extends React.Component {
         if (bookList){
           for (let i = 0; i < bookList.length; i++){
             items.push(
-                <Book key={'book'+i} title={bookList[i].title} author={bookList[i].author} numberOfPages={bookList[i].numberOfPages} publisher={bookList[i].publisher} bookId={bookList[i].bookId} deleteBook={this.props.deleteBook} />
+                <Book title={bookList[i].title} author={bookList[i].author} numberOfPages={bookList[i].numberOfPages} publisher={bookList[i].publisher} bookId={bookList[i].bookId} handleDeleteBook={this.handleDeleteBook} deleteBook={this.deleteBook} key={i}  />
             )
           }
         }

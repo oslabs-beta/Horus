@@ -16,10 +16,6 @@ class App extends React.Component{
     this.handleGetBooks = this.handleGetBooks.bind(this)
   }
 
-  // handleGetBooks(data) {
-  //   this.setState({data: data})
-  // }
-
   handleGetBooks(e){
     e.preventDefault();
     fetch('http://localhost:3000/books', {
@@ -32,19 +28,18 @@ class App extends React.Component{
     })
   }
 
-  deleteBook(e) {
-    e.preventDefault();
-    console.log('THIS: ', this)
-    console.log(`Delete Book for ${this.state.bookId} clicked.`)
-    let bookId = this.state.data
+  deleteBook(e, bookId){
+    console.log('e: ', e)
+    let newBookList = this.state.data.books.filter(book => book.bookId !== bookId)
+    this.setState({data: newBookList})
+    console.log('State ', this)
     fetch(`http://localhost:3000/books/${bookId}`, {
-      method: 'DELETE'
-    })
-    .then(console.log(`${this.state.data}`))
+        method: 'Delete'
+    }).then(
+    this.setState({data: newBookList}))
   }
 
     render(){
-      console.log("PROPS IN APP: ", this.props)
         return(
             <div>
               <TopContainer />
