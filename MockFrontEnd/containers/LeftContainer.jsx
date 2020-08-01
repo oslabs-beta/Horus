@@ -12,11 +12,11 @@ class LeftContainer extends React.Component {
             address: '',
             favBookId: ''
         };
-        //this.handleCreateCustomerButton = this.handleCreateCustomerButton.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleCustomerSubmit = this.handleCustomerSubmit.bind(this);
         this.handleBookSubmit = this.handleBookSubmit.bind(this)
         this.handleReset = this.handleReset.bind(this)
+        // this.handleGetBooks = this.handleGetBooks.bind(this)
     }
 
        handleChange(e) {
@@ -62,7 +62,7 @@ class LeftContainer extends React.Component {
                body: JSON.stringify({
                    title: this.state.title,
                    author: this.state.author,
-                   numberOfPages: this.state.age,
+                   numberOfPages: this.state.numberOfPages,
                    publisher: this.state.publisher,
                    bookId: this.state.bookId
                })
@@ -79,6 +79,18 @@ class LeftContainer extends React.Component {
                bookId: ''
             })
        }
+
+    //    handleGetBooks(e){
+    //        e.preventDefault();
+    //        fetch('http://localhost:3000/books', {
+    //            method: 'GET',
+
+    //        })
+    //        .then(res => res.json())
+    //        .then(data => {
+    //            this.props.handleGetBooks(data)
+    //        })
+    //    }
 
     render(){
         return(
@@ -139,6 +151,7 @@ class LeftContainer extends React.Component {
                     <button type="submit" id="createCustomerButton">Create Customer</button>
                     {/* <button type="button" id="createCustomerButton" onClick={this.handleCreateCustomerButton}>Create Customer</button> */}
                 </form>
+                <button type="button" id="getCustomerbutton">Get Last Customer</button>
                 <form onSubmit={this.handleBookSubmit} className='CreateBookForm'>
                     <h4>Add Book to Bookstore</h4>
                     <label>Title: </label>
@@ -194,6 +207,7 @@ class LeftContainer extends React.Component {
                     <br/>
                     <button type="submit" id="createBookButton">Create Book</button>
                 </form>
+                <button type="button" id="getBooksbutton" onClick={this.props.handleGetBooks}>Get All Books</button>
             </div>
         )
     }
