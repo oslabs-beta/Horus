@@ -19,6 +19,7 @@ function makeNestedMetadata(metadata, tabCount) {
 }
 
 function WriteToFile(fileName, metadata) {
+  console.log("call to write to file")
   let str = '';
   str += 'Method Name : ' + metadata.methodName + '\n';
   str += 'ResponseTime : ' + metadata.responseTime + '\n';
@@ -30,7 +31,10 @@ function WriteToFile(fileName, metadata) {
     })  
   }
   str += '\n'
-  fs.appendFile(fileName, str, () => {});
+  console.log("call to append file ", fileName)
+  fs.appendFile(fileName, str, (error) => {
+    if (error) console.log('ERROR Horus Object could no write to ' + fileName + ' ', error);
+  });
 }
 
 class ClientWrapper {

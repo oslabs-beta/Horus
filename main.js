@@ -45,8 +45,26 @@ function GetBookByID() {
 
 function GetBooks() {
   booksStub.GetBooks(bookId, (error, response) => {
-    console.log('main.js GetBookById response ', response);
+    console.log('main.js GetBooks response ', response);
   })
 }
 
-GetBooks();
+function CreateCustomer() {
+  customersStub.CreateCustomer(customer, (error, response) => {
+    console.log('main.js CreateCustomer response ', response);
+  })
+}
+
+function DeleteCustomer() {
+  customersStub.DeleteCustomer(customer, (error, response) => {
+    console.log('main.js DeleteCustomer response ', response);
+  })  
+}
+
+function GetCustomer() {
+  customersStub.GetCustomer(customer, (error, response) => {
+    console.log('main.js GetCustomer response ', response);
+  })  
+}
+
+GetCustomer();
