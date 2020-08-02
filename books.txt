@@ -1,0 +1,12 @@
+Method Name : CreateBook
+ResponseTime : 57.274915
+ID : 083419b6-f66d-4dfb-a41e-147a435fd4f9
+
+Method Name : CreateBook
+ResponseTime : 56.782607
+ID : 5628afb9-d26a-42b3-b854-b068c17deaf4
+
+Method Name : DeleteBook
+ResponseTime : 59.962562
+ID : 7d7bb544-1f68-4133-918d-8c6879292255
+

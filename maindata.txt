@@ -1,6 +1,0 @@
-Request ID: 1596300283829
-"customers" service -> Response received in pending ms (Total)
-Timestamp: undefined
-"books" service -> Response received in 49.224 ms
-Timestamp: 08/01/2020 12:44:19
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

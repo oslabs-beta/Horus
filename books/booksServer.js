@@ -2,7 +2,7 @@ const path = require('path');
 const grpc = require("grpc");
 const protoLoader = require("@grpc/proto-loader");
 const controller = require("./booksController.js");
-
+const HorusServerWrapper = require('../HorusServerWrapper.js');
 const PROTO_PATH = path.join(__dirname, '../protos/books.proto');
 
 const packageDefinition = protoLoader.loadSync(PROTO_PATH, {
@@ -16,7 +16,10 @@ const booksProto = grpc.loadPackageDefinition(packageDefinition);
 
 const server = new grpc.Server();
 
-server.addService(booksProto.BooksService.service, {
+// The Horus Server Wrapper "wraps" each server method passed in
+// Replace server.addService({ .. methods}) with Const ServerWrapper = new HorusServerWrapper (serverObject, service, {..methods})
+// Your preexisting methods can remain entirely the same
+const ServerWrapper = new HorusServerWrapper(server, booksProto.BooksService.service, {
   CreateBook: async (call, callback) => {
     const result = await controller.createBook(call.request);
 
@@ -26,10 +29,6 @@ server.addService(booksProto.BooksService.service, {
         message: 'There was an error writing to the database',
       });
     }
-
-    const meta = new grpc.Metadata();
-    meta.add("response", "none");
-    call.sendMetadata(meta);
 
     callback(
       null,
@@ -52,18 +51,10 @@ server.addService(booksProto.BooksService.service, {
       });
     }
 
-    let meta = new grpc.Metadata();
-    meta.add('response', 'none');
-    call.sendMetadata(meta);
-
     callback(null, {});
   },
   GetBooks: async (call, callback) => {
     const result = await controller.getBooks();
-
-    let meta = new grpc.Metadata();
-    meta.add('response', 'none');
-    call.sendMetadata(meta);
 
     callback (
       null, 
@@ -73,13 +64,10 @@ server.addService(booksProto.BooksService.service, {
   GetBookByID: (call, callback) => {
     console.log("call to GetBookByID");
 
-    let meta = new grpc.Metadata();
-    meta.add('response', 'none');
-    call.sendMetadata(meta);
-
     controller.getBookByID(call.request, callback);
   },
 });
+
 
 server.bind("127.0.0.1:30043", grpc.ServerCredentials.createInsecure());
 console.log("booksServer.js running at http://127.0.0.1:30043");

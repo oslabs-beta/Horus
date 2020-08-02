@@ -1,6 +1,5 @@
 const booksStub = require('./stubs/booksStub.js');
 const customersStub = require('./stubs/customersStub.js');
-const HorusTracer = require('./horus/horus.js');
 
 const book = {
   title: "ITttttt",
@@ -26,83 +25,22 @@ const customerId = {
   custId: 123
 }
 
-const ht = new HorusTracer('main');
-// ht.neo4jInit('neo4j', 'password');
-
-function CreateCustomer() {
-  ht.start('customers');
-  customersStub.CreateCustomer(customer, (error, response) => {
-    if (error) console.log('ERROR from the CreateCustomer stub : ', error);
-    ht.end();
-  }).on('metadata', (metadata) => {
-    ht.grabTrace(metadata.get('response')[0]);
-  });
-}
-
-function DeleteCustomer() {
-  ht.start('customers');
-  customersStub.DeleteCustomer(customerId, (error, response) => {
-    if (error) console.log('ERROR from the DeleteCustomer stub', error);
-    ht.end();
-  }).on('metadata', (metadata) => {
-    ht.grabTrace(metadata.get('response')[0]);
-  });
-}
-
-function GetCustomer() {
-  ht.start('customers');
-  customersStub.GetCustomer(customerId, (error, response) => {
-    if (error) console.log('ERROR from the DeleteCustomer stub', error);
-    console.log('response ', response)
-    ht.displayRequests();
-    ht.writeToFile();
-    ht.end();
-  }) .on("metadata", (metadata) => {
-    ht.grabTrace(metadata.get("response")[0]);
-  });
-}
-
 function CreateBook () {
-  ht.start('books')
   booksStub.CreateBook(book, (error, response) => {
-    if (error) console.log("there was an error ", error);
-    ht.end();
-  }).on('metadata', (metadata) => {
-    ht.grabTrace(metadata.get('response')[0]);
-  });
+    console.log('main.js CreateBook response ', response);
+  })
 }
 
 function DeleteBook () {
-  ht.start('books')
   booksStub.DeleteBook(bookId, (error, response) => {
-    if (error) console.log("there was an error ", error);
-    ht.end();
-  }).on('metadata', (metadata) => {
-    ht.grabTrace(metadata.get('response')[0]);
-  });
+    console.log('main.js DeleteBook response ', response);
+  })
 }
 
-function GetBooks () {
-  ht.start('books')
-  booksStub.GetBooks({}, (error, response) => {
-    if (error) console.log("there was an error ", error);
-    ht.end();
-  }).on('metadata', (metadata) => {
-    ht.grabTrace(metadata.get('response')[0]);
-  });
+function GetBookById() {
+  booksStub.DeleteBook(bookId, (error, response) => {
+    console.log('main.js GetBookById response ', response);
+  })
 }
 
-function GetBookByID() {
-  ht.start('books')
-  booksStub.GetBooks(bookId, (error, response) => {
-    if (error) console.log("there was an error ", error);
-    console.log('logging response inside getBookByID', response);
-    ht.end();
-    ht.displayRequests();
-    ht.writeToFile();
-  }).on('metadata', (metadata) => {
-    ht.grabTrace(metadata.get('response')[0]);
-  });
-}
-
-GetCustomer();
+GetBookById();
