@@ -37,14 +37,20 @@ function WriteToFile(fileName, metadata) {
   });
 }
 
+function WriteToServer(metadata) {
+
+}
+
 class ClientWrapper {
-  constructor(client, service, textFileName) {
+  constructor(client, service, textFileName, mongoURL) {
     this.client = client; 
     this.metadata = {}; 
     this.textfileName = textFileName || 'horus.txt';
+    this.mongoURL = mongoURL
     const keys = Object.keys(service.service); 
     for (let i = 0; i < keys.length; i++) { 
       let metadata = this.metadata; 
+      let mongoURL = this.
       this[keys[i]] = (object, callback) => { 
         metadata[keys[i]] = {
           methodName: keys[i],
