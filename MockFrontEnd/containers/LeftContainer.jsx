@@ -16,7 +16,6 @@ class LeftContainer extends React.Component {
         this.handleCustomerSubmit = this.handleCustomerSubmit.bind(this);
         this.handleBookSubmit = this.handleBookSubmit.bind(this)
         this.handleReset = this.handleReset.bind(this)
-        // this.handleGetBooks = this.handleGetBooks.bind(this)
     }
 
        handleChange(e) {
@@ -79,18 +78,6 @@ class LeftContainer extends React.Component {
                bookId: ''
             })
        }
-
-    //    handleGetBooks(e){
-    //        e.preventDefault();
-    //        fetch('http://localhost:3000/books', {
-    //            method: 'GET',
-
-    //        })
-    //        .then(res => res.json())
-    //        .then(data => {
-    //            this.props.handleGetBooks(data)
-    //        })
-    //    }
 
     render(){
         return(

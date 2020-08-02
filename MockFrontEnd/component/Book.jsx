@@ -8,21 +8,15 @@ class Book extends React.Component {
       bookId: '',
       key: ''
     }
-    // this.deleteBook = this.deleteBook.bind(this);
+    this.handleDeleteBook = this.handleDeleteBook.bind(this)
+  }
+  
+  handleDeleteBook(e){
+    //e.preventDefault();
+    this.props.handleDeleteBook(e, this.props.bookId)
   }
 
-  // deleteBook(e) {
-  //   event.preventDefault();
-  //   console.log(`Delete Book for ${this.props.bookId} clicked.`)
-  //   let bookId = this.props.bookId
-  //   fetch(`http://localhost:3000/books/${bookId}`, {
-  //     method: 'DELETE'
-  //   })
-  //   .then(this.props.deleteBook(bookId))
-  // }
-
   render () {
-    console.log('THIS.PROPS IN BOOK: ', this.props)
     return <div className="bookBox">
              <h4>{this.props.title}</h4>
              <ul className="bookInfo">
@@ -31,7 +25,7 @@ class Book extends React.Component {
                <li>Published By: {this.props.publisher}</li>
                <li>Book ID#: {this.props.bookId}</li>
              </ul>
-             <button type="button" id="deleteBooksbutton" onClick={this.props.deleteBook} bookId={this.props.bookId}>Delete Book</button>
+             <button type="button" id="deleteBooksbutton" onClick={this.handleDeleteBook} >Delete Book</button>
            </div>
   }
 }

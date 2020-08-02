@@ -10,15 +10,12 @@ class App extends React.Component{
     super(props);
     this.state = {
       data: '',
-      bookId: ''
+      bookId: '',
+      bookList: ''
     }
     this.deleteBook = this.deleteBook.bind(this)
     this.handleGetBooks = this.handleGetBooks.bind(this)
   }
-
-  // handleGetBooks(data) {
-  //   this.setState({data: data})
-  // }
 
   handleGetBooks(e){
     e.preventDefault();
@@ -28,29 +25,25 @@ class App extends React.Component{
     })
     .then(res => res.json())
     .then(data => {
-        this.setState({data: data})
+        this.setState({data: data.books})
     })
   }
 
-  deleteBook(e) {
-    e.preventDefault();
-    console.log('THIS: ', this)
-    console.log(`Delete Book for ${this.state.bookId} clicked.`)
-    let bookId = this.state.data
+  deleteBook(e, bookId){
+    let newBookList = this.state.data.filter(book => book.bookId !== bookId)
+    this.setState({data: newBookList})
     fetch(`http://localhost:3000/books/${bookId}`, {
-      method: 'DELETE'
+        method: 'Delete'
     })
-    .then(console.log(`${this.state.data}`))
   }
 
     render(){
-      console.log("PROPS IN APP: ", this.props)
         return(
             <div>
               <TopContainer />
               <div className='MainBody'>
                 <LeftContainer handleGetBooks={this.handleGetBooks}/>
-                <MainContainer data={this.state.data} deleteBook={this.deleteBook} />
+                <MainContainer data={this.state.data} deleteBook={this.deleteBook}/>
               </div>
             </div>
         )
