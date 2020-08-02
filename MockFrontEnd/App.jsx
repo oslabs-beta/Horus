@@ -25,15 +25,13 @@ class App extends React.Component{
     })
     .then(res => res.json())
     .then(data => {
-        this.setState({data: data})
+        this.setState({data: data.books})
     })
   }
 
   deleteBook(e, bookId){
-    console.log('e: ', e)
-    let newBookList = this.state.data.books.filter(book => book.bookId !== bookId)
+    let newBookList = this.state.data.filter(book => book.bookId !== bookId)
     this.setState({data: newBookList})
-    console.log('State ', this)
     fetch(`http://localhost:3000/books/${bookId}`, {
         method: 'Delete'
     })
@@ -45,7 +43,7 @@ class App extends React.Component{
               <TopContainer />
               <div className='MainBody'>
                 <LeftContainer handleGetBooks={this.handleGetBooks}/>
-                <MainContainer data={this.state.data} deleteBook={this.deleteBook} />
+                <MainContainer data={this.state.data} deleteBook={this.deleteBook}/>
               </div>
             </div>
         )

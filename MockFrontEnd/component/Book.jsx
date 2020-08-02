@@ -12,12 +12,11 @@ class Book extends React.Component {
   }
   
   handleDeleteBook(e){
-    e.preventDefault();
+    //e.preventDefault();
     this.props.handleDeleteBook(e, this.props.bookId)
   }
 
   render () {
-    console.log('THIS.PROPS IN BOOK: ', this.props)
     return <div className="bookBox">
              <h4>{this.props.title}</h4>
              <ul className="bookInfo">
