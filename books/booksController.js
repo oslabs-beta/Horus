@@ -19,22 +19,13 @@ booksController.deleteBook = async (bookId) => {
     })
 };
 
-booksController.getBookByID =  (sampleID, callback) => {
-  console.log('sample id ', sampleID);
-  booksModel.findOne(sampleID, (error, result) => {
-    if (error) console.log('there was an error from the books controller get books by id function  :  ', error);
-    console.log("response obj ", result);
-    callback(
-      null,
-      {
-        title: result.title,
-        author: result.author,
-        numberOfPages: result.numberOfPages,
-        publisher: result.publisher,
-        bookId: result.bookId
-      }
-    )
-  })
+booksController.getBookByID = async (bookId, callback) => {
+  return await booksModel.findOne(bookId)
+    .then((response) => response)
+    .catch((error) => {
+      console.log('ERROR from getBookbyID controller : ', error);
+      return 'error';
+    })
 }
 
 booksController.getBooks = async () => {
@@ -50,7 +41,6 @@ booksController.getBooks = async () => {
           bookId: response[i].bookId
         })            
       }
-      console.log('arr ', arr)
       return arr;
     }).catch((error) => {
       console.log('ERROR from the getBooks controller : ', error);

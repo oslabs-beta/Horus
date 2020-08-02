@@ -37,10 +37,16 @@ function DeleteBook () {
   })
 }
 
-function GetBookById() {
-  booksStub.DeleteBook(bookId, (error, response) => {
+function GetBookByID() {
+  booksStub.GetBookByID(bookId, (error, response) => {
     console.log('main.js GetBookById response ', response);
   })
 }
 
-GetBookById();
+function GetBooks() {
+  booksStub.GetBooks(bookId, (error, response) => {
+    console.log('main.js GetBookById response ', response);
+  })
+}
+
+GetBooks();

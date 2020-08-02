@@ -61,10 +61,25 @@ const ServerWrapper = new HorusServerWrapper(server, booksProto.BooksService.ser
       { books: result },
     )
   },
-  GetBookByID: (call, callback) => {
-    console.log("call to GetBookByID");
+  GetBookByID: async (call, callback) => {
+    const result = await controller.getBookByID(call.request, callback);
 
-    controller.getBookByID(call.request, callback);
+    if (result === 'error') {
+      return callback({ 
+        code: grpc.status.STATUS_UNKNOWN,
+        message: 'There was an error reading from the database',
+      });
+    }
+    callback(
+      null,
+      {
+        title: result.title,
+        author: result.author,
+        numberOfPages: result.numberOfPages,
+        publisher: result.publisher,
+        bookId: result.bookId,
+      }
+    );
   },
 });
 

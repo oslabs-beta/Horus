@@ -1,12 +1,12 @@
-Method Name : CreateBook
-ResponseTime : 57.274915
-ID : 083419b6-f66d-4dfb-a41e-147a435fd4f9
+Method Name : GetBooks
+ResponseTime : 371.389674
+ID : 7431edbc-322b-436d-885e-a643962cd9dd
 
 Method Name : CreateBook
-ResponseTime : 56.782607
-ID : 5628afb9-d26a-42b3-b854-b068c17deaf4
+ResponseTime : 388.671699
+ID : 61ab28d6-af55-40d9-938a-cd9c0a557ff4
 
-Method Name : DeleteBook
-ResponseTime : 59.962562
-ID : 7d7bb544-1f68-4133-918d-8c6879292255
+Method Name : GetBooks
+ResponseTime : 63.719453
+ID : 11f9bf0e-6e34-4c42-91ab-925052fe822d
 
