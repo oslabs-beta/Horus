@@ -38,6 +38,7 @@ bookInitiator.deleteBook = (req, res, next) => {
   const callback = (error, data) => {
     console.log('Data coming back from deleteBook? : ', data)
     if (error) console.log('sorry, there was an error', error)
+    console.log('DATA IN BOOK INITAITOR: ',data)
     return next()
   }
   bookStub.DeleteBook(bookId, callback)

@@ -3,8 +3,6 @@ const customerInitiator = {};
 const customerStub = require("./stubs/customersStub.js");
 const { resolve } = require("path");
 
-console.log('process.env vars', process.env.function);
-
 customerInitiator.createCustomer = (req, res, next) => {
   console.log('Inside of create customer in customerInitiator')
   console.log('REQ INSIDE CUST INITIATOR: ', req)
@@ -36,7 +34,17 @@ customerInitiator.getCustomer = (req, res, next) => {
   customerStub.GetCustomer({custId: 1}, callback)
 }
 
-const custId = {custId: 302};
+customerInitiator.deleteCustomer = (req, res, next) => {
+  console.log('entered deleteCustomer in customer initiator.')
+  console.log('REQ.PARAMS: ', req.params)
+  custId = {custId: req.params.custId}
+  const callback = (error, data) => {
+    console.log('Data coming back from deleteCustomer? : ', data)
+    if (error) console.log('sorry, there was an error', error)
+    return next()
+  }
+  customerStub.DeleteCustomer(custId, callback)
+}
 
 const callback = (error, data) => {
   console.log('call to callback')

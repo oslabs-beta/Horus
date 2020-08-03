@@ -13,6 +13,7 @@ class App extends React.Component{
       profile: '',
     }
     this.deleteBook = this.deleteBook.bind(this)
+    this.deleteCustomer = this.deleteCustomer.bind(this)
     this.handleGetBooks = this.handleGetBooks.bind(this)
     this.handleGetCustomer = this.handleGetCustomer.bind(this)
   }
@@ -35,11 +36,13 @@ class App extends React.Component{
     })
     .then(res => res.json())
     .then(data => {
+      console.log('data :',data)
       this.setState({data: '', profile: data})
     })
   }
 
   deleteBook(e, bookId){
+    e.preventDefault()
     let newBookList = this.state.data.filter(book => book.bookId !== bookId)
     this.setState({data: newBookList})
     fetch(`http://localhost:3000/books/${bookId}`, {
@@ -47,14 +50,23 @@ class App extends React.Component{
     })
   }
 
+  deleteCustomer(e, custId){
+    e.preventDefault()
+    console.log('deleteCustomer in App.jsx clicked!')
+    console.log('custId in App.jsx:', custId)
+    this.setState({profile: ''})
+    fetch(`http://localhost:3000/customers/${custId}`, {
+      method: 'Delete'
+    })
+  }
+
     render(){
-      console.log('STATE IN APP: ', this.state)
         return(
             <div>
               <TopContainer />
               <div className='MainBody'>
                 <LeftContainer handleGetBooks={this.handleGetBooks} handleGetCustomer={this.handleGetCustomer}/>
-                <MainContainer data={this.state.data} profile={this.state.profile} deleteBook={this.deleteBook}/>
+                <MainContainer data={this.state.data} profile={this.state.profile} deleteBook={this.deleteBook} deleteCustomer={this.deleteCustomer} />
               </div>
             </div>
         )

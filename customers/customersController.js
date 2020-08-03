@@ -20,6 +20,7 @@ customersController.createCustomer = (sampleAdd) => {
 
 // controller deletes customer
 customersController.deleteCustomer = (custId) => {
+  console.log('entered delete in customersController. custId: ', custId)
   customersModel.findOneAndDelete({ custId: custId }, (error, result) => {
     if (error) {
       console.log('there was an error writing to the mongo db from the deleteCustomer controller function  :  ', error);
@@ -51,7 +52,6 @@ customersController.getCustomer = (callback, call) => {
         customerObj
       );
     }
-    console.log('book id ', {bookId: result.favBookId})
 
     ht.start('books', call);
     booksStub

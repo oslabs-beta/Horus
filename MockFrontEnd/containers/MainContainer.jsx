@@ -13,10 +13,15 @@ class MainContainer extends React.Component {
             profile: ''
         }
         this.handleDeleteBook = this.handleDeleteBook.bind(this)
+        this.handleDeleteCustomer = this.handleDeleteCustomer.bind(this)
       }
 
       handleDeleteBook(e, bookId){
         this.props.deleteBook(e, bookId)
+      }
+
+      handleDeleteCustomer(e, custId){
+          this.props.deleteCustomer(e, custId)
       }
 
       componentWillReceiveProps(nextProps) {
@@ -31,8 +36,6 @@ class MainContainer extends React.Component {
       }
     
     render(){
-        console.log("PROPS IN MAINCONTAINER: ", this.props)
-        console.log("STATE IN MAINCONTAINER: ", this.state)
         const bookList = this.state.items
         const profile = this.state.profile
         const items = []
@@ -44,7 +47,7 @@ class MainContainer extends React.Component {
           }
         } else if (profile){
             items.push(
-                <CustomerProfile name={profile.name} custId={profile.custId} age={profile.age} address={profile.address} favBook={profile.favBook} />
+                <CustomerProfile name={profile.name} custId={profile.custId} age={profile.age} address={profile.address} favBook={profile.favBook} handleDeleteCustomer={this.handleDeleteCustomer} />
             )
         }
         return(
