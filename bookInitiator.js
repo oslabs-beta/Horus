@@ -38,13 +38,11 @@ bookInitiator.deleteBook = (req, res, next) => {
   const callback = (error, data) => {
     console.log('Data coming back from deleteBook? : ', data)
     if (error) console.log('sorry, there was an error', error)
+    console.log('DATA IN BOOK INITAITOR: ',data)
     return next()
   }
   bookStub.DeleteBook(bookId, callback)
 }
-
-//hard coding id# to test out DeleteBook
-//const bookId = {bookId: req.body.bookId};
 
 const callback = (error, data) => {
   console.log('call to callback')
@@ -58,8 +56,5 @@ const getData = (functionName) => {
   else if (functionName === 'DeleteBook') return bookId;
   else if(functionName === 'GetBookByID') return bookId;
 }
-// function main (functionName) { 
-//   bookStub[functionName](getData(functionName), callback);
-// }
-// main(process.env.function);
+
 module.exports = bookInitiator;
