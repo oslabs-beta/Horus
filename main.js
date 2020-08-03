@@ -67,4 +67,4 @@ function GetCustomer() {
   })  
 }
 
-CreateBook();
+GetCustomer();

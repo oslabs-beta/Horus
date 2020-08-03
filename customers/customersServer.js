@@ -20,7 +20,7 @@ function GetBookIdAsPromise (bookId, server) {
   return new Promise((resolve, reject) => {
     booksStub.GetBookByID(bookId, (error, response) => {
       if (error) resolve('error')
-      booksStub.passDataToServer(server)
+      booksStub.makeHandShakeWithServer(server, 'GetBookByID');
       resolve({book: response});
     })
   })

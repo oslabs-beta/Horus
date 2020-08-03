@@ -2,3 +2,8 @@ Method Name : GetBookByID
 ResponseTime : 46.130778
 ID : 4a9e2ed0-7c59-40c0-bfca-b40b26fdec9c
 
+Method : GetBookByID
+Response Time : 48.549327
+ID : 03c37e55-2073-4103-a2d4-4e6ed2880ed6
+Trace : no additional routes
+

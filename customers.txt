@@ -1,104 +1,29 @@
-Method Name : GetCustomer
-ResponseTime : 468.496912
-ID : 3f571306-d5bd-474b-b63e-15b13b9d8606
-	----------
-	Method Name : GetBookByID
-	ResponseTime : 51.735651
-	ID : b2f1cbd4-6216-4b02-b1f5-f17eb7c8f1ba
+Method : CreateCustomer
+Response Time : 608.32045
+ID : 0389f1d7-dc51-4004-b10c-153646b663b1
+Trace : no additional routes
 
-Method Name : GetCustomer
-ResponseTime : 427.304334
-ID : 890cf1c3-07f1-49f5-b19e-7685f1d64da7
-	----------
-	Method Name : GetBookByID
-	ResponseTime : 53.017083
-	ID : c456e166-ddfc-4291-8ee2-f1bcf7aaefdb
+Method : DeleteCustomer
+Response Time : 62.716186
+ID : deffd1ed-353a-41b5-9ac7-539ff338409d
+Trace : no additional routes
 
-Method Name : GetCustomer
-ResponseTime : 440.496297
-ID : 4ef9d1ca-5662-44b6-9761-8795e8d28d06
-	----------
-	Method Name : GetBookByID
-	ResponseTime : 60.937272
-	ID : b61f536c-38dc-4fcd-94d0-77f06762e2c5
+Method : DeleteCustomer
+Response Time : 372.806135
+ID : bdf81cbf-c89b-4191-bda5-936659065fdc
+Trace : no additional routes
 
-Method Name : GetCustomer
-ResponseTime : 106.15487
-ID : 50b63497-8bf3-488e-8be6-f90c64569c51
-	----------
-	Method Name : GetBookByID
-	ResponseTime : 47.900401
-	ID : cf458835-959a-4e33-8188-7cb624465caf
+Method : CreateCustomer
+Response Time : 65.935649
+ID : 5d3c8cd5-8406-413c-a12a-1b1c61798564
+Trace : no additional routes
 
-Method Name : GetCustomer
-ResponseTime : 428.639576
-ID : f558c03e-4141-4284-b542-c8ada178aa70
-	----------
-	Method Name : GetBookByID
-	ResponseTime : 51.138436
-	ID : 39006197-d9c3-45d3-abd7-c019c2d5e848
-
-Method Name : GetCustomer
-ResponseTime : 426.95417
-ID : e72b0618-0e57-4595-9713-d9b79c0a08d0
-	----------
-	Method Name : GetBookByID
-	ResponseTime : 51.715029
-	ID : 7772e8d8-e836-4742-af0f-39b07206a4ca
-
-Method Name : GetCustomer
-ResponseTime : 422.366465
-ID : b053123f-7f89-4378-937e-6aa68ff234df
-	----------
-	Method Name : GetBookByID
-	ResponseTime : 51.729611
-	ID : cd195206-9063-484d-8a4c-d62f71e3b971
-
-Method Name : GetCustomer
-ResponseTime : 422.333797
-ID : 30096fb1-61cf-4c4d-a2fe-575383cfe90d
-	----------
-	Method Name : GetBookByID
-	ResponseTime : 52.302976
-	ID : 10233fc8-8c8e-463b-970e-fe4ae304292a
-
-Method Name : GetCustomer
-ResponseTime : 418.576572
-ID : 9a81adf9-8d1d-4c2a-9fe5-10bd1c54833b
-	----------
-	Method Name : GetBookByID
-	ResponseTime : 51.035541
-	ID : 02561328-940a-4edb-a372-8d64abe5ac46
-
-Method Name : GetCustomer
-ResponseTime : 107.52076
-ID : e04b3f03-78c7-4d85-bc09-21dc8c244b07
-	----------
-	Method Name : GetBookByID
-	ResponseTime : 49.03737
-	ID : b11c63e6-6399-4bcd-bb5f-bc43c6a34ad2
-
-Method Name : GetCustomer
-ResponseTime : 424.908569
-ID : ad2b8600-42c3-408c-bd0d-dce87f09d42c
-	----------
-	Method Name : GetBookByID
-	ResponseTime : 51.300855
-	ID : e26cddfe-8823-40b8-b8f2-9355256daf77
-
-Method Name : GetCustomer
-ResponseTime : 103.133751
-ID : 1fea7c67-6b8f-47e0-aa81-c3464430af60
-	----------
-	Method Name : GetBookByID
-	ResponseTime : 46.130778
-	ID : 4a9e2ed0-7c59-40c0-bfca-b40b26fdec9c
-
-Method Name : CreateCustomer
-ResponseTime : 372.672745
-ID : 5b5c303c-aebb-4beb-b9bc-312aaf167d81
-
-Method Name : CreateCustomer
-ResponseTime : 66.782226
-ID : a1c09d22-9746-4790-92e3-684a66b3c9ab
+Method : GetCustomer
+Response Time : 116.434076
+ID : 790e95e9-c1e5-480d-b37b-f1134748e04a
+Trace 
+	Method : GetBookByID
+	Response Time : 48.549327
+	ID : 03c37e55-2073-4103-a2d4-4e6ed2880ed6
+	Trace : no additional routes
 
