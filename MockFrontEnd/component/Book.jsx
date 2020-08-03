@@ -12,7 +12,6 @@ class Book extends React.Component {
   }
   
   handleDeleteBook(e){
-    //e.preventDefault();
     this.props.handleDeleteBook(e, this.props.bookId)
   }
 
