@@ -1,29 +1,44 @@
-Method : CreateCustomer
-Response Time : 608.32045
-ID : 0389f1d7-dc51-4004-b10c-153646b663b1
-Trace : no additional routes
-
-Method : DeleteCustomer
-Response Time : 62.716186
-ID : deffd1ed-353a-41b5-9ac7-539ff338409d
-Trace : no additional routes
-
-Method : DeleteCustomer
-Response Time : 372.806135
-ID : bdf81cbf-c89b-4191-bda5-936659065fdc
-Trace : no additional routes
-
-Method : CreateCustomer
-Response Time : 65.935649
-ID : 5d3c8cd5-8406-413c-a12a-1b1c61798564
-Trace : no additional routes
-
+----------------------------------------------------------------------------------------------------
 Method : GetCustomer
-Response Time : 116.434076
-ID : 790e95e9-c1e5-480d-b37b-f1134748e04a
-Trace 
+Response Time : 114.258506
+ID : 099d2a8b-7093-40a7-821f-39bc8bf0af8e
+Trace : 
+	--------------------------------------------------
 	Method : GetBookByID
-	Response Time : 48.549327
-	ID : 03c37e55-2073-4103-a2d4-4e6ed2880ed6
+	Response Time : 46.41557
+	ID : 5b0bd728-ccea-444f-b8f4-1c7056ec1523
 	Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetCustomer
+Response Time : 108.514725
+ID : cefafd39-72a4-4be1-9499-df6b25056e96
+Trace : 
+	--------------------------------------------------
+	Method : GetBookByID
+	Response Time : 56.508618
+	ID : dab5fa42-96cf-4665-a537-cba528953e10
+	Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetCustomer
+Response Time : 98.121734
+ID : ee62665d-d83d-44b6-b94b-2d57cf2820d1
+Trace : 
+	--------------------------------------------------
+	Method : GetBookByID
+	Response Time : 47.1719
+	ID : 6592cee2-1f14-4fbc-8226-d0caee1c1bc5
+	Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetCustomer
+Response Time : 180.286768
+ID : 475e081d-42f1-4eda-a4db-51aac9608388
+Trace : 
+		--------------------------------------------------
+		Method : GetBookByID
+		Response Time : 45.160759
+		ID : 651ce119-d766-41fa-b560-3b0355a5bd89
+		Trace : no additional routes
 

@@ -75,22 +75,27 @@
 const fs = require('fs');
 const { v4: uuidv4 } = require('uuid');
 
-function writeToFile(file, data, tabs=0, line) { 
-  let tabsStr = '\t'.repeat(tabs);
-  let str = `${tabsStr}Method : ${data.methodName}\n${tabsStr}Response Time : ${data.responseTime}\n${tabsStr}ID : ${data.id}\n`
+function appendToFileWrapper(file, str) {
   fs.appendFile(file, str, (error) => {
-    if (error) return console.log(`ERROR with fs, could not write ${file} file `, error);
-    else if (data.trace === 'none') {
-      fs.appendFile(file, `${tabsStr}Trace : no additional routes\n\n`, (error) => {
-        if (error) console.log(`ERROR with fs, could not write ${file} file `, error);
-      });
-    } else { 
-      fs.appendFile(file, `${tabsStr}Trace \n`, (error) => {
-        if (error) console.log(`ERROR with fs, could not write ${file} file `, error);
-      }); 
-      return writeToFile(file, data.trace, tabs + 1);
-    }
-  });
+    if (error) console.log(`ERROR with fs, could not write ${file} file `, error);
+  }); 
+}
+
+function writeToFile(file, data, tabs=0, first=true) { 
+  console.log('data ', data)
+  let str = '';
+  let tabsStr = '\t'.repeat(tabs);
+  if (first) str += '-'.repeat(100) + '\n';
+  str += `${tabsStr}Method : ${data.methodName}\n${tabsStr}Response Time : ${data.responseTime}\n${tabsStr}ID : ${data.id}\n`
+  if (data.trace === 'none') {
+    str += `${tabsStr}Trace : no additional routes\n\n`;
+    appendToFileWrapper(file, str);
+  } else {
+    str += `${tabsStr}Trace : \n`;
+    str += tabsStr + '\t\t' + '-'.repeat(50) + '\n';
+    appendToFileWrapper(file, str);
+    writeToFile(file, data.trace, tabs + 2, false);
+  }
 };
 
 function makeMethods(clientWrapper, client, metadata, names, file, writeToFile) {
