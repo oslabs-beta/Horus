@@ -29,6 +29,7 @@ function GetBookIdAsPromise (bookId, server) {
 // The Horus Server Wrapper "wraps" each server method passed in
 // Replace server.addService({ .. methods}) with Const ServerWrapper = new HorusServerWrapper (serverObject, service, {..methods})
 // Your preexisting methods can remain entirely the same
+
 const ServerWrapper = new HorusServerWrapper(server, customersProto.CustomersService.service, {
   CreateCustomer: async (call, callback) => {
     const result = await controller.createCustomer(call.request);
