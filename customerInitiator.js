@@ -14,11 +14,6 @@ customerInitiator.createCustomer = (req, res, next) => {
     age: req.body.age,
     address: req.body.address,
     favBookId: req.body.favBookId
-    // custId: 501,
-    // name: 'Homer Simpson',
-    // age: 36,
-    // address: '742 Evergreen Terr',
-    // favBookId: 200
   };
 
   const callback = (error, data) => {
@@ -27,20 +22,19 @@ customerInitiator.createCustomer = (req, res, next) => {
     res.locals.customers = data
     if (error) console.log('sorry, there was an error', error)
     return next()
-    // console.log('logging data.names ', data.names)
-    // console.log('logging favorite books ', data.names[0].favBook)
   }
   customerStub.CreateCustomer(customer, callback)
 }
 
-//temporarily hardcoding a test customer until we can update customer info dynamically.
-// const customer = {
-//   custId: 302,
-//   name: 'DOG',
-//   age: 100,
-//   address: 'Nowhereville',
-//   favBookId: 200
-// };
+customerInitiator.getCustomer = (req, res, next) => {
+  const callback = (error, data) => {
+    console.log('Getting Customer from customer initiator')
+    res.locals.customers = data
+    if (error) console.log('sorry, there was in error: ', error)
+    return next()
+  }
+  customerStub.GetCustomer({custId: 1}, callback)
+}
 
 const custId = {custId: 302};
 
@@ -58,9 +52,4 @@ const getData = (functionName) => {
   else if (functionName === 'DeleteCustomer') return custId;
 }
 
-// function main (functionName) { 
-//   customerStub[functionName](getData(functionName), callback);
-// }
-
-// main(process.env.function);
 module.exports = customerInitiator;
