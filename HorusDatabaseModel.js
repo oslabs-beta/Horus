@@ -1,9 +1,4 @@
 
-
-
-
-
-
 function makeMongooseConnection(mongoURL) {
 
   const mongoose = require('mongoose');
@@ -25,6 +20,8 @@ function makeMongooseConnection(mongoURL) {
 
 }
 
+function log(message) {
+  console.log("logging message ", message);
+}
 
-
-module.exports = makeMongooseConnection;
+module.exports = log;

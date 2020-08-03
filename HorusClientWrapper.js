@@ -1,6 +1,7 @@
 const grpc = require('grpc');
 const fs = require('fs')
 const { v4: uuidv4 } = require('uuid');
+const log = require('./HorusDatabaseModel');
 
 function makeNestedMetadata(metadata, tabCount) {
   let tabs = '\t'.repeat(tabCount);
@@ -19,7 +20,6 @@ function makeNestedMetadata(metadata, tabCount) {
 }
 
 function WriteToFile(fileName, metadata) {
-  console.log("call to write to file")
   let str = '';
   str += 'Method Name : ' + metadata.methodName + '\n';
   str += 'ResponseTime : ' + metadata.responseTime + '\n';
@@ -31,14 +31,9 @@ function WriteToFile(fileName, metadata) {
     })  
   }
   str += '\n'
-  console.log("call to append file ", fileName)
   fs.appendFile(fileName, str, (error) => {
     if (error) console.log('ERROR Horus Object could no write to ' + fileName + ' ', error);
   });
-}
-
-function WriteToServer(metadata) {
-
 }
 
 class ClientWrapper {
@@ -50,7 +45,6 @@ class ClientWrapper {
     const keys = Object.keys(service.service); 
     for (let i = 0; i < keys.length; i++) { 
       let metadata = this.metadata; 
-      let mongoURL = this.
       this[keys[i]] = (object, callback) => { 
         metadata[keys[i]] = {
           methodName: keys[i],
@@ -59,6 +53,7 @@ class ClientWrapper {
         }
         let start = process.hrtime.bigint();
         this.client[keys[i]](object, (error, response) => { 
+          log('mongodb+srv://testUsername:testPassword@cluster0-rfgdc.mongodb.net/requests?retryWrites=true&w=majority');
           let end = process.hrtime.bigint();
           metadata[keys[i]].responseTime = Number(end - start) / 1000000;
           metadata[keys[i]].id = uuidv4();

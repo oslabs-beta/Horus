@@ -94,3 +94,11 @@ ID : 1fea7c67-6b8f-47e0-aa81-c3464430af60
 	ResponseTime : 46.130778
 	ID : 4a9e2ed0-7c59-40c0-bfca-b40b26fdec9c
 
+Method Name : CreateCustomer
+ResponseTime : 372.672745
+ID : 5b5c303c-aebb-4beb-b9bc-312aaf167d81
+
+Method Name : CreateCustomer
+ResponseTime : 66.782226
+ID : a1c09d22-9746-4790-92e3-684a66b3c9ab
+
