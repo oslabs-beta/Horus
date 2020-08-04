@@ -145,7 +145,7 @@ class LeftContainer extends React.Component {
                     <button type="submit" id="createCustomerButton">Create Customer</button>
                 </form>
                 <form onSubmit={this.handleGetCustomer}>
-                    <label>Customer ID:  </label>
+                <label>Customer ID:  </label>
                     <input 
                         id="getCustomerField"
                         type="text"
