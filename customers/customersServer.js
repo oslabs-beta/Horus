@@ -1,92 +1,102 @@
-// const PROTO_PATH = "../protos/customers.proto";
-const path = require('path');
-const PROTO_PATH = path.join(__dirname, '../protos/customers.proto');
+const path = require("path");
 const grpc = require("grpc");
 const protoLoader = require("@grpc/proto-loader");
-const express = require("express");
 const controller = require("./customersController.js");
-const horusTracer = require("../horus/horus.js");
-const app = express();
+const HorusServerWrapper = require("../HorusServerWrapper.js");
+const booksStub = require(path.join(__dirname, "../stubs/booksStub.js"));
 
-const hT = new horusTracer("customers");
-
-app.use(express.json());
-
-//packageDefinition loads the protofile and defines some settings of how we want our data to load.
+const PROTO_PATH = path.join(__dirname, "../protos/customers.proto");
 const packageDefinition = protoLoader.loadSync(PROTO_PATH, {
   keepCase: true,
   longs: String,
   enums: String,
   arrays: true,
 });
-
-/*
-Load a gRPC package definition as a gRPC object hierarchy
-
-@param packageDef — The package definition object
-
-@return — The resulting gRPC object
-*/
 const customersProto = grpc.loadPackageDefinition(packageDefinition);
-
-//uuid generates a unique identifier
-//use this to generate id's for items in the database
-const { v4: uuidv4 } = require("uuid");
 
 const server = new grpc.Server();
 
-server.addService(customersProto.CustomersService.service, {
-  CreateCustomer: (call, callback) => {
-    console.log("call to CreateCustomer");
-
-    //sample will take the call information from the client(stub)
-    const sampleAdd = {
-      custId: call.request.custId,
-      name: call.request.name,
-      age: call.request.age,
-      address: call.request.address,
-      favBookId: call.request.favBookId,
-    };
-
-    console.log('data in create customer ', sampleAdd)
-
-    //this actually sends data to customersController.
-    controller.createCustomer(sampleAdd);
-
-    let meta = new grpc.Metadata();
-    meta.add('response', 'none');
-    call.sendMetadata(meta);
-
-    callback(null, {
-      custId: `completed for ${call.request.custId}`,
-      name: `completed for ${call.request.name}`,
-      age: `completed for ${call.request.age}`,
-      address: `completed for ${call.request.address}`,
-      favBookId: `completed for ${call.request.favBookId}`,
+function GetBookIdAsPromise(bookId, server) {
+  return new Promise((resolve, reject) => {
+    booksStub.GetBookByID(bookId, (error, response) => {
+      if (error) resolve("error");
+      booksStub.makeHandShakeWithServer(server, "GetBookByID");
+      resolve({ book: response });
     });
-  },
-  GetCustomer: (call, callback) => {
-    console.log("call to GetCustomer");
-    controller.getCustomer(callback, call);
-  },
-  DeleteCustomer: (call, callback) => {
-    console.log("call to DeleteCustomer");
+  });
+}
 
-    let meta = new grpc.Metadata();
-    meta.add('response', 'none');
-    call.sendMetadata(meta);
+// The Horus Server Wrapper "wraps" each server method passed in
+// Replace server.addService({ .. methods}) with Const ServerWrapper = new HorusServerWrapper (serverObject, service, {..methods})
+// Your preexisting methods can remain entirely the same
 
-    //logic to delete customer from Database
-    controller.deleteCustomer(call.request.custId);
+const ServerWrapper = new HorusServerWrapper(
+  server,
+  customersProto.CustomersService.service,
+  {
+    CreateCustomer: async (call, callback) => {
+      const result = await controller.createCustomer(call.request);
 
-    callback(null, {});
-  },
-}); 
+      if (result === "error") {
+        return callback({
+          code: grpc.status.STATUS_UNKNOWN,
+          message: "There was an error writing to the database",
+        });
+      }
+      callback(null, {
+        custId: result.custId,
+        name: result.name,
+        age: result.age,
+        address: result.address,
+        favBookId: result.favBookId,
+      });
+    },
+    DeleteCustomer: async (call, callback) => {
+      const result = await controller.deleteCustomer(call.request.custId);
 
+      if (result === "error") {
+        return callback({
+          code: grpc.status.STATUS_UNKNOWN,
+          message: "There was an error deleting from the database",
+        });
+      }
+      callback(null, {});
+    },
+    GetCustomer: async (call, callback) => {
+      const customer = await controller.getCustomer(call.request);
+      if (customer === "error") {
+        return callback({
+          code: grpc.status.STATUS_UNKNOWN,
+          message: "There was an error querying the database",
+        });
+      }
 
-server.bind("127.0.0.1:6000", grpc.ServerCredentials.createInsecure());
-console.log("customerServer.js running at http://127.0.0.1:6000");
+      const responseFromGetBookById = await GetBookIdAsPromise(
+        { bookId: customer.favBookId },
+        ServerWrapper
+      );
 
+      if (responseFromGetBookById === "error") {
+        return callback({
+          code: grpc.status.STATUS_UNKNOWN,
+          message: "There was an error making an intraservice request to books",
+        });
+      }
+
+      const customerWithFavBook = {};
+      customerWithFavBook.custId = customer.custId;
+      customerWithFavBook.name = customer.name;
+      customerWithFavBook.age = customer.age;
+      customerWithFavBook.address = customer.address;
+      customerWithFavBook.favBook = responseFromGetBookById.book;
+
+      callback(null, customerWithFavBook);
+    },
+  }
+);
+
+server.bind("127.0.0.1:40043", grpc.ServerCredentials.createInsecure());
+console.log("customerServer.js running at http://127.0.0.1:40043");
 console.log("call from customer server");
 
 server.start();

@@ -17,16 +17,22 @@
   "dependencies": {
     "@grpc/proto-loader": "^0.5.5",
     "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "eslint": "^7.5.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0",
     "express": "^4.17.1",
     "grpc": "^1.24.3",
     "grpc-web": "^1.2.0",
+    "mathjs": "^7.1.0",
+    "mongoose": "^5.9.27",
     "neo4j-driver": "^4.1.1",
-    "nodemon": "^2.0.4",
     "path": "^0.12.7",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "request": "^2.88.2",
-    "uuid": "^8.2.0"
+    "uuid": "^8.2.0",
+    "uuidv4": "^6.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.10.5",
@@ -35,6 +41,7 @@
     "babel-loader": "^8.1.0",
     "css-loader": "^3.6.0",
     "html-webpack-plugin": "^4.3.0",
+    "nodemon": "^2.0.4",
     "sass": "^1.26.10",
     "sass-loader": "^9.0.2",
     "style-loader": "^1.2.1",

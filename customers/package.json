@@ -16,8 +16,10 @@
     "grpc": "^1.24.3",
     "grpc-caller": "^0.13.0",
     "mongoose": "^5.8.1",
-    "nodemon": "^2.0.4",
     "path": "^0.12.7",
     "uuid": "^8.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
   }
 }

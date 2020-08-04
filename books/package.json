@@ -14,7 +14,9 @@
     "express": "^4.17.1",
     "grpc": "^1.24.3",
     "mongoose": "^5.8.1",
-    "nodemon": "^2.0.4",
     "uuid": "^8.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
   }
 }

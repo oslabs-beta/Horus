@@ -1,65 +1,31 @@
 const customersModel = require("./customersModel.js");
 const customersController = {};
 const path = require('path');
-const booksStub = require(path.join(__dirname, "../stubs/booksStub.js"));
-const grpc = require('grpc')
-// const booksStub = require("../stubs/booksStub.js");
 
-const horusTracer = require("../horus/horus.js");
-
-let ht = new horusTracer("customers");
-
-// Controller create customer
-customersController.createCustomer = (sampleAdd) => {
-  customersModel.create(sampleAdd, (error, result) => {
-    if (error) console.log('there was an error writing to the mongo db from the createCustomer controller function  :  ', error);
-  });
+customersController.createCustomer =  async (customer) => {
+  return await customersModel.create(customer)
+    .then((response) => response)
+    .catch((error) => {
+      console.log('ERROR from createCustomer controller : ', error);
+      return 'error';
+    })
 };
 
-//**********/may have to add id for customer in protofile
-
-// controller deletes customer
-customersController.deleteCustomer = (custId) => {
-  console.log('entered delete in customersController. custId: ', custId)
-  customersModel.findOneAndDelete({ custId: custId }, (error, result) => {
-    if (error) {
-      console.log('there was an error writing to the mongo db from the deleteCustomer controller function  :  ', error);
-    }
-  });
+customersController.deleteCustomer = async (custId) => {
+  return await customersModel.findOneAndDelete(custId)
+    .then((response) => response)
+    .catch((error) => {
+      console.log('ERROR from deleteCustomer controller : ', error);
+      return 'error';
+    })
 };
 
-// controller gets all customers in the book db
-customersController.getCustomer = (callback, call) => {
-
-  customersModel.findOne(call.request, (err, result) => {
-
-    //console.log('result ', result)
-
-    function gettingBooks(error, data) {
-      ht.end();
-      ht.writeToFile();
-      if (error) console.log("sorry, there was an error", error);      
-
-      const customerObj = {};
-      customerObj.custId = result.custId;
-      customerObj.name = result.name;
-      customerObj.age = result.age;
-      customerObj.address = result.address;
-      customerObj.favBook = data;
-
-      callback(
-        null, 
-        customerObj
-      );
-    }
-
-    ht.start('books', call);
-    booksStub
-      .GetBookByID({ bookId: result.favBookId }, gettingBooks)
-      .on("metadata", (metadata) => {
-        ht.grabTrace(metadata.get('response')[0])
-      });
-  });
-};
+customersController.getCustomer = async (custId) => {
+  return await customersModel.findOne(custId)
+    .catch((error) => {
+      console.log('ERROR from getCustomer controller : ', error)
+      return 'error';
+    })
+}
 
 module.exports = customersController;
