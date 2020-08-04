@@ -1,8 +1,9 @@
 const path = require('path');
-const PROTO_PATH = path.join(__dirname, "../protos/customers.proto");
-
 const grpc = require("grpc");
 const protoLoader = require("@grpc/proto-loader");
+
+const HorusClientWrapper = require('../HorusClientWrapper');
+const PROTO_PATH = path.join(__dirname, "../protos/customers.proto");
 
 const packageDefinition = protoLoader.loadSync(PROTO_PATH, {
     keepCase: true,
@@ -13,11 +14,15 @@ const packageDefinition = protoLoader.loadSync(PROTO_PATH, {
 
 const CustomersService = grpc.loadPackageDefinition(packageDefinition).CustomersService;
 
-// potential issues to fix 1) making localhost port dynamic 2) docker containerization may cause conflict
-
 const client = new CustomersService (
-  "localhost:6000",
+  "localhost:40043",
   grpc.credentials.createInsecure()
 );
 
-module.exports = client;
+// The Client Wrapper "wraps" all the methods within the client object
+// The first parameter is the actual gRPC client object, the second is the service, and the third is the output file
+// Your invocations of the client at whereever you export this module to can remain entirely the same
+const ClientWrapper = new HorusClientWrapper(client, CustomersService, 'customers.txt');
+
+// Export the Client Wrapper rather than the server object
+module.exports = ClientWrapper;

@@ -1,0 +1,53 @@
+----------------------------------------------------------------------------------------------------
+Method : CreateCustomer
+Response Time : 292.854
+ID : 9b4a8a94-ac03-475e-9ab4-736c0db61d99
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : CreateCustomer
+Response Time : 56.019
+ID : 3d62f815-2283-4080-b8a0-d34bf98d7820
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : CreateCustomer
+Response Time : 59.343
+ID : 9dad06cd-96dc-4f56-9040-aa4cd27d56ab
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : CreateCustomer
+Response Time : 58.622
+ID : c8d0a970-59eb-471d-a68a-6c19b1036d8e
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : DeleteCustomer
+Response Time : 297.555
+ID : d386d58a-e11f-4b2d-82c7-41146391e4f4
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : DeleteCustomer
+Response Time : 48.584
+ID : 6c96b715-de12-4701-9844-eee4d1d4ecc8
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : DeleteCustomer
+Response Time : 53.057
+ID : 3dd5dfc5-535e-4f0a-9bb4-2067f311f6fc
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetCustomer
+Response Time : 657.402
+ID : 9f1aeeea-0db1-4c53-88fd-bb94d2fd5a03
+Trace : 
+		--------------------------------------------------
+		Method : GetBookByID
+		Response Time : 346.207
+		ID : f8a5a246-79f0-4b6a-985e-c74170775c39
+		Trace : no additional routes
+

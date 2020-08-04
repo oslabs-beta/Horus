@@ -1,12 +1,9 @@
-// const PROTO_PATH = "../protos/books.proto";
-const path = require('path');
-const PROTO_PATH = path.join(__dirname, '../protos/books.proto');
+const path = require("path");
 const grpc = require("grpc");
 const protoLoader = require("@grpc/proto-loader");
-const express = require("express");
 const controller = require("./booksController.js");
-const app = express();
-app.use(express.json());
+const HorusServerWrapper = require("../HorusServerWrapper.js");
+const PROTO_PATH = path.join(__dirname, "../protos/books.proto");
 
 const packageDefinition = protoLoader.loadSync(PROTO_PATH, {
   keepCase: true,
@@ -17,79 +14,69 @@ const packageDefinition = protoLoader.loadSync(PROTO_PATH, {
 
 const booksProto = grpc.loadPackageDefinition(packageDefinition);
 
-const { v4: uuidv4 } = require("uuid");
-
 const server = new grpc.Server();
 
-server.addService(booksProto.BooksService.service, {
-  CreateBook: (call, callback) => {
-    console.log("call to CreateBook");
+// The Horus Server Wrapper "wraps" each server method passed in
+// Replace server.addService({ .. methods}) with Const ServerWrapper = new HorusServerWrapper (serverObject, service, {..methods})
+// Your preexisting methods can remain entirely the same
+const ServerWrapper = new HorusServerWrapper(
+  server,
+  booksProto.BooksService.service,
+  {
+    CreateBook: async (call, callback) => {
+      const result = await controller.createBook(call.request);
 
-    //sample will take the call information from the client(stub)
-    const book = {
-      title: call.request.title,
-      author: call.request.author,
-      numberOfPages: call.request.numberOfPages,
-      publisher: call.request.publisher,
-      bookId: call.request.bookId,
-    };
- 
-    controller.createBook(book);
-
-    let meta = new grpc.Metadata();
-    meta.add("response", "none");
-    call.sendMetadata(meta);
-
-    callback(
-      null,
-      //bookmodel.create
-      {
-        title: `completed for: ${call.request.title}`,
-        author: `completed for: ${call.request.author}`,
-        numberOfPages: `completed for: ${call.request.numberOfPages}`,
-        publisher: `completed for: ${call.request.publisher}`,
-        bookId: `completed for: ${call.request.bookId}`,
+      if (result === "error") {
+        return callback({
+          code: grpc.status.STATUS_UNKNOWN,
+          message: "There was an error writing to the database",
+        });
       }
-    );
-  },
-  GetBooks: (call, callback) => {
-    console.log("call to GetBooks");
-    // read from database
-    let meta = new grpc.Metadata();
-    meta.add('response', 'none');
-    call.sendMetadata(meta);
 
-    controller.getBooks(callback);
-  },
-  GetBookByID: (call, callback) => {
-    console.log("call to GetBookByID");
-    
-    // let sampleID = {bookId: call.request.bookId};
+      callback(null, {
+        title: result.title,
+        author: result.author,
+        numberOfPages: result.numberOfPages,
+        publisher: result.publisher,
+        bookId: result.bookId,
+      });
+    },
+    DeleteBook: async (call, callback) => {
+      const result = await controller.deleteBook(call.request);
 
-    let meta = new grpc.Metadata();
-    meta.add('response', 'none');
-    call.sendMetadata(meta);
+      if (result === "error") {
+        return callback({
+          code: grpc.status.STATUS_UNKNOWN,
+          message: "There was an error deleting from the database",
+        });
+      }
 
-    controller.getBookByID(call.request, callback);
-  },
-  DeleteBook: (call, callback) => {
-    console.log('call to DeleteBook in booksServer')
-    //sample will take the call information from the client(stub)
-    const bookID = {
-      bookId: call.request.bookId,
-    };
-    console.log('BOOK ID IN BOOKSSERVER: ', call.request.bookId)
-    //this actually sends data to booksController.
-    controller.deleteBook(bookID);
+      callback(null, {});
+    },
+    GetBooks: async (call, callback) => {
+      const result = await controller.getBooks();
 
-    let meta = new grpc.Metadata();
-    meta.add('response', 'none');
-    call.sendMetadata(meta);
+      callback(null, { books: result });
+    },
+    GetBookByID: async (call, callback) => {
+      const result = await controller.getBookByID(call.request, callback);
 
-    // delete from database
-    callback(null, { message: "DELETED" });
-  },
-});
+      if (result === "error") {
+        return callback({
+          code: grpc.status.STATUS_UNKNOWN,
+          message: "There was an error reading from the database",
+        });
+      }
+      callback(null, {
+        title: result.title,
+        author: result.author,
+        numberOfPages: result.numberOfPages,
+        publisher: result.publisher,
+        bookId: result.bookId,
+      });
+    },
+  }
+);
 
 server.bind("127.0.0.1:30043", grpc.ServerCredentials.createInsecure());
 console.log("booksServer.js running at http://127.0.0.1:30043");
