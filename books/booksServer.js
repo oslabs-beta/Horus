@@ -60,7 +60,6 @@ const ServerWrapper = new HorusServerWrapper(
     },
     GetBookByID: async (call, callback) => {
       const result = await controller.getBookByID(call.request, callback);
-
       if (result === "error") {
         return callback({
           code: grpc.status.STATUS_UNKNOWN,

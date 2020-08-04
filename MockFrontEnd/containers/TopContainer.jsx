@@ -6,7 +6,7 @@ class TopContainer extends React.Component {
     render(){
         return(
             <div className='TopContainer'>
-                Hello World!
+                WELCOME TO NILE BOOK STORE!
             </div>
         )
     }

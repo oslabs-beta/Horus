@@ -14,6 +14,7 @@ class CustomerProfile extends React.Component {
   }
  
     render () {
+      console.log("props in customerprofile: ", this.props)
     return <div className="custProfile">
             <h4>{this.props.name}</h4>
             <ul className="custInfo">

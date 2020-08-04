@@ -52,8 +52,6 @@ class App extends React.Component{
 
   deleteCustomer(e, custId){
     e.preventDefault()
-    console.log('deleteCustomer in App.jsx clicked!')
-    console.log('custId in App.jsx:', custId)
     this.setState({profile: ''})
     fetch(`http://localhost:3000/customers/${custId}`, {
       method: 'Delete'

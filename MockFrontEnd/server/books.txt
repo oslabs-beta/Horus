@@ -280,3 +280,15 @@ Response Time : 25.960
 ID : 148e4a72-bc26-4c06-b8cd-e1c194aed0ab
 Trace : no additional routes
 
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 30.165
+ID : 11743645-3550-4137-82a7-b0e15e793a17
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 25.459
+ID : d412146a-a79a-4098-8b26-f51ad07ce513
+Trace : no additional routes
+

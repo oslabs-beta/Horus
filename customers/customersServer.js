@@ -90,7 +90,7 @@ const ServerWrapper = new HorusServerWrapper(
       customerWithFavBook.age = customer.age;
       customerWithFavBook.address = customer.address;
       customerWithFavBook.favBook = responseFromGetBookById.book;
-
+      console.log("customerWithFavBook.favBook in customersserver: ", customerWithFavBook.favBook)
       callback(null, customerWithFavBook);
     },
   }

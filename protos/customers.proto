@@ -27,7 +27,7 @@ message Book {
     string author = 2;
     int32 numberOfPages = 3;
     string publisher = 4;
-    int32 id = 5;
+    int32 bookId = 5;
   }
 
 message CustomerRes {

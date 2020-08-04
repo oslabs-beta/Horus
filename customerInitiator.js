@@ -29,6 +29,7 @@ customerInitiator.getCustomer = (req, res, next) => {
   console.log('req.params: ', req.params)
   const callback = (error, data) => {
     console.log('Getting Customer from customer initiator')
+    console.log('data in customer initiator: ', data)
     res.locals.customers = data
     if (error) console.log('sorry, there was in error: ', error)
     return next()
