@@ -97,3 +97,99 @@ Response Time : 45.160759
 ID : 651ce119-d766-41fa-b560-3b0355a5bd89
 Trace : no additional routes
 
+----------------------------------------------------------------------------------------------------
+Method : GetBookByID
+Response Time : 33.325
+ID : c9dd5b10-127e-4093-afaf-9c1468b8d122
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBookByID
+Response Time : 28.031
+ID : 74270512-bedb-46ee-8457-b089a71a6857
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBookByID
+Response Time : 20.001
+ID : bf39060c-cce4-4e3f-b231-e6d15b42b00c
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBookByID
+Response Time : 22.129
+ID : febe79ac-0866-4bba-a1a2-b4b024ddffaf
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBookByID
+Response Time : 24.869
+ID : 7e264b74-f1e2-4629-9c0f-6b9645cee070
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBookByID
+Response Time : 27.187
+ID : 3a9b6c92-0f4b-4b67-b166-054e34497f58
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBookByID
+Response Time : 20.832
+ID : 2fa5bbd3-73db-48f5-a8e3-4ba484d92d05
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBookByID
+Response Time : 29.122
+ID : 776623dc-9892-4185-ac0b-5761b001ebb9
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBookByID
+Response Time : 37.692
+ID : a760dbc5-2686-41a6-a998-b3625a88c60a
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBookByID
+Response Time : 21.263
+ID : ef06e4d7-6a45-42ba-a0de-8dab4b145103
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBookByID
+Response Time : 18.929
+ID : 25c5d6cd-afc8-46fc-8b88-6557562ce570
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBookByID
+Response Time : 22.237
+ID : 98f10452-6781-4e41-825e-76ff92ac7bc6
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBookByID
+Response Time : 31.412
+ID : 4cc0efd5-a29e-4384-b3ab-39759ed3115f
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBookByID
+Response Time : 160.997
+ID : e06a5147-77b6-4e06-84cd-54de73894942
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBookByID
+Response Time : 151.906
+ID : bcc16e46-5d52-44e2-8be3-dfde7fc76fde
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBookByID
+Response Time : 22.682
+ID : e90aa533-e8d8-4ecc-8193-7a112cf28b94
+Trace : no additional routes
+

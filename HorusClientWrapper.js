@@ -29,6 +29,7 @@ function writeToFile(file, data, tabs = 0, first = true) {
   }
 }
 
+// metadata[name].trace... -> {}
 // perform all operations/ checkers independently!
 function checkTime(data) {
   const query = horusModel.find({ methodName: `${data.methodName}` });
@@ -62,9 +63,9 @@ function checkTime(data) {
         slackAlert(data.methodName, data.responseTime, avg, stDev);
       }
       // save trace to horus DB (maybe only acceptable traces to not mess up with normal distribution?)
-      // saveTrace(data);
     }
   });
+  saveTrace(data);
   // return ...
 }
 
@@ -108,12 +109,14 @@ function slackAlert(methodName, time, avgTime, stDev) {
     },
   });
 }
+// .trace -> {}
 function saveTrace(data) {
   const obj = {
     requestID: data.id,
     methodName: data.methodName,
     responseTime: data.responseTime,
     trace: data.trace,
+    // trace: JSON.stringify(data.trace),
     // serviceName: a.serviceName,
     // targetService: a.targetService,
     // timestamp: req.timeCompleted,

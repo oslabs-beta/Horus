@@ -1,5 +1,5 @@
 const express = require('express');
-const customerInitiator = require('/Users/PolumboStudio/Documents/GitHub/mockAppWithHorus/customerInitiator.js')
+const customerInitiator = require('../../../customerInitiator.js')
 const customersRouter = express.Router();
 
 console.log('entering customersRouter')

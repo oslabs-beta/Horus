@@ -46,18 +46,18 @@ customerInitiator.deleteCustomer = (req, res, next) => {
   customerStub.DeleteCustomer(custId, callback)
 }
 
-const callback = (error, data) => {
-  console.log('call to callback')
-  if (error) console.log('sorry, there was an error', error)
+// const callback = (error, data) => {
+//   console.log('call to callback')
+//   if (error) console.log('sorry, there was an error', error)
 
-  console.log('logging data.names ', data.names)
-  console.log('logging favorite books ', data.names[0].favBook)
-}
+//   console.log('logging data.names ', data.names)
+//   console.log('logging favorite books ', data.names[0].favBook)
+// }
 
-const getData = (functionName) => {
-  if (functionName === 'CreateCustomer') return customer;
-  else if (functionName === 'GetCustomers') return {};
-  else if (functionName === 'DeleteCustomer') return custId;
-}
+// const getData = (functionName) => {
+//   if (functionName === 'CreateCustomer') return customer;
+//   else if (functionName === 'GetCustomers') return {};
+//   else if (functionName === 'DeleteCustomer') return custId;
+// }
 
 module.exports = customerInitiator;
