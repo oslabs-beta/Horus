@@ -21,7 +21,6 @@ class LeftContainer extends React.Component {
     }
 
        handleGetCustomer(e){
-           console.log('state in left container: ', this.state.getCustomerField)
         this.props.handleGetCustomer(e, this.state.getCustomerField)
         this.setState({getCustomerField: ''})
        }
@@ -49,9 +48,7 @@ class LeftContainer extends React.Component {
                })
            })
            .then(res => res.json())
-           .then(data => {
-               console.log('Data retrieved: ', data)
-           })
+
            this.setState({
                custId: '',
                name: '',
@@ -75,9 +72,7 @@ class LeftContainer extends React.Component {
                })
            })
            .then(res => res.json())
-           .then(data => {
-               console.log('Book Created: ', data)
-           })
+           
            this.setState(
                {title: '',
                author: '',
