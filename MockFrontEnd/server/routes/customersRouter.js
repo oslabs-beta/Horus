@@ -9,7 +9,7 @@ customersRouter.post('/', customerInitiator.createCustomer, (req, res) => {
     return res.status(200).json(res.locals.customers)
 })
 
-customersRouter.get('/', customerInitiator.getCustomer, (req, res) => {
+customersRouter.get('/:custId', customerInitiator.getCustomer, (req, res) => {
     console.log('Getting customer in customer router')
     return res.status(200).json(res.locals.customers)
 })

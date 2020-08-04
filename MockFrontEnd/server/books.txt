@@ -226,3 +226,57 @@ Response Time : 24.937
 ID : 22b9f1cf-d0a2-4fcc-beb9-18b7839d5897
 Trace : no additional routes
 
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 24.981
+ID : 1df7564f-107c-406d-b0f3-d5a4c6afd116
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 24.278
+ID : c9ff93d9-648a-454b-9f73-8db5bc2a4524
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 21.374
+ID : c275df33-2139-42ff-ba78-251942d5e7bd
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 164.559
+ID : 234513f5-dcd1-4501-be28-1a6fe5b1d732
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 33.037
+ID : 23d4e3cb-2446-4783-8231-b3f45c1352f8
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 23.815
+ID : 20237c74-43f1-4ce9-ba3f-cc46d298f365
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 34.277
+ID : 757fab7a-d501-4f56-adf2-e1e12d4a98af
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 25.274
+ID : 4555e910-7486-4c76-8abd-ff7eb9256ef4
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 25.960
+ID : 148e4a72-bc26-4c06-b8cd-e1c194aed0ab
+Trace : no additional routes
+

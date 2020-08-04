@@ -63,6 +63,7 @@ const ServerWrapper = new HorusServerWrapper(
       callback(null, {});
     },
     GetCustomer: async (call, callback) => {
+      console.log('CALL.REQUEST IN CUSTOMERSSERVER: ', call.request)
       const customer = await controller.getCustomer(call.request);
       if (customer === "error") {
         return callback({

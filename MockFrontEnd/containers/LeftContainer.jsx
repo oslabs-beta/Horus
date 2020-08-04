@@ -10,13 +10,21 @@ class LeftContainer extends React.Component {
             name: '',
             age: '',
             address: '',
-            favBookId: ''
+            favBookId: '',
+            getCustomerField: ''
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleCustomerSubmit = this.handleCustomerSubmit.bind(this);
-        this.handleBookSubmit = this.handleBookSubmit.bind(this)
-        this.handleReset = this.handleReset.bind(this)
+        this.handleBookSubmit = this.handleBookSubmit.bind(this);
+        this.handleReset = this.handleReset.bind(this);
+        this.handleGetCustomer = this.handleGetCustomer.bind(this)
     }
+
+       handleGetCustomer(e){
+           console.log('state in left container: ', this.state.getCustomerField)
+        this.props.handleGetCustomer(e, this.state.getCustomerField)
+        this.setState({getCustomerField: ''})
+       }
 
        handleChange(e) {
          this.setState({ [e.target.name]: e.target.value });
@@ -136,7 +144,19 @@ class LeftContainer extends React.Component {
                     <br />
                     <button type="submit" id="createCustomerButton">Create Customer</button>
                 </form>
-                <button type="button" id="getCustomerbutton" onClick={this.props.handleGetCustomer}>Get Last Customer</button>
+                <form onSubmit={this.handleGetCustomer}>
+                    <label>Customer ID</label>
+                    <input 
+                        id="getCustomerField"
+                        type="text"
+                        name="getCustomerField"
+                        value={this.state.getCustomerField}
+                        placeholder="Enter Customer ID"
+                        onChange={this.handleChange}
+                    />
+                    <br />
+                  <button type="submit" id="getCustomerbutton">Get Customer: </button>
+                </form>
 
                 <form onSubmit={this.handleBookSubmit} className='CreateBookForm'>
                     <h4>Add Book to Bookstore</h4>

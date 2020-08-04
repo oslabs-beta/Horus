@@ -25,13 +25,15 @@ customerInitiator.createCustomer = (req, res, next) => {
 }
 
 customerInitiator.getCustomer = (req, res, next) => {
+  custId = {custId: req.params.custId}
+  console.log('req.params: ', req.params)
   const callback = (error, data) => {
     console.log('Getting Customer from customer initiator')
     res.locals.customers = data
     if (error) console.log('sorry, there was in error: ', error)
     return next()
   }
-  customerStub.GetCustomer({custId: 1}, callback)
+  customerStub.GetCustomer(custId, callback)
 }
 
 customerInitiator.deleteCustomer = (req, res, next) => {

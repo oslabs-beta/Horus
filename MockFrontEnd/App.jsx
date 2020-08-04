@@ -29,10 +29,10 @@ class App extends React.Component{
     })
   }
 
-  handleGetCustomer(e){
+  handleGetCustomer(e, custId){
     e.preventDefault();
-    fetch('http://localhost:3000/customers', {
-      method: 'GET'
+    fetch(`http://localhost:3000/customers/${custId}`, {
+      method: 'GET',
     })
     .then(res => res.json())
     .then(data => {
