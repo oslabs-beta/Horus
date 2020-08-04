@@ -463,3 +463,14 @@ Trace :
 		ID : c421a91a-5e8d-4407-880a-f3f260c740f9
 		Trace : no additional routes
 
+		Method : GetBookByID
+		Response Time : 26.873
+		ID : c1e2dea0-ab6e-49c7-a485-5e4eab51b1dc
+		Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetCustomer
+Response Time : 59.196
+ID : b0470514-af31-42d2-b8f0-2de5f8bd0040
+Trace : 
+		--------------------------------------------------

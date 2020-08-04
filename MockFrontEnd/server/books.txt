@@ -292,3 +292,15 @@ Response Time : 25.459
 ID : d412146a-a79a-4098-8b26-f51ad07ce513
 Trace : no additional routes
 
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 36.116
+ID : 7030ba5d-9bdb-49df-b580-20d2b3cb3070
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 22.254
+ID : 82c7b324-9474-4f71-b95c-823bc0b9d048
+Trace : no additional routes
+

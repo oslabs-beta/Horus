@@ -67,6 +67,8 @@ body {
 }
 
 .bookBox {
+    height: 200px;
+    width: 300px;
     border: solid black;
     #deleteBooksbutton {
         background: #de5246;
@@ -79,6 +81,8 @@ body {
 
 .custProfile {
     border: solid black;
+    height: 300px;
+    width: 300px;
     #deleteCustomerButton {
         background: #de5246;
         color: white;
