@@ -32,43 +32,6 @@ const ServerWrapper = new HorusServerWrapper(
           message: "There was an error writing to the database",
         });
       }
-<<<<<<< HEAD
-    );
-  },
-  GetBooks: (call, callback) => {
-    console.log("call to GetBooks");
-    // read from database
-    let meta = new grpc.Metadata();
-    meta.add('response', 'none');
-    call.sendMetadata(meta);
-
-    controller.getBooks(callback);
-  },
-  GetBookByID: (call, callback) => {
-    console.log("call to GetBookByID");
-    
-    // let sampleID = {bookId: call.request.bookId};
-
-    let meta = new grpc.Metadata();
-    meta.add('response', 'none');
-    call.sendMetadata(meta);
-
-    controller.getBookByID(call.request, callback);
-  },
-  DeleteBook: (call, callback) => {
-    console.log('call to DeleteBook in booksServer')
-    //sample will take the call information from the client(stub)
-    const bookID = {
-      bookId: call.request.bookId,
-    };
-    console.log('BOOK ID IN BOOKSSERVER: ', call.request.bookId)
-    //this actually sends data to booksController.
-    controller.deleteBook(bookID);
-
-    let meta = new grpc.Metadata();
-    meta.add('response', 'none');
-    call.sendMetadata(meta);
-=======
 
       callback(null, {
         title: result.title,
@@ -87,7 +50,6 @@ const ServerWrapper = new HorusServerWrapper(
           message: "There was an error deleting from the database",
         });
       }
->>>>>>> 86b7722b95851f453f56302be1dd22209499d6a1
 
       callback(null, {});
     },
