@@ -38,7 +38,7 @@ const HorusSchema = new Schema({
     required: true,
   },
   trace: {
-    type: String,
+    type: Object,
     required: true,
   }
   // timestamp: {
@@ -52,6 +52,7 @@ const HorusSchema = new Schema({
 const horusModel = mongoose.model("horusModel", HorusSchema);
 
 module.exports = horusModel;
+
 
 
 

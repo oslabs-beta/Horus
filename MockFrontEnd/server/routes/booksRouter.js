@@ -1,5 +1,5 @@
 const express = require('express');
-const bookInitiator = require('/Users/PolumboStudio/Documents/GitHub/mockAppWithHorus/bookInitiator.js');
+const bookInitiator = require('../../../bookInitiator')
 const booksRouter = express.Router();
 
 booksRouter.post('/', bookInitiator.createBook, (req, res) => {

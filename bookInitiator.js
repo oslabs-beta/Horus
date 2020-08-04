@@ -23,7 +23,7 @@ bookInitiator.createBook = (req, res, next) => {
 
 bookInitiator.getBooks = (req, res, next) => {
   const callback = (error, data) => {
-    console.log('LIST OF BOOKS FROM GET BOOKS: ', data)
+    // console.log('LIST OF BOOKS FROM GET BOOKS: ', data)
     res.locals.books = data
     if (error) console.log('sorry, there was an error', error)
     return next()
@@ -44,17 +44,17 @@ bookInitiator.deleteBook = (req, res, next) => {
   bookStub.DeleteBook(bookId, callback)
 }
 
-const callback = (error, data) => {
-  console.log('call to callback')
-  if (error) console.log('sorry, there was an error', error)
-  else console.log('data coming back to bookInitiator: ', data)
-}
+// const callback = (error, data) => {
+//   console.log('call to callback')
+//   if (error) console.log('sorry, there was an error', error)
+//   else console.log('data coming back to bookInitiator: ', data)
+// }
 
-const getData = (functionName) => {
-  if (functionName === 'CreateBook') return book
-  else if (functionName === 'GetBooks') return {}
-  else if (functionName === 'DeleteBook') return bookId;
-  else if(functionName === 'GetBookByID') return bookId;
-}
+// const getData = (functionName) => {
+//   if (functionName === 'CreateBook') return book
+//   else if (functionName === 'GetBooks') return {}
+//   else if (functionName === 'DeleteBook') return bookId;
+//   else if(functionName === 'GetBookByID') return bookId;
+// }
 
 module.exports = bookInitiator;
