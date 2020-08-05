@@ -526,3 +526,9 @@ Response Time : 540.357
 ID : 99c3f03b-8ec1-47c9-8a99-3d1fa00ed883
 Trace : no additional routes
 
+----------------------------------------------------------------------------------------------------
+Method : CreateBook
+Response Time : 43.746
+ID : 6431dbe4-303d-41d5-8478-47f8998c0cd4
+Trace : no additional routes
+

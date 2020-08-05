@@ -960,3 +960,25 @@ Trace :
 		ID : dbe941af-1aa1-4a94-bb00-1d17e1618834
 		Trace : no additional routes
 
+----------------------------------------------------------------------------------------------------
+Method : GetCustomer
+Response Time : 106.597
+ID : 30b9f588-5586-4bd2-bab3-e286b9f241ec
+Trace : 
+		--------------------------------------------------
+		Method : GetBookByID
+		Response Time : 33.848
+		ID : ba2ca397-f791-49d8-b068-970996cab657
+		Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetCustomer
+Response Time : 43.646
+ID : 56fb4b51-f7ce-49df-8b4a-4656421a1e75
+Trace : 
+		--------------------------------------------------
+		Method : GetBookByID
+		Response Time : 20.101
+		ID : d2c2f3c0-3aa0-4cc2-894d-f13151a069c3
+		Trace : no additional routes
+
