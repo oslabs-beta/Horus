@@ -51,3 +51,25 @@ Trace :
 		ID : f8a5a246-79f0-4b6a-985e-c74170775c39
 		Trace : no additional routes
 
+----------------------------------------------------------------------------------------------------
+Method : GetCustomer
+Response Time : 90.057
+ID : 20e7e88c-df5e-4b35-98b4-8a09ebbc7d33
+Trace : 
+		--------------------------------------------------
+		Method : GetBookByID
+		Response Time : 31.035
+		ID : 5333c03a-2ccf-4a66-98ac-1a18f4660a78
+		Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetCustomer
+Response Time : 406.583
+ID : a6a3b768-bf58-41c2-9d3f-acde960f0419
+Trace : 
+		--------------------------------------------------
+		Method : GetBookByID
+		Response Time : 188.861
+		ID : 102747a7-fdc3-4905-af15-c348574e3232
+		Trace : no additional routes
+
