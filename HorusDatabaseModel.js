@@ -31,5 +31,4 @@ function connectWithDatabase(mongoURL) {
   return  mongoose.model("horusModel", HorusSchema);
 }
 
-
 module.exports = connectWithDatabase;

@@ -4,7 +4,8 @@ const request = require("request");
 const math = require("mathjs");
 const moment = require('moment');
 require("dotenv").config();
-const horusModel = require("./HorusDataBaseModel.js");
+// const horusModel = require("./HorusDataBaseModel.js");
+const horusModelConstructor = require("./HorusDataBaseModel.js");
 
 function appendToFileWrapper(file, str) {
   fs.appendFile(file, str, (error) => {
@@ -30,9 +31,7 @@ function writeToFile(file, data, tabs = 0, first = true) {
   }
 }
 
-// metadata[name].trace... -> {}
-// perform all operations/ checkers independently!
-function checkTime(data) {
+function checkTime(data, horusModel) {
   const query = horusModel.find({ methodName: `${data.methodName}` });
   // perform DB query pulling out the history of response times for specific method
   query.exec((err, docs) => {
@@ -94,7 +93,6 @@ function slackAlert(methodName, time, avgTime, stDev) {
     },
   });
 }
-// .trace -> {}
 function saveTrace(data) {
   const obj = {
     // requestID: data.id,
@@ -115,14 +113,7 @@ function saveTrace(data) {
     });
 }
 
-function makeMethods(
-  clientWrapper,
-  client,
-  metadata,
-  names,
-  file,
-  writeToFile
-) {
+function makeMethods(clientWrapper, client, metadata, names, file, horusModel, writeToFile) {
   for (let i = 0; i < names.length; i++) {
     const name = names[i];
     metadata[name] = {
@@ -138,12 +129,12 @@ function makeMethods(
           Number(process.hrtime.bigint() - startTime) / 1000000
         ).toFixed(3);
         metadata[name].id = uuidv4();
-        checkTime(metadata[name]);
+
+        checkTime(metadata[name], horusModel);
+
         // perform DB query returning acceptable limits for response time
-        // const rng = getRange(metadata[name]);
-        // save trace to horus DB (maybe only acceptable traces to not mess up with normal distribution?)
         // saveTrace(metadata[name]);
-        // console.log("logging metadata ", metadata[name]);
+
         writeToFile(file, metadata[name]);
         callback(error, response);
       }).on("metadata", (metadataFromServer) => {
@@ -159,7 +150,8 @@ class HorusClientWrapper {
   constructor(client, service, file, mongoURL) {
     this.metadata = {};
     const names = Object.keys(service.service);
-    makeMethods(this, client, this.metadata, names, file, writeToFile);
+    this.model = horusModelConstructor(mongoURL);
+    makeMethods(this, client, this.metadata, names, file, this.model, writeToFile);
   }
   makeHandShakeWithServer(server, method) {
     server.acceptMetadata(this.metadata[method]);
