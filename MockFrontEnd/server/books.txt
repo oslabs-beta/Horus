@@ -484,3 +484,45 @@ Response Time : 32.278
 ID : 2a3b378d-090c-4190-a22c-daa2f1192105
 Trace : no additional routes
 
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 204.007
+ID : f424a803-ab1e-4aec-8b86-b6a76b231c51
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : DeleteBook
+Response Time : 26.854
+ID : c69b5d31-2428-4832-9c43-49960238b8e9
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 25.354
+ID : 2a56beac-69b6-490c-8846-185994352cc3
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : DeleteBook
+Response Time : 21.299
+ID : f1c5a997-2784-48e4-ab6e-d3c98ea2b663
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 24.694
+ID : e93e2b3d-e49b-4b44-b90a-494d3520d6b5
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 29.823
+ID : c3506149-7b4d-4ae5-8bb0-976e06bef68c
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 540.357
+ID : 99c3f03b-8ec1-47c9-8a99-3d1fa00ed883
+Trace : no additional routes
+

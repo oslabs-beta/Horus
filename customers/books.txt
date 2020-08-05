@@ -529,3 +529,27 @@ Response Time : 21.595
 ID : 6da6622b-8dc4-43d1-af6f-305099148bb3
 Trace : no additional routes
 
+----------------------------------------------------------------------------------------------------
+Method : GetBookByID
+Response Time : 37.963
+ID : 9d25fc88-7b92-44f5-9a65-eb4ff0a47373
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBookByID
+Response Time : 23.910
+ID : 1952815a-58cd-4465-a71a-39c94b7a863e
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBookByID
+Response Time : 24.215
+ID : fbc90bd8-c7bc-4235-b29e-4a5f7a1ec7be
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBookByID
+Response Time : 22.205
+ID : dbe941af-1aa1-4a94-bb00-1d17e1618834
+Trace : no additional routes
+
