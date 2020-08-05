@@ -6,16 +6,17 @@
   "scripts": {
     "build": "NODE_ENV=production webpack",
     "start": "nodemon server.js",
+    "runServiceServers": "concurrently \"npm run booksServer\" \"npm run customersServer\" \"npm run build\"",
     "booksServer": "nodemon books/booksServer.js",
     "customersServer": "nodemon customers/customersServer.js",
     "test": "echo \"Error: no test specified\" && exit 1"
-
   },
   "author": "Horus",
   "license": "ISC",
   "dependencies": {
     "@grpc/proto-loader": "^0.5.5",
     "body-parser": "^1.19.0",
+    "concurrently": "^5.2.0",
     "dotenv": "^8.2.0",
     "eslint": "^7.5.0",
     "eslint-config-airbnb-base": "^14.2.0",

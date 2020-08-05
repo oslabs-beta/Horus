@@ -526,3 +526,33 @@ Response Time : 540.357
 ID : 99c3f03b-8ec1-47c9-8a99-3d1fa00ed883
 Trace : no additional routes
 
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 22.309
+ID : 466c74d1-b6c5-4da0-ba88-b4c027b05d7e
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 189.219
+ID : 97d95870-d754-425d-934e-f326153083a7
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 23.015
+ID : 9b8ad4b2-9ff2-480e-a8fe-d986826dd629
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 39.939
+ID : f0cad686-c343-4ecd-8fb0-1a948e02c130
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 215.710
+ID : 9edfb495-823c-4ba1-bd23-e18220800b56
+Trace : no additional routes
+
