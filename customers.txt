@@ -51,3 +51,15 @@ Trace :
 		ID : f8a5a246-79f0-4b6a-985e-c74170775c39
 		Trace : no additional routes
 
+----------------------------------------------------------------------------------------------------
+Method : CreateCustomer
+Response Time : 460.410
+ID : 3d6f53cc-2145-4cc1-a5b4-19939e88fca5
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : DeleteCustomer
+Response Time : 146.264
+ID : c80f4414-bf14-49bd-a726-0a06e6cf4e2a
+Trace : no additional routes
+

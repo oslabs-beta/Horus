@@ -156,7 +156,7 @@ function makeMethods(
 }
 
 class HorusClientWrapper {
-  constructor(client, service, file) {
+  constructor(client, service, file, mongoURL) {
     this.metadata = {};
     const names = Object.keys(service.service);
     makeMethods(this, client, this.metadata, names, file, writeToFile);

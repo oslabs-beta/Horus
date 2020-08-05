@@ -22,7 +22,7 @@ const client = new CustomersService (
 // The Client Wrapper "wraps" all the methods within the client object
 // The first parameter is the actual gRPC client object, the second is the service, and the third is the output file
 // Your invocations of the client at whereever you export this module to can remain entirely the same
-const ClientWrapper = new HorusClientWrapper(client, CustomersService, 'customers.txt');
+const ClientWrapper = new HorusClientWrapper(client, CustomersService, 'customers.txt', 'mongodb+srv://testUsername:testPassword@cluster0-rfgdc.mongodb.net/requests?retryWrites=true&w=majority');
 
 // Export the Client Wrapper rather than the server object
 module.exports = ClientWrapper;

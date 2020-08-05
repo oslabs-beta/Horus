@@ -286,3 +286,9 @@ Response Time : 477.353
 ID : 812f33bc-956f-4987-9826-b3a7979442f9
 Trace : no additional routes
 
+----------------------------------------------------------------------------------------------------
+Method : DeleteBook
+Response Time : 63.139
+ID : 1988c220-5e08-4cb2-b33a-6fe79668055d
+Trace : no additional routes
+
