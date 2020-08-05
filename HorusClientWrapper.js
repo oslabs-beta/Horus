@@ -2,7 +2,7 @@ const fs = require("fs");
 const { v4: uuidv4 } = require("uuid");
 const request = require("request");
 const math = require("mathjs");
-const moment = require('moment');
+const moment = require("moment");
 require("dotenv").config();
 const horusModel = require("./HorusDataBaseModel.js");
 
@@ -18,7 +18,8 @@ function writeToFile(file, data, tabs = 0, first = true) {
   let str = "";
   let tabsStr = "\t".repeat(tabs);
   if (first) str += "-".repeat(100) + "\n";
-  str += `${tabsStr}Method : ${data.methodName}\n${tabsStr}Response Time : ${data.responseTime}\n${tabsStr}ID : ${data.id}\n`;
+  // str += `${tabsStr}Method : ${data.methodName}\n${tabsStr}Response Time : ${data.responseTime}ms\n${tabsStr}ID : ${data.id}\n`;
+  str += `${tabsStr}Method : ${data.methodName}\n${tabsStr}Response Time : ${data.responseTime}ms\n${tabsStr}ID : ${data.id}\n${tabsStr}Timestamp : ${data.timestamp}\n`;
   if (data.trace === "none") {
     str += `${tabsStr}Trace : no additional routes\n\n`;
     appendToFileWrapper(file, str);
@@ -33,7 +34,9 @@ function writeToFile(file, data, tabs = 0, first = true) {
 // metadata[name].trace... -> {}
 // perform all operations/ checkers independently!
 function checkTime(data) {
-  const query = horusModel.find({ methodName: `${data.methodName}` });
+  data.flag = null;
+  // const query = horusModel.find({ methodName: `${data.methodName}` });
+  const query = horusModel.find({ methodName: `${data.methodName}`, flag: false});
   // perform DB query pulling out the history of response times for specific method
   query.exec((err, docs) => {
     if (err) console.log("Error retrieving data for specific method", err);
@@ -42,12 +45,16 @@ function checkTime(data) {
       const times = docs.map((doc) => doc.responseTime);
       const avg = math.mean(times).toFixed(3);
       const stDev = math.std(times, "uncorrected").toFixed(3);
-      const minT = (Number(avg) - 2 * Number(stDev)).toFixed(3);
-      const maxT = (Number(avg) + 2 * Number(stDev)).toFixed(3);
+      const minT = (Number(avg) - Number(stDev)).toFixed(3);
+      const maxT = (Number(avg) + Number(stDev)).toFixed(3);
       // compare current response time to the range
       // slack alert if outside the range
-      // if (data.responseTime < minT || data.responseTime > maxT) {
-      //   slackAlert(data.methodName, data.responseTime, avg, stDev);
+      if (data.responseTime < minT || data.responseTime > maxT) {
+        slackAlert(data.methodName, data.responseTime, avg, stDev);
+        data.flag = true;
+      }
+      // } else {
+      //   saveTrace(data);
       // }
       // save trace to horus DB (maybe only acceptable traces to not mess up with normal distribution?)
     }
@@ -96,10 +103,14 @@ function slackAlert(methodName, time, avgTime, stDev) {
 }
 // .trace -> {}
 function saveTrace(data) {
+  console.log("ALERT ", data.flag);
+  const alert = data.flag ? true : false;
   const obj = {
     // requestID: data.id,
-    timestamp: moment(Date.now()).format('MMMM Do YYYY, h:mm:ss a'),
+    // timestamp: moment(Date.now()).format('MMMM Do YYYY, h:mm:ss a'),
+    timestamp: data.timestamp,
     methodName: data.methodName,
+    flag: alert,
     responseTime: data.responseTime,
     trace: data.trace,
   };
@@ -139,7 +150,11 @@ function makeMethods(
           Number(process.hrtime.bigint() - startTime) / 1000000
         ).toFixed(3);
         metadata[name].id = uuidv4();
+        metadata[name].timestamp = moment(Date.now()).format(
+          "MMMM Do YYYY, h:mm:ss a"
+        );
         checkTime(metadata[name]);
+        // saveTrace(data);
         // perform DB query returning acceptable limits for response time
         // const rng = getRange(metadata[name]);
         // save trace to horus DB (maybe only acceptable traces to not mess up with normal distribution?)
