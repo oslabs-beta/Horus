@@ -35,6 +35,10 @@ const HorusSchema = new Schema({
     type: Object,
     required: true,
   },
+  flag: {
+    type: Boolean,
+    // default: false,
+  }
 });
 
 const horusModel = mongoose.model("horusModel", HorusSchema);
