@@ -310,3 +310,9 @@ Response Time : 188.861
 ID : 102747a7-fdc3-4905-af15-c348574e3232
 Trace : no additional routes
 
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 183.815
+ID : 0908960d-4730-45f6-a345-9dfc91e5fcb9
+Trace : no additional routes
+
