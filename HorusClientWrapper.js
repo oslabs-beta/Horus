@@ -5,7 +5,6 @@ const math = require("mathjs");
 const moment = require("moment");
 require("dotenv").config();
 const horusModel = require("./HorusDataBaseModel.js");
-const { ConnectionStates } = require("mongoose");
 
 function appendToFileWrapper(file, str) {
   fs.appendFile(file, str, (error) => {
