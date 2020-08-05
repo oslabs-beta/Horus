@@ -340,3 +340,39 @@ Response Time : 64.817
 ID : ff80246c-86f5-44f6-9783-bd35b2e69075
 Trace : no additional routes
 
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 196.008
+ID : 38427652-8366-49d6-a056-d3d419d66818
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 23.490
+ID : f1f776ce-470b-432c-844d-c2d09b931799
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : CreateBook
+Response Time : 47.523
+ID : d313adc8-551a-4887-baac-1dfa30485cb8
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBookByID
+Response Time : 31.035
+ID : 5333c03a-2ccf-4a66-98ac-1a18f4660a78
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBookByID
+Response Time : 188.861
+ID : 102747a7-fdc3-4905-af15-c348574e3232
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 183.815
+ID : 0908960d-4730-45f6-a345-9dfc91e5fcb9
+Trace : no additional routes
+

@@ -23,7 +23,8 @@ class MainContainer extends React.Component {
       handleDeleteCustomer(e, custId){
           this.props.deleteCustomer(e, custId)
       }
-
+      
+      //this function will allow us to wait for props to be sent down and set state before the components render to the screen. That way when Get Customer or Get Books button is clicked, we can populate the relevent data.
       componentWillReceiveProps(nextProps) {
         if(nextProps.data){
           this.setState({profile: ''})

@@ -48,7 +48,7 @@ class LeftContainer extends React.Component {
                })
            })
            .then(res => res.json())
-
+           //reset state here so that input fields are blank again after submitting.
            this.setState({
                custId: '',
                name: '',
@@ -72,7 +72,7 @@ class LeftContainer extends React.Component {
                })
            })
            .then(res => res.json())
-           
+        // Reset state here so the input fields are blank again after submitting.
            this.setState(
                {title: '',
                author: '',
