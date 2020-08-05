@@ -310,3 +310,15 @@ Response Time : 69.651
 ID : e4eeda8a-5972-439d-98c9-c1c324c4d2ce
 Trace : no additional routes
 
+----------------------------------------------------------------------------------------------------
+Method : CreateBook
+Response Time : 65.822
+ID : 2515eb64-72c7-442f-899c-66e30ce31542
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : CreateBook
+Response Time : 72.239
+ID : 58bb32cb-f5ed-480b-9e03-d90c15910038
+Trace : no additional routes
+

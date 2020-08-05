@@ -12,6 +12,14 @@ function connectWithDatabase(mongoURL) {
     )
     .catch((err) => console.log("Connection Error ", err));
   const HorusSchema = new Schema({
+    client :{
+      type: String,
+      required: true,
+    },
+    server :{
+      type: String,
+      required: true,
+    },
     timestamp: {
       type: String,
       // default: moment(Date.now).format('MMMM Do YYYY, h:mm:ss a'),

@@ -75,7 +75,7 @@ function GetCustomer() {
 // DeleteCustomer();
 // INTRA-SERVICE! -> can't save to DB (fix trace field - nested)
 
-// CreateBook();
+CreateBook();
 // CreateCustomer();
 
-GetCustomer();
+// GetCustomer();
