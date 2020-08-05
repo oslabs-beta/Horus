@@ -1,4 +1,4 @@
-const horusModel = require("./HorusDataBaseModel.js");
+const horusModelConstructor = require("./HorusDataBaseModel.js");
 const neo4j = require('neo4j-driver');
 
 class Neo4j {
@@ -13,6 +13,7 @@ class Neo4j {
     const methods = {};
     const averages = {};
     const loader = [];
+    const horusModel = horusModelConstructor();
 
     let results = await horusModel.find({});
 
@@ -63,7 +64,7 @@ class Neo4j {
           console.log("method is ", method)
           console.log("value is ", averages[from][to][method])
           let responseTimeAvg = Math.floor(averages[from][to][method].average);
-          loader.push(`MERGE (${from}) -[${from + '_' + to + '_'+ method}:${method + '_' + responseTimeAvg}]-> (${to})\n`);
+          loader.push(`MERGE (${from}) -[${from + '_' + to + '_'+ method}:${method + '_' + responseTimeAvg}ms]-> (${to})\n`);
         }
       }
     }

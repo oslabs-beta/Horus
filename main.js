@@ -10,7 +10,7 @@ const book = {
 };
 
 const bookId = {
-  bookId: 200,
+  bookId: 23,
 };
 
 const customer = {
@@ -74,8 +74,15 @@ function GetCustomer() {
 // CreateCustomer();
 // DeleteCustomer();
 // INTRA-SERVICE! -> can't save to DB (fix trace field - nested)
+const HorusVisualizer = require('./HorusVisualizer.js')
 
-CreateBook();
-CreateCustomer();
+const HorusVisualizerObject = new HorusVisualizer('mongodb+srv://testUsername:testPassword@cluster0-rfgdc.mongodb.net/requests?retryWrites=true&w=majority', 'bolt://localhost:11002', 'neo4j', 'password');
 
+HorusVisualizerObject.mapToBrowser();
+
+// CreateBook();
+// CreateCustomer();
+// GetBooks();
+// GetBookByID();
+// DeleteBook();
 // GetCustomer();
