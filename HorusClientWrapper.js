@@ -103,13 +103,12 @@ function saveTrace(data) {
     responseTime: data.responseTime,
     trace: data.trace,
   };
-  console.log("obj to save *** ", obj);
   // can pass in to 'create' multiple objects (nesting case)
   const traceDoc = new horusModel(obj);
   traceDoc
     .save()
     .then(() => {
-      console.log("Saving of trace was successful");
+      // console.log("Saving of trace was successful");
     })
     .catch((err) => {
       console.log("Error while trying to save trace ->>> ", err);

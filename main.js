@@ -67,7 +67,7 @@ function GetCustomer() {
   });
 }
 
-//CreateBook();
+CreateBook();
 // DeleteBook();
 // GetBookByID();
 // GetBooks();

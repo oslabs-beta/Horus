@@ -280,3 +280,9 @@ Response Time : 278.561
 ID : 4ff0846e-b2d7-4a2a-9714-79ae2d38d389
 Trace : no additional routes
 
+----------------------------------------------------------------------------------------------------
+Method : CreateBook
+Response Time : 477.353
+ID : 812f33bc-956f-4987-9826-b3a7979442f9
+Trace : no additional routes
+
