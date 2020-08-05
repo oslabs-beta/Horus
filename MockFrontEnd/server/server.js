@@ -3,7 +3,6 @@ const express = require('express');
 const app = express();
 const customersRouter = require('./routes/customersRouter.js')
 const booksRouter = require('./routes/booksRouter.js')
-const build = require('../../build')
 
 app.use(express.json())
 

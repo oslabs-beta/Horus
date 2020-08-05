@@ -1,9 +1,10 @@
 const fs = require("fs");
 const { v4: uuidv4 } = require("uuid");
 const request = require("request");
-const horusModel = require("./HorusDataBaseModel.js");
 const math = require("mathjs");
-// const { checkServerIdentity } = require("tls");
+const moment = require('moment');
+require("dotenv").config();
+const horusModel = require("./HorusDataBaseModel.js");
 
 function appendToFileWrapper(file, str) {
   fs.appendFile(file, str, (error) => {
@@ -38,35 +39,20 @@ function checkTime(data) {
     if (err) console.log("Error retrieving data for specific method", err);
     // console.log("Docs from DB -> ", docs);
     if (docs.length) {
-      // console.log("# of matching docs ", docs.length);
       const times = docs.map((doc) => doc.responseTime);
-      console.log("TIMES -> ", times);
-      // // const avg = (
-      // //   times.reduce((sum, curr) => sum + curr) / docs.length
-      // // ).toFixed(3);
       const avg = math.mean(times).toFixed(3);
       const stDev = math.std(times, "uncorrected").toFixed(3);
-      console.log("AVG ***", avg);
-      console.log("STDEV ***", stDev);
-      // const minT = avg - stDev;
-      // ??? (getting avg instead of maxT for the upper range)
-      // const maxT = avg + stDev;
-      const rng = [avg - stDev, avg + stDev];
-      console.log("RANGE ***", rng);
-      // console.log("RANGE ***", minT, maxT);
-      // return [avg, stDev];
-      // return [minT, maxT];
-      console.log("CURR TIME ***", data.responseTime);
+      const minT = (Number(avg) - 2 * Number(stDev)).toFixed(3);
+      const maxT = (Number(avg) + 2 * Number(stDev)).toFixed(3);
       // compare current response time to the range
       // slack alert if outside the range
-      if (data.responseTime < rng[0] || data.responseTime > rng[1]) {
-        slackAlert(data.methodName, data.responseTime, avg, stDev);
-      }
+      // if (data.responseTime < minT || data.responseTime > maxT) {
+      //   slackAlert(data.methodName, data.responseTime, avg, stDev);
+      // }
       // save trace to horus DB (maybe only acceptable traces to not mess up with normal distribution?)
     }
   });
   saveTrace(data);
-  // return ...
 }
 
 function slackAlert(methodName, time, avgTime, stDev) {
@@ -98,8 +84,7 @@ function slackAlert(methodName, time, avgTime, stDev) {
     ],
   };
   // move out the link to .env file
-  const slackURL =
-    "https://hooks.slack.com/services/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";
+  const slackURL = `${process.env.SLACK_URL}`;
   request.post({
     uri: slackURL,
     body: JSON.stringify(obj),
@@ -112,21 +97,14 @@ function slackAlert(methodName, time, avgTime, stDev) {
 // .trace -> {}
 function saveTrace(data) {
   const obj = {
-    requestID: data.id,
+    // requestID: data.id,
+    timestamp: moment(Date.now()).format('MMMM Do YYYY, h:mm:ss a'),
     methodName: data.methodName,
     responseTime: data.responseTime,
     trace: data.trace,
-    // trace: JSON.stringify(data.trace),
-    // serviceName: a.serviceName,
-    // targetService: a.targetService,
-    // timestamp: req.timeCompleted,
   };
   console.log("obj to save *** ", obj);
   // can pass in to 'create' multiple objects (nesting case)
-  // horusModel.create(obj, (error, result) => {
-  //   if (error)
-  //     console.log("Error while trying to save the trace doc to Mongo DB");
-  // });
   const traceDoc = new horusModel(obj);
   traceDoc
     .save()
@@ -161,7 +139,6 @@ function makeMethods(
           Number(process.hrtime.bigint() - startTime) / 1000000
         ).toFixed(3);
         metadata[name].id = uuidv4();
-        // CHECKER
         checkTime(metadata[name]);
         // perform DB query returning acceptable limits for response time
         // const rng = getRange(metadata[name]);
