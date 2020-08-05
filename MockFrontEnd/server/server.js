@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const customersRouter = require('./routes/customersRouter.js')
 const booksRouter = require('./routes/booksRouter.js')
+const build = require('../../build')
 
 app.use(express.json())
 
@@ -10,7 +11,7 @@ app.use('/customers', customersRouter);
 
 app.use('/books', booksRouter);
 
-app.use('/build', express.static(path.join(__dirname, '../../../mockAppWithHorus/build')));
+app.use('/build', express.static(path.join(__dirname, '../../build')));
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../index.html'));
