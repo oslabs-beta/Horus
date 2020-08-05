@@ -957,3 +957,10 @@ Trace :
 		Timestamp : August 5th 2020, 3:39:36 pm
 		Trace : no additional routes
 
+----------------------------------------------------------------------------------------------------
+Method : DeleteCustomer
+Response Time : 25.800ms
+ID : 1e846c76-858e-4622-b17a-7ccaa10ea7a1
+Timestamp : August 5th 2020, 3:41:32 pm
+Trace : no additional routes
+
