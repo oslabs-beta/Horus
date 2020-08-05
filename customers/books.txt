@@ -559,3 +559,21 @@ Response Time : 376.997
 ID : 4bd63865-bc9b-477e-b923-620ff50f87aa
 Trace : no additional routes
 
+----------------------------------------------------------------------------------------------------
+Method : GetBookByID
+Response Time : 58.741
+ID : e63a84e9-ab74-40f6-baea-cb38d06464d0
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBookByID
+Response Time : 52.489
+ID : 4780ece3-3768-4135-8c6b-cec3fe2249c4
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBookByID
+Response Time : 423.177
+ID : 64524a1f-6fc2-4f46-b0e4-5ba8087e823e
+Trace : no additional routes
+
