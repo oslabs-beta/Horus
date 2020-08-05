@@ -5,7 +5,7 @@
   "main": "main.js",
   "scripts": {
     "build": "NODE_ENV=production webpack",
-    "start": "nodemon server.js",
+    "start": "NODE_ENV=production nodemon MockFrontEnd/server/server.js",
     "runServiceServers": "concurrently \"npm run booksServer\" \"npm run customersServer\" \"npm run build\"",
     "booksServer": "nodemon books/booksServer.js",
     "customersServer": "nodemon customers/customersServer.js",
