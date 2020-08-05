@@ -110,3 +110,21 @@ Trace :
 		ID : 4bd63865-bc9b-477e-b923-620ff50f87aa
 		Trace : no additional routes
 
+----------------------------------------------------------------------------------------------------
+Method : CreateCustomer
+Response Time : 443.690
+ID : 1cb7a15f-a864-4bb5-aa8f-c192ddf03fdf
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : CreateCustomer
+Response Time : 90.562
+ID : 212ee9e4-d270-4e58-849b-b3c41a51c684
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : CreateCustomer
+Response Time : 431.666
+ID : f8724dc1-c8a4-41ce-8ac8-c14c2720abf9
+Trace : no additional routes
+

@@ -14,6 +14,11 @@ function appendToFileWrapper(file, str) {
   });
 }
 
+function getTargetName(service, names) {
+  const path = service.service[names[0]].path;
+  return path.slice(path.indexOf('/') + 1, path.lastIndexOf('/'));
+}
+
 function writeToFile(file, data, tabs = 0, first = true) {
   console.log("data ", data);
   let str = "";
@@ -135,24 +140,14 @@ function makeMethods(clientWrapper, client, metadata, names, file, horusModel, s
 }
 
 class HorusClientWrapper {
-  constructor(client, service, file, mongoURL) {
+  constructor(client, service, file, serviceName, mongoURL) {
     this.metadata = {};
     const names = Object.keys(service.service);
     this.model = horusModelConstructor(mongoURL);
-    this.serviceName = 'unnammed_client';
-    this.targetName = 'unnammed_target';
-    this.getTargetName(service, names);
-    makeMethods(this, client, this.metadata, names, file, this.model, this.serviceName, this.targetName, writeToFile);
+    makeMethods(this, client, this.metadata, names, file, this.model, serviceName, getTargetName(service, names), writeToFile);
   }
   makeHandShakeWithServer(server, method) {
     server.acceptMetadata(this.metadata[method]);
-  }
-  getTargetName(service, names) {
-    const path = service.service[names[0]].path;
-    this.targetName = path.slice(path.indexOf('/') + 1, path.lastIndexOf('/'));
-  }
-  nameService(name) {
-    this.serviceName = name;
   }
 }
 
