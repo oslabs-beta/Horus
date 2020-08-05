@@ -4,13 +4,19 @@ const request = require("request");
 const math = require("mathjs");
 const moment = require("moment");
 require("dotenv").config();
-const horusModel = require("./HorusDataBaseModel.js");
+// const horusModel = require("./HorusDataBaseModel.js");
+const horusModelConstructor = require("./HorusDataBaseModel.js");
 
 function appendToFileWrapper(file, str) {
   fs.appendFile(file, str, (error) => {
     if (error)
       console.log(`ERROR with fs, could not write ${file} file `, error);
   });
+}
+
+function getTargetName(service, names) {
+  const path = service.service[names[0]].path;
+  return path.slice(path.indexOf('/') + 1, path.lastIndexOf('/'));
 }
 
 function writeToFile(file, data, tabs = 0, first = true) {
@@ -31,16 +37,11 @@ function writeToFile(file, data, tabs = 0, first = true) {
   }
 }
 
-// metadata[name].trace... -> {}
-// perform all operations/ checkers independently!
-function checkTime(data) {
-  data.flag = null;
-  // const query = horusModel.find({ methodName: `${data.methodName}` });
-  const query = horusModel.find({ methodName: `${data.methodName}`, flag: false});
+function checkTime(data, horusModel) {
+  const query = horusModel.find({ methodName: `${data.methodName}` });
   // perform DB query pulling out the history of response times for specific method
   query.exec((err, docs) => {
     if (err) console.log("Error retrieving data for specific method", err);
-    // console.log("Docs from DB -> ", docs);
     if (docs.length) {
       const times = docs.map((doc) => doc.responseTime);
       const avg = math.mean(times).toFixed(3);
@@ -59,7 +60,6 @@ function checkTime(data) {
       // save trace to horus DB (maybe only acceptable traces to not mess up with normal distribution?)
     }
   });
-  saveTrace(data);
 }
 
 function slackAlert(methodName, time, avgTime, stDev) {
@@ -101,40 +101,23 @@ function slackAlert(methodName, time, avgTime, stDev) {
     },
   });
 }
-// .trace -> {}
-function saveTrace(data) {
-  console.log("ALERT ", data.flag);
+function saveTrace(data, horusModel, serviceName, targetName) {
   const alert = data.flag ? true : false;
-  const obj = {
-    // requestID: data.id,
-    // timestamp: moment(Date.now()).format('MMMM Do YYYY, h:mm:ss a'),
-    timestamp: data.timestamp,
-    methodName: data.methodName,
+  const request = {
+    client: serviceName, 
+    server: targetName,
+    timestamp: moment(Date.now()).format('MMMM Do YYYY, h:mm:ss a'),
     flag: alert,
+    methodName: data.methodName,
     responseTime: data.responseTime,
     trace: data.trace,
   };
-  console.log("obj to save *** ", obj);
-  // can pass in to 'create' multiple objects (nesting case)
-  const traceDoc = new horusModel(obj);
-  traceDoc
-    .save()
-    .then(() => {
-      console.log("Saving of trace was successful");
-    })
-    .catch((err) => {
-      console.log("Error while trying to save trace ->>> ", err);
-    });
+  horusModel.create(request, (error, response) => { 
+    if (error) console.log(error)
+  })
 }
 
-function makeMethods(
-  clientWrapper,
-  client,
-  metadata,
-  names,
-  file,
-  writeToFile
-) {
+function makeMethods(clientWrapper, client, metadata, names, file, horusModel, serviceName, targetName, writeToFile) {
   for (let i = 0; i < names.length; i++) {
     const name = names[i];
     metadata[name] = {
@@ -150,16 +133,8 @@ function makeMethods(
           Number(process.hrtime.bigint() - startTime) / 1000000
         ).toFixed(3);
         metadata[name].id = uuidv4();
-        metadata[name].timestamp = moment(Date.now()).format(
-          "MMMM Do YYYY, h:mm:ss a"
-        );
-        checkTime(metadata[name]);
-        // saveTrace(data);
-        // perform DB query returning acceptable limits for response time
-        // const rng = getRange(metadata[name]);
-        // save trace to horus DB (maybe only acceptable traces to not mess up with normal distribution?)
-        // saveTrace(metadata[name]);
-        // console.log("logging metadata ", metadata[name]);
+        checkTime(metadata[name], horusModel, serviceName, targetName);
+        saveTrace(metadata[name], horusModel, serviceName, targetName);
         writeToFile(file, metadata[name]);
         callback(error, response);
       }).on("metadata", (metadataFromServer) => {
@@ -172,10 +147,11 @@ function makeMethods(
 }
 
 class HorusClientWrapper {
-  constructor(client, service, file) {
+  constructor(client, service, file, serviceName, mongoURL) {
     this.metadata = {};
     const names = Object.keys(service.service);
-    makeMethods(this, client, this.metadata, names, file, writeToFile);
+    this.model = horusModelConstructor(mongoURL);
+    makeMethods(this, client, this.metadata, names, file, this.model, serviceName, getTargetName(service, names), writeToFile);
   }
   makeHandShakeWithServer(server, method) {
     server.acceptMetadata(this.metadata[method]);

@@ -10,7 +10,7 @@ const book = {
 };
 
 const bookId = {
-  bookId: 200,
+  bookId: 23,
 };
 
 const customer = {
@@ -18,7 +18,7 @@ const customer = {
   name: "Lily",
   age: 23,
   address: "Blablabla",
-  favBookId: 200,
+  favBookId: 23,
 };
 
 const customerId = {
@@ -67,11 +67,6 @@ function GetCustomer() {
   });
 }
 
-//CreateBook();
-// DeleteBook();
-// GetBookByID();
-// GetBooks();
-// CreateCustomer();
-// DeleteCustomer();
-// INTRA-SERVICE! -> can't save to DB (fix trace field - nested)
-// GetCustomer();
+
+
+CreateCustomer();
