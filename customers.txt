@@ -408,3 +408,10 @@ Trace :
 		ID : 102747a7-fdc3-4905-af15-c348574e3232
 		Trace : no additional routes
 
+----------------------------------------------------------------------------------------------------
+Method : CreateCustomer
+Response Time : 80.869ms
+ID : 34136181-1a2f-4b66-be03-f1a5a73c2ef7
+Timestamp : undefined
+Trace : no additional routes
+
