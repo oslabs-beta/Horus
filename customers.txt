@@ -1,55 +1,390 @@
 ----------------------------------------------------------------------------------------------------
 Method : CreateCustomer
-Response Time : 292.854
-ID : 9b4a8a94-ac03-475e-9ab4-736c0db61d99
-Trace : no additional routes
-
-----------------------------------------------------------------------------------------------------
-Method : CreateCustomer
-Response Time : 56.019
-ID : 3d62f815-2283-4080-b8a0-d34bf98d7820
-Trace : no additional routes
-
-----------------------------------------------------------------------------------------------------
-Method : CreateCustomer
-Response Time : 59.343
-ID : 9dad06cd-96dc-4f56-9040-aa4cd27d56ab
-Trace : no additional routes
-
-----------------------------------------------------------------------------------------------------
-Method : CreateCustomer
-Response Time : 58.622
-ID : c8d0a970-59eb-471d-a68a-6c19b1036d8e
-Trace : no additional routes
-
-----------------------------------------------------------------------------------------------------
-Method : DeleteCustomer
-Response Time : 297.555
-ID : d386d58a-e11f-4b2d-82c7-41146391e4f4
-Trace : no additional routes
-
-----------------------------------------------------------------------------------------------------
-Method : DeleteCustomer
-Response Time : 48.584
-ID : 6c96b715-de12-4701-9844-eee4d1d4ecc8
-Trace : no additional routes
-
-----------------------------------------------------------------------------------------------------
-Method : DeleteCustomer
-Response Time : 53.057
-ID : 3dd5dfc5-535e-4f0a-9bb4-2067f311f6fc
+Response Time : 92.302
+ID : 5d842e25-937c-4138-8553-8fe8ddb123ff
 Trace : no additional routes
 
 ----------------------------------------------------------------------------------------------------
 Method : GetCustomer
-Response Time : 657.402
-ID : 9f1aeeea-0db1-4c53-88fd-bb94d2fd5a03
+Response Time : 109.323
+ID : ea544de1-fbd1-4fdd-bdbd-8a58247938a9
 Trace : 
 		--------------------------------------------------
 		Method : GetBookByID
-		Response Time : 346.207
-		ID : f8a5a246-79f0-4b6a-985e-c74170775c39
+		Response Time : 52.489
+		ID : 4780ece3-3768-4135-8c6b-cec3fe2249c4
 		Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetCustomer
+Response Time : 819.772
+ID : 9b95c5d6-c9cd-4fe0-bb7f-d01b7cc25f8c
+Trace : 
+		--------------------------------------------------
+		Method : GetBookByID
+		Response Time : 423.177
+		ID : 64524a1f-6fc2-4f46-b0e4-5ba8087e823e
+		Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : DeleteCustomer
+Response Time : 520.708
+ID : 51b2318b-a064-4c77-bef2-2d86200c5e9a
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : CreateCustomer
+Response Time : 549.622
+ID : fc4548d9-bc6e-4d07-8e0c-0c9787bebe47
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : DeleteCustomer
+Response Time : 564.609
+ID : 63286ce0-08e3-4d6f-8e2f-bc018a63ab63
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : DeleteCustomer
+Response Time : 59.404
+ID : d8154d27-e3e9-4117-a123-d90310b28be9
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : DeleteCustomer
+Response Time : 97.880
+ID : 7682e242-503f-4e21-894d-706890ec10ed
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : CreateCustomer
+Response Time : 98.829
+ID : 7cf79c87-89cf-42bd-9a70-6193ef2e6c8d
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : DeleteCustomer
+Response Time : 74.257
+ID : 6ca59835-115d-4556-a904-b33dd8ff8c2d
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : DeleteCustomer
+Response Time : 77.649
+ID : d2e13b0e-0ec8-483e-ac4d-64e9ab3b9243
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : CreateCustomer
+Response Time : 79.625
+ID : 38914a10-4e11-4e8a-be0f-369dea62804f
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : DeleteCustomer
+Response Time : 52.459
+ID : a0c0c6d4-d1e8-49f7-bae4-5344af633250
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : CreateCustomer
+Response Time : 57.853
+ID : d2691c3e-c392-4914-a08a-6ffaa7d1e05c
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : DeleteCustomer
+Response Time : 61.540
+ID : 7a653177-48e8-42cd-bccc-945a9312ce7e
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : CreateCustomer
+Response Time : 61.215
+ID : ba999e8a-7801-4ba3-a99c-61751071d917
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : DeleteCustomer
+Response Time : 66.439
+ID : aa1fae5d-3d00-46a0-8b81-5d08aa6d0d01
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : DeleteCustomer
+Response Time : 63.874
+ID : 712f8618-b286-4563-97a2-116ebfa56877
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : CreateCustomer
+Response Time : 233.447
+ID : c6238a08-dc2f-4fb1-943b-9c3368040c2f
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : DeleteCustomer
+Response Time : 235.886
+ID : 679e05a9-5619-49c8-bbf2-0c1dc145c515
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : DeleteCustomer
+Response Time : 260.814
+ID : bba3326e-bf23-42bf-80b7-b5caa47f1134
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : DeleteCustomer
+Response Time : 88.375
+ID : e1094894-4399-4e2e-8db0-2213c13f27d3
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : CreateCustomer
+Response Time : 90.079
+ID : c165bfe0-210f-48f8-9cca-552b4741e7d8
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : DeleteCustomer
+Response Time : 110.064
+ID : 4b4dfab1-2e31-41e1-bccf-993a9187fc19
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : DeleteCustomer
+Response Time : 49.277
+ID : e9737a96-5c83-45cb-ab01-9a9d142b6192
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : CreateCustomer
+Response Time : 60.130
+ID : e8f4e65e-ce79-4012-8975-78349cb982e4
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : DeleteCustomer
+Response Time : 62.324
+ID : 1e79fa12-6bc4-4d10-a8c9-8cc01a3beed1
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : DeleteCustomer
+Response Time : 49.335
+ID : 3aa43fc7-27da-49e2-9b7d-cf51104a36d5
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : CreateCustomer
+Response Time : 63.775
+ID : 9b7d8185-177c-4d6b-8b81-a2d50f5598da
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : DeleteCustomer
+Response Time : 65.703
+ID : 96fd5d8a-aba8-4b0d-815a-c282f9905df9
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : DeleteCustomer
+Response Time : 212.674
+ID : bd2a4e30-fc63-453a-ac97-dc2b84bca255
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : DeleteCustomer
+Response Time : 214.729
+ID : da81e628-9141-4306-af9f-e2d8bedea263
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : CreateCustomer
+Response Time : 242.765
+ID : 366be6dc-3d03-444f-8b7f-ad5fa6ec5663
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : CreateCustomer
+Response Time : 449.501
+ID : 4ea19675-fee8-4961-a7d0-9e0fd515f73c
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : DeleteCustomer
+Response Time : 452.851
+ID : 7c3641a1-19cf-46f8-863e-a7b235783bfc
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : DeleteCustomer
+Response Time : 458.638
+ID : 65cdb319-6d14-49ba-bfe9-0919eae79606
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : DeleteCustomer
+Response Time : 65.896
+ID : 51e736dc-2310-4112-9553-9683d2104124
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : CreateCustomer
+Response Time : 66.449
+ID : 39c99584-f93a-465e-a6c3-444e9ec7bd7c
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : DeleteCustomer
+Response Time : 112.693
+ID : d12fc85f-f9a2-4913-a44f-1a6e6ec8a1e0
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : DeleteCustomer
+Response Time : 54.781
+ID : 67d82a54-10ff-4a8f-b6db-27267d2d670d
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : CreateCustomer
+Response Time : 58.890
+ID : c57f2c20-8425-4305-93e9-0dea8e955926
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : DeleteCustomer
+Response Time : 60.894
+ID : e650a597-0291-4d1c-8b46-24c42151f1c0
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : DeleteCustomer
+Response Time : 46.817
+ID : dcbd3173-32e7-450c-aa00-f64e5ce20fd5
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : CreateCustomer
+Response Time : 57.304
+ID : f9ef39a9-58d5-4edb-a104-41b171b649f4
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : DeleteCustomer
+Response Time : 63.319
+ID : 47d26656-fad4-4ada-ba7c-d0c568f60994
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : DeleteCustomer
+Response Time : 385.187
+ID : 289c5497-8152-4581-85f9-3301e6524049
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : DeleteCustomer
+Response Time : 406.499
+ID : deb96dd8-caf7-40ef-97a0-102a90fc7b5b
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : DeleteCustomer
+Response Time : 205.086
+ID : ec188f80-02b4-4b65-be1c-1ce629d18417
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : DeleteCustomer
+Response Time : 209.960
+ID : 0e7b6a04-759a-485a-9a9e-591320705858
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : CreateCustomer
+Response Time : 411.916
+ID : 534316fa-fcc9-4ffb-92f8-64407be75cac
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : CreateCustomer
+Response Time : 212.069
+ID : 6e771f74-2b64-4fb4-8712-7bf96e0c65d0
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : DeleteCustomer
+Response Time : 65.907
+ID : d4de08f3-9bff-43ad-a385-dd7f8e72bd87
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : CreateCustomer
+Response Time : 73.327
+ID : c8f34c8c-a8b8-481d-8530-b7aebc182efb
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : DeleteCustomer
+Response Time : 74.539
+ID : 5ce2a0a1-0fa1-42c9-83c8-718169e0e334
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : DeleteCustomer
+Response Time : 47.573
+ID : 5d04b0a6-2e48-41a7-b1d7-a3e31cd97d00
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : CreateCustomer
+Response Time : 59.539
+ID : eada8216-7768-4578-8f35-70247ccc0ef7
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : DeleteCustomer
+Response Time : 61.316
+ID : 930d4852-2547-4e50-a0d0-9162096e2633
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : DeleteCustomer
+Response Time : 46.061
+ID : 70d3dc93-5a78-475e-a167-267c28bb612c
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : DeleteCustomer
+Response Time : 60.498
+ID : 7b4851a6-60a7-485f-a46d-dbf60095c9ff
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : CreateCustomer
+Response Time : 64.150
+ID : b5bbf9c6-fe96-4ea3-b0e7-4b1e950b411e
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : DeleteCustomer
+Response Time : 53.436
+ID : ba01f935-2b6e-431b-b88a-e27170dcd9fd
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : DeleteCustomer
+Response Time : 56.093
+ID : 2aca3ff2-fbd6-4d5e-b20a-63c34b993b4c
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : CreateCustomer
+Response Time : 61.161
+ID : c5fe124b-6d7c-4ef5-8ea4-594cf880f1a3
+Trace : no additional routes
 
 ----------------------------------------------------------------------------------------------------
 Method : GetCustomer
@@ -72,4 +407,11 @@ Trace :
 		Response Time : 188.861
 		ID : 102747a7-fdc3-4905-af15-c348574e3232
 		Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : CreateCustomer
+Response Time : 80.869ms
+ID : 34136181-1a2f-4b66-be03-f1a5a73c2ef7
+Timestamp : undefined
+Trace : no additional routes
 
