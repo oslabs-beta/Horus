@@ -29,14 +29,13 @@ class App extends React.Component{
     })
   }
 
-  handleGetCustomer(e){
+  handleGetCustomer(e, custId){
     e.preventDefault();
-    fetch('http://localhost:3000/customers', {
-      method: 'GET'
+    fetch(`http://localhost:3000/customers/${custId}`, {
+      method: 'GET',
     })
     .then(res => res.json())
     .then(data => {
-      console.log('data :',data)
       this.setState({data: '', profile: data})
     })
   }
@@ -52,8 +51,6 @@ class App extends React.Component{
 
   deleteCustomer(e, custId){
     e.preventDefault()
-    console.log('deleteCustomer in App.jsx clicked!')
-    console.log('custId in App.jsx:', custId)
     this.setState({profile: ''})
     fetch(`http://localhost:3000/customers/${custId}`, {
       method: 'Delete'

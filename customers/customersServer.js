@@ -89,7 +89,6 @@ const ServerWrapper = new HorusServerWrapper(
       customerWithFavBook.age = customer.age;
       customerWithFavBook.address = customer.address;
       customerWithFavBook.favBook = responseFromGetBookById.book;
-
       callback(null, customerWithFavBook);
     },
   }

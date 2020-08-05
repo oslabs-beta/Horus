@@ -226,3 +226,261 @@ Response Time : 24.937
 ID : 22b9f1cf-d0a2-4fcc-beb9-18b7839d5897
 Trace : no additional routes
 
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 24.981
+ID : 1df7564f-107c-406d-b0f3-d5a4c6afd116
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 24.278
+ID : c9ff93d9-648a-454b-9f73-8db5bc2a4524
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 21.374
+ID : c275df33-2139-42ff-ba78-251942d5e7bd
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 164.559
+ID : 234513f5-dcd1-4501-be28-1a6fe5b1d732
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 33.037
+ID : 23d4e3cb-2446-4783-8231-b3f45c1352f8
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 23.815
+ID : 20237c74-43f1-4ce9-ba3f-cc46d298f365
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 34.277
+ID : 757fab7a-d501-4f56-adf2-e1e12d4a98af
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 25.274
+ID : 4555e910-7486-4c76-8abd-ff7eb9256ef4
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 25.960
+ID : 148e4a72-bc26-4c06-b8cd-e1c194aed0ab
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 30.165
+ID : 11743645-3550-4137-82a7-b0e15e793a17
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 25.459
+ID : d412146a-a79a-4098-8b26-f51ad07ce513
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 36.116
+ID : 7030ba5d-9bdb-49df-b580-20d2b3cb3070
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 22.254
+ID : 82c7b324-9474-4f71-b95c-823bc0b9d048
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 27.529
+ID : 45cb7d63-8ad0-4625-85d2-b8be9c0a7824
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 24.322
+ID : fa0b2432-9d17-495b-9362-9cc340d92536
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 25.823
+ID : 057b7826-7a85-49d1-ad70-80e15dcdf45a
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 38.508
+ID : 903f6e24-14ef-4d09-80dd-80c11f6dcb6a
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 39.008
+ID : 7ef12f40-bdb9-47ac-8a8d-449b055f1e2b
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 33.520
+ID : 30e436e1-fbd3-4bb1-951b-1e4dcfa40a34
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 34.763
+ID : 83ff2ab1-46e0-42a7-a234-1b79e752cfcc
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 37.973
+ID : 9aa2b0b8-54bf-4619-a8e7-0244abed404b
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 39.223
+ID : 1c987b1f-d462-49fd-81dc-633e349b1587
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 38.676
+ID : c977b741-8750-4810-b35a-a6c4e88236e1
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 35.776
+ID : aac06d2c-fdc3-4358-a3fe-569a9997e9e4
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 24.933
+ID : 8a2838e8-7d4d-4d00-a5bc-9dde182e4d41
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 20.028
+ID : 013121ca-d77a-4af8-805e-454ab9e6a311
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 26.172
+ID : ba523b24-a8d1-49b6-8e3e-3026af72082c
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 34.146
+ID : 26d659b4-9efb-44c4-86e1-62ab6e9287fd
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 29.872
+ID : 04bf2df2-d53a-4d8f-9e5a-c6a565ebf538
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 27.043
+ID : e97d2d72-4f75-4d5d-a79d-ce99f84a664b
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 77.737
+ID : 22e5dae8-ffa2-4b78-905c-427572cab0d2
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 23.666
+ID : 029dba39-8497-4362-b8c4-80aa27a05a65
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 25.399
+ID : bd3aaf11-6898-419d-8150-c0df41b3da1e
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 28.417
+ID : 36e80742-0620-4900-92d8-b7f9eae4a1f4
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 20.323
+ID : 25deeb4a-f66e-47ff-a786-305e25bd2488
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : CreateBook
+Response Time : 197.241
+ID : 5c01bdcf-201f-4e30-9690-576b3d1e7d59
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 24.824
+ID : 7446654a-4e64-4c04-a9ad-a9d69d89fe55
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : DeleteBook
+Response Time : 40.378
+ID : f213342b-8e1b-4b95-a2bf-91ff7579b535
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : DeleteBook
+Response Time : 21.554
+ID : 9bcb615c-7f55-4a01-9494-773a2b430a99
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : CreateBook
+Response Time : 7.406
+ID : c7bddb9d-1f4f-48f3-90ba-187bc1bf10c4
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 145.612
+ID : 767c317b-1e75-481c-9638-e1198a453fd2
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 176.130
+ID : 7818d138-6e43-4ce7-a1b9-a02de1a92a54
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : DeleteBook
+Response Time : 32.278
+ID : 2a3b378d-090c-4190-a22c-daa2f1192105
+Trace : no additional routes
+

@@ -40,7 +40,7 @@ class MainContainer extends React.Component {
         const profile = this.state.profile
         const items = []
         if (bookList){
-          for (let i = 0; i < bookList.length; i++){
+          for (let i = bookList.length-1; i >=0 ; i--){
             items.push(
                 <Book title={bookList[i].title} author={bookList[i].author} numberOfPages={bookList[i].numberOfPages} publisher={bookList[i].publisher} bookId={bookList[i].bookId} handleDeleteBook={this.handleDeleteBook} key={i}  />
             )
