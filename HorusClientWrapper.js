@@ -51,7 +51,7 @@ function checkTime(data, horusModel) {
       // save trace to horus DB (maybe only acceptable traces to not mess up with normal distribution?)
     }
   });
-  saveTrace(data);
+  saveTrace(data, horusModel);
 }
 
 function slackAlert(methodName, time, avgTime, stDev) {
@@ -93,7 +93,7 @@ function slackAlert(methodName, time, avgTime, stDev) {
     },
   });
 }
-function saveTrace(data) {
+function saveTrace(data, horusModel) {
   const obj = {
     // requestID: data.id,
     timestamp: moment(Date.now()).format('MMMM Do YYYY, h:mm:ss a'),

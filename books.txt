@@ -292,3 +292,21 @@ Response Time : 63.139
 ID : 1988c220-5e08-4cb2-b33a-6fe79668055d
 Trace : no additional routes
 
+----------------------------------------------------------------------------------------------------
+Method : CreateBook
+Response Time : 72.491
+ID : a756b2aa-e7d0-4ff0-b534-68302d1986e9
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : CreateBook
+Response Time : 434.007
+ID : 38cdb040-9a9b-42c7-a9f3-88879dde4412
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 69.651
+ID : e4eeda8a-5972-439d-98c9-c1c324c4d2ce
+Trace : no additional routes
+

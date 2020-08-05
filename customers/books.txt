@@ -553,3 +553,9 @@ Response Time : 22.205
 ID : dbe941af-1aa1-4a94-bb00-1d17e1618834
 Trace : no additional routes
 
+----------------------------------------------------------------------------------------------------
+Method : GetBookByID
+Response Time : 376.997
+ID : 4bd63865-bc9b-477e-b923-620ff50f87aa
+Trace : no additional routes
+
