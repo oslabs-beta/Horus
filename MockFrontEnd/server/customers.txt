@@ -910,3 +910,9 @@ Trace :
 		ID : 6da6622b-8dc4-43d1-af6f-305099148bb3
 		Trace : no additional routes
 
+----------------------------------------------------------------------------------------------------
+Method : CreateCustomer
+Response Time : 5.629
+ID : d2af636e-6d70-40bc-a4e8-3f48abe6c7b3
+Trace : no additional routes
+

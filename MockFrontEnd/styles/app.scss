@@ -1,3 +1,5 @@
+@import 'buttons.scss';
+
 body {
     margin: 0;
 }
@@ -28,41 +30,9 @@ body {
     width: 33%;
     .createCustomerForm {
         background: rgb(224, 110, 110);
-        #createCustomerButton {
-            font-family: sans-serif;
-            background: rgb(26, 115, 232);
-            color: white;
-            border-radius: 5px;
-            border: none;
-            padding: 5px 5px 5px 5px;
-        }
     }
     .CreateBookForm {
         background: rgb(224, 110, 110);
-        #createBookButton {
-            font-family: sans-serif;
-            background: rgb(26, 115, 232);
-            color: white;
-            border-radius: 5px;
-            border: none;
-            padding: 5px 5px 5px 5px;
-        }
-    }
-    #getCustomerbutton {
-        font-family: sans-serif;
-        background: #1aa260;
-        color: white;
-        border-radius: 5px;
-        border: none;
-        padding: 5px 5px 5px 5px
-    }
-    #getBooksbutton {
-        font-family: sans-serif;
-        background: #1aa260;
-        color: white;
-        border-radius: 5px;
-        border: none;
-        padding: 5px 5px 5px 5px
     }
 }
 
@@ -70,24 +40,11 @@ body {
     height: 200px;
     width: 300px;
     border: solid black;
-    #deleteBooksbutton {
-        background: #de5246;
-        color: white;
-        border-radius: 5px;
-        border: none;
-        padding: 5px 5px 5px 5px;
-    }
 }
 
 .custProfile {
     border: solid black;
     height: 300px;
     width: 300px;
-    #deleteCustomerButton {
-        background: #de5246;
-        color: white;
-        border-radius: 5px;
-        border: none;
-        padding: 5px 5px 5px 5px;
-    }
+
 }

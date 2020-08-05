@@ -454,3 +454,33 @@ Response Time : 40.378
 ID : f213342b-8e1b-4b95-a2bf-91ff7579b535
 Trace : no additional routes
 
+----------------------------------------------------------------------------------------------------
+Method : DeleteBook
+Response Time : 21.554
+ID : 9bcb615c-7f55-4a01-9494-773a2b430a99
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : CreateBook
+Response Time : 7.406
+ID : c7bddb9d-1f4f-48f3-90ba-187bc1bf10c4
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 145.612
+ID : 767c317b-1e75-481c-9638-e1198a453fd2
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 176.130
+ID : 7818d138-6e43-4ce7-a1b9-a02de1a92a54
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : DeleteBook
+Response Time : 32.278
+ID : 2a3b378d-090c-4190-a22c-daa2f1192105
+Trace : no additional routes
+
