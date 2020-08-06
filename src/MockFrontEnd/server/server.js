@@ -1,6 +1,5 @@
 /*Because HTTP2 is not compatible with browsers, an express proxy server is required to translate the gRPC requests and responses. */
 
-
 const path = require('path');
 const express = require('express');
 const app = express();

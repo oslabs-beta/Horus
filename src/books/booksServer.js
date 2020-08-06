@@ -2,7 +2,7 @@ const path = require("path");
 const grpc = require("grpc");
 const protoLoader = require("@grpc/proto-loader");
 const controller = require("./booksController.js");
-const HorusServerWrapper = require("../HorusServerWrapper.js");
+const HorusServerWrapper = require("@horustracer/serverwrapper");
 const PROTO_PATH = path.join(__dirname, "../protos/books.proto");
 
 const packageDefinition = protoLoader.loadSync(PROTO_PATH, {

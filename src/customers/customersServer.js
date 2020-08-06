@@ -2,7 +2,7 @@ const path = require("path");
 const grpc = require("grpc");
 const protoLoader = require("@grpc/proto-loader");
 const controller = require("./customersController.js");
-const HorusServerWrapper = require("../HorusServerWrapper.js");
+const HorusServerWrapper = require("@horustracer/serverwrapper");
 const booksStub = require(path.join(__dirname, "../stubs/booksStub.js"));
 
 const PROTO_PATH = path.join(__dirname, "../protos/customers.proto");

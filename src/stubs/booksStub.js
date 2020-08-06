@@ -3,7 +3,7 @@ const grpc = require("grpc");
 require("dotenv").config();
 const protoLoader = require("@grpc/proto-loader");
 
-const HorusClientWrapper = require("../horusClientWrapper.js");
+const HorusClientWrapper = require("@horustracer/clientwrapper");
 const PROTO_PATH = path.join(__dirname, "../protos/books.proto");
 
 const packageDefinition = protoLoader.loadSync(PROTO_PATH, {

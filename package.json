@@ -5,29 +5,24 @@
   "main": "main.js",
   "scripts": {
     "build": "NODE_ENV=production webpack",
-    "start": "NODE_ENV=production nodemon MockFrontEnd/server/server.js",
+    "start": "NODE_ENV=production nodemon src/MockFrontEnd/server/server.js",
     "servers": "concurrently \"npm run booksServer\" \"npm run customersServer\" \"npm run build\"",
-    "booksServer": "nodemon books/booksServer.js",
-    "customersServer": "nodemon customers/customersServer.js",
+    "booksServer": "nodemon src/books/booksServer.js",
+    "customersServer": "nodemon src/customers/customersServer.js",
     "test": "jest --verbose"
   },
   "author": "Horus",
   "license": "ISC",
   "dependencies": {
     "@grpc/proto-loader": "^0.5.5",
+    "@horustracer/clientwrapper": "^1.0.1",
+    "@horustracer/visualizer": "^1.0.1",
     "concurrently": "^5.2.0",
     "dotenv": "^8.2.0",
     "eslint": "^7.5.0",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-import": "^2.22.0",
-    "grpc": "^1.24.3",
-    "jest": "^26.2.2",
-    "mathjs": "^7.1.0",
-    "moment": "^2.27.0",
-    "mongoose": "^5.9.27",
-    "neo4j-driver": "^4.1.1",
-    "request": "^2.88.2",
-    "uuid": "^8.2.0"
+    "grpc": "^1.24.3"
   },
   "devDependencies": {
     "@babel/core": "^7.10.5",
