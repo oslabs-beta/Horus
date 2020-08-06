@@ -16,7 +16,7 @@ function appendToFileWrapper(file, str) {
 
 function getTargetName(service, names) {
   const path = service.service[names[0]].path;
-  return path.slice(path.indexOf('/') + 1, path.lastIndexOf('/'));
+  return path.slice(path.indexOf("/") + 1, path.lastIndexOf("/"));
 }
 
 function writeToFile(file, data, tabs = 0, first = true) {
@@ -37,7 +37,12 @@ function writeToFile(file, data, tabs = 0, first = true) {
   }
 }
 
-function checkTime(data, horusModel) {
+// more arguments metadata[name],
+          // horusModel,
+          // serviceName,
+          // targetName,
+          // slackURL
+function checkTime(data, horusModel, serviceName, targetName, slackURL) {
   const query = horusModel.find({ methodName: `${data.methodName}` });
   // perform DB query pulling out the history of response times for specific method
   query.exec((err, docs) => {
@@ -51,7 +56,7 @@ function checkTime(data, horusModel) {
       // compare current response time to the range
       // slack alert if outside the range
       if (data.responseTime < minT || data.responseTime > maxT) {
-        slackAlert(data.methodName, data.responseTime, avg, stDev);
+        slackAlert(data.methodName, data.responseTime, avg, stDev, slackURL);
         data.flag = true;
       }
       // } else {
@@ -62,7 +67,7 @@ function checkTime(data, horusModel) {
   });
 }
 
-function slackAlert(methodName, time, avgTime, stDev) {
+function slackAlert(methodName, time, avgTime, stDev, slackURL) {
   const obj = {
     text: "\n :interrobang: \n ALERT \n :interrobang: \n ",
     blocks: [
@@ -91,7 +96,8 @@ function slackAlert(methodName, time, avgTime, stDev) {
     ],
   };
   // move out the link to .env file
-  const slackURL = `${process.env.SLACK_URL}`;
+  // const slackURL = `${process.env.SLACK_URL}`;
+  // const slackURL = slackURL;
   request.post({
     uri: slackURL,
     body: JSON.stringify(obj),
@@ -104,20 +110,31 @@ function slackAlert(methodName, time, avgTime, stDev) {
 function saveTrace(data, horusModel, serviceName, targetName) {
   const alert = data.flag ? true : false;
   const request = {
-    client: serviceName, 
+    client: serviceName,
     server: targetName,
-    timestamp: moment(Date.now()).format('MMMM Do YYYY, h:mm:ss a'),
+    timestamp: moment(Date.now()).format("MMMM Do YYYY, h:mm:ss a"),
     flag: alert,
     methodName: data.methodName,
     responseTime: data.responseTime,
     trace: data.trace,
   };
-  horusModel.create(request, (error, response) => { 
-    if (error) console.log(error)
-  })
+  horusModel.create(request, (error, response) => {
+    if (error) console.log(error);
+  });
 }
 
-function makeMethods(clientWrapper, client, metadata, names, file, horusModel, serviceName, targetName, writeToFile) {
+function makeMethods(
+  clientWrapper,
+  client,
+  metadata,
+  names,
+  file,
+  horusModel,
+  serviceName,
+  targetName,
+  writeToFile,
+  slackURL
+) {
   for (let i = 0; i < names.length; i++) {
     const name = names[i];
     metadata[name] = {
@@ -133,7 +150,13 @@ function makeMethods(clientWrapper, client, metadata, names, file, horusModel, s
           Number(process.hrtime.bigint() - startTime) / 1000000
         ).toFixed(3);
         metadata[name].id = uuidv4();
-        checkTime(metadata[name], horusModel, serviceName, targetName);
+        checkTime(
+          metadata[name],
+          horusModel,
+          serviceName,
+          targetName,
+          slackURL
+        );
         saveTrace(metadata[name], horusModel, serviceName, targetName);
         writeToFile(file, metadata[name]);
         callback(error, response);
@@ -147,11 +170,23 @@ function makeMethods(clientWrapper, client, metadata, names, file, horusModel, s
 }
 
 class HorusClientWrapper {
-  constructor(client, service, file, serviceName, mongoURL) {
+  constructor(client, service, file, serviceName, mongoURL, slackURL) {
     this.metadata = {};
     const names = Object.keys(service.service);
     this.model = horusModelConstructor(mongoURL);
-    makeMethods(this, client, this.metadata, names, file, this.model, serviceName, getTargetName(service, names), writeToFile);
+    // this.slackURL = slackURL;
+    makeMethods(
+      this,
+      client,
+      this.metadata,
+      names,
+      file,
+      this.model,
+      serviceName,
+      getTargetName(service, names),
+      writeToFile,
+      slackURL
+    );
   }
   makeHandShakeWithServer(server, method) {
     server.acceptMetadata(this.metadata[method]);
