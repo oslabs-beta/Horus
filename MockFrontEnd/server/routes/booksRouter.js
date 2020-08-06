@@ -1,16 +1,16 @@
 const express = require('express');
-const bookInitiator = require('../../../bookInitiator')
+const booksClient = require('../../../books/booksClient.js')
 const booksRouter = express.Router();
 
-booksRouter.post('/', bookInitiator.createBook, (req, res) => {
+booksRouter.post('/', booksClient.createBook, (req, res) => {
     return res.status(200).json(res.locals.book)
 })
 
-booksRouter.get('/', bookInitiator.getBooks, (req, res) => {
+booksRouter.get('/', booksClient.getBooks, (req, res) => {
     return res.status(200).json(res.locals.books)
 })
 
-booksRouter.delete('/:bookId', bookInitiator.deleteBook, (req, res) => {
+booksRouter.delete('/:bookId', booksClient.deleteBook, (req, res) => {
     return res.status(200);
 })
 

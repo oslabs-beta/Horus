@@ -782,3 +782,87 @@ ID : ae861e17-08b6-4109-9fb9-515e57c802ff
 Timestamp : August 5th 2020, 3:39:36 pm
 Trace : no additional routes
 
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 190.088ms
+ID : 11fa071b-0b6c-4641-b445-f58468ac9e5a
+Timestamp : undefined
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 199.359ms
+ID : b04c5a90-bc26-4d8b-b34e-8152204b9f13
+Timestamp : undefined
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 33.183ms
+ID : bcc05ff6-e6e2-423a-97cd-666b5b146006
+Timestamp : undefined
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 25.905ms
+ID : 5904c141-2415-4610-92c6-2fb9e249f07b
+Timestamp : undefined
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 209.822ms
+ID : 3b21d523-bee4-4ef3-bfd8-e47333cda00d
+Timestamp : undefined
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : DeleteBook
+Response Time : 40.697ms
+ID : 083da269-34a3-446e-99ea-a44ea413c6ca
+Timestamp : undefined
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBookByID
+Response Time : 47.467ms
+ID : 85c2a8c9-aacd-490b-a56a-d0df25d9be03
+Timestamp : undefined
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBookByID
+Response Time : 30.882ms
+ID : 23095a39-ae3e-4574-9d21-ce156e3de76b
+Timestamp : undefined
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 29.753ms
+ID : 0aba9149-974a-4a7c-b000-c58cc7c81eb1
+Timestamp : undefined
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 200.743ms
+ID : 5a5620ff-1cd2-4598-a061-7c437265d3e4
+Timestamp : undefined
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 206.654ms
+ID : 36a8d683-0ef1-4da5-829b-a1e57aeb00ab
+Timestamp : undefined
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 189.838ms
+ID : 6315f619-5708-40ef-af81-a7c28a4a6eee
+Timestamp : undefined
+Trace : no additional routes
+

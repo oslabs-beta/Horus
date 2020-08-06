@@ -2,6 +2,7 @@ const path = require("path");
 const grpc = require("grpc");
 require("dotenv").config();
 const protoLoader = require("@grpc/proto-loader");
+require("dotenv").config();
 
 const HorusClientWrapper = require("../HorusClientWrapper");
 const PROTO_PATH = path.join(__dirname, "../protos/customers.proto");

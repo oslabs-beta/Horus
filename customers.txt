@@ -415,3 +415,64 @@ ID : 34136181-1a2f-4b66-be03-f1a5a73c2ef7
 Timestamp : undefined
 Trace : no additional routes
 
+----------------------------------------------------------------------------------------------------
+Method : CreateCustomer
+Response Time : 224.806ms
+ID : 6f980278-5a17-4242-9d8c-6e68981ffcc9
+Timestamp : undefined
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : CreateCustomer
+Response Time : 26.684ms
+ID : ba1c8227-4952-47f5-96a9-5b3cd4611f34
+Timestamp : undefined
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : CreateCustomer
+Response Time : 31.203ms
+ID : f7a8ee26-abeb-4a21-81a5-f6988b538f69
+Timestamp : undefined
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : CreateCustomer
+Response Time : 22.483ms
+ID : ca079903-1d79-4805-81f9-d92cbd01a93c
+Timestamp : undefined
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : CreateCustomer
+Response Time : 27.239ms
+ID : 41e2fe65-7fc3-448e-98a6-64c3372668af
+Timestamp : undefined
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetCustomer
+Response Time : 146.531ms
+ID : 5e4159e2-bcb4-475f-8634-2b7617bff360
+Timestamp : undefined
+Trace : 
+		--------------------------------------------------
+		Method : GetBookByID
+		Response Time : 47.467ms
+		ID : 85c2a8c9-aacd-490b-a56a-d0df25d9be03
+		Timestamp : undefined
+		Trace : no additional routes
+
+		Method : GetBookByID
+		Response Time : 30.882ms
+		ID : 23095a39-ae3e-4574-9d21-ce156e3de76b
+		Timestamp : undefined
+		Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetCustomer
+Response Time : 59.353ms
+ID : 50eb784f-96db-4213-b6fd-ba79121d7f8c
+Timestamp : undefined
+Trace : 
+		--------------------------------------------------
