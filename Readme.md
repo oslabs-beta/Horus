@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./Assets/Horus-Circular-Logo.png" width="250px" height"250px"/>
+  <img src="./src/Assets/Horus-Circular-Logo.png" width="250px" height"250px"/>
 </p>
 </br>
 <h1 align="center">HORUS</h1>
@@ -213,7 +213,7 @@ The Horus ClientWrapper does its magic by "wrapping" your preexisting gRPC stub 
 
 <br/>
 <p align="center">
-  <img src="./Assets/sketchWrapperNew.png"/>
+  <img src="./src/Assets/sketchWrapperNew.png"/>
 </p>
 <br/>
 
@@ -518,7 +518,7 @@ In this scenario, the booksStub is secretly a Horus Client Wrapper (remember how
 What's the point of this handshake function? This function is what allows the ClientWrapper and ServerWrapper objects to communicate. Whenever the ClientWrapper completes a request, it now knows to pass the relevent information on to the ServerWrapper. Here's a conceptual sketch of what the handshake function is acomplishing. 
 
 <p align="center">
-  <img src="./Assets/sketchIntraservice.png"/>
+  <img src="./src/Assets/sketchIntraservice.png"/>
 </p>
 
 <br/>
@@ -602,7 +602,7 @@ An alert will be sent out with these key metrics:
 
 *Sample Message*
 <p align="center">
-  <img src="./Assets/New-Horus.png"/>
+  <img src="./src/Assets/New-Horus.png"/>
 </p>
 
 
@@ -639,14 +639,14 @@ After following each step you will be spinning up our frontend, interact with th
 
 **'CreateCustomer' and 'GetCustomer' Methods are run respectively (GetCustomer method performs Intraservice request in order to get the customer's favorite book)**
 <p align="center">
-  <img src="./Assets/create-and-get-customers.gif"/>
+  <img src="./src/Assets/create-and-get-customers.gif"/>
 </p>
 
 </br>
 
 **'CreateBook' and 'GetAllBooks' Methods are run respectively**
 <p align="center">
-  <img src="./Assets/Create-and-Get-Books.gif"/>
+  <img src="./src/Assets/Create-and-Get-Books.gif"/>
 </p>
 
 </br>
@@ -697,7 +697,7 @@ When invoked, the "mapAveragesToNeo4j" queries your database of requests and com
 
 <b>Here's an Image of how your data should be visualized</b>
 <p align="center">
-  <img src="./Assets/Neo4j.png" width="800px" height"400px"/>
+  <img src="./src/Assets/Neo4j.png" width="800px" height"400px"/>
 </p>
 <br/>
 
