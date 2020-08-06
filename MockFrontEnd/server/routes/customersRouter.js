@@ -1,16 +1,16 @@
 const express = require('express');
-const customerInitiator = require('../../../customerInitiator.js')
+const customersClient = require('../../../customers/customersClient.js')
 const customersRouter = express.Router();
 
-customersRouter.post('/', customerInitiator.createCustomer, (req, res) => {
+customersRouter.post('/', customersClient.createCustomer, (req, res) => {
     return res.status(200).json(res.locals.customers)
 })
 
-customersRouter.get('/:custId', customerInitiator.getCustomer, (req, res) => {
+customersRouter.get('/:custId', customersClient.getCustomer, (req, res) => {
     return res.status(200).json(res.locals.customers)
 })
 
-customersRouter.delete('/:custId', customerInitiator.deleteCustomer, (req, res) => {
+customersRouter.delete('/:custId', customersClient.deleteCustomer, (req, res) => {
     return res.status(200);
 })
 

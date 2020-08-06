@@ -1,9 +1,9 @@
-//initiator.js files are a way for us to use these functions without using the browser on the front end.
-const customerInitiator = {};
-const customerStub = require("./stubs/customersStub.js");
+//client.js files are a way for us to use these functions without using the browser on the front end.
+const customersClient = {};
+const customerStub = require("../stubs/customersStub.js");
 const { resolve } = require("path");
 
-customerInitiator.createCustomer = (req, res, next) => {
+customersClient.createCustomer = (req, res, next) => {
   const customer = {
     custId: req.body.custId,
     name: req.body.name,
@@ -20,7 +20,7 @@ customerInitiator.createCustomer = (req, res, next) => {
   customerStub.CreateCustomer(customer, callback)
 }
 
-customerInitiator.getCustomer = (req, res, next) => {
+customersClient.getCustomer = (req, res, next) => {
   custId = {custId: req.params.custId}
   const callback = (error, data) => {
     res.locals.customers = data
@@ -30,7 +30,7 @@ customerInitiator.getCustomer = (req, res, next) => {
   customerStub.GetCustomer(custId, callback)
 }
 
-customerInitiator.deleteCustomer = (req, res, next) => {
+customersClient.deleteCustomer = (req, res, next) => {
   custId = {custId: req.params.custId}
   const callback = (error, data) => {
     if (error) console.log('sorry, there was an error', error)
@@ -39,4 +39,4 @@ customerInitiator.deleteCustomer = (req, res, next) => {
   customerStub.DeleteCustomer(custId, callback)
 }
 
-module.exports = customerInitiator;
+module.exports = customersClient;
