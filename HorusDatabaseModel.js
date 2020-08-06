@@ -22,7 +22,6 @@ function connectWithDatabase(mongoURL) {
     },
     timestamp: {
       type: String,
-      // default: moment(Date.now).format('MMMM Do YYYY, h:mm:ss a'),
     },
     flag: {
       type: Boolean,
