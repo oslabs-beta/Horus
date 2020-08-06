@@ -4,7 +4,6 @@ const request = require("request");
 const math = require("mathjs");
 const moment = require("moment");
 require("dotenv").config();
-// const horusModel = require("./HorusDataBaseModel.js");
 const horusModelConstructor = require("./HorusDataBaseModel.js");
 
 function appendToFileWrapper(file, str) {
@@ -24,7 +23,6 @@ function writeToFile(file, data, tabs = 0, first = true) {
   let str = "";
   let tabsStr = "\t".repeat(tabs);
   if (first) str += "-".repeat(100) + "\n";
-  // str += `${tabsStr}Method : ${data.methodName}\n${tabsStr}Response Time : ${data.responseTime}ms\n${tabsStr}ID : ${data.id}\n`;
   str += `${tabsStr}Method : ${data.methodName}\n${tabsStr}Response Time : ${data.responseTime}ms\n${tabsStr}ID : ${data.id}\n${tabsStr}Timestamp : ${data.timestamp}\n`;
   if (data.trace === "none") {
     str += `${tabsStr}Trace : no additional routes\n\n`;
@@ -37,11 +35,6 @@ function writeToFile(file, data, tabs = 0, first = true) {
   }
 }
 
-// more arguments metadata[name],
-          // horusModel,
-          // serviceName,
-          // targetName,
-          // slackURL
 function checkTime(data, horusModel, serviceName, targetName, slackURL) {
   const query = horusModel.find({ methodName: `${data.methodName}` });
   // perform DB query pulling out the history of response times for specific method
@@ -59,10 +52,7 @@ function checkTime(data, horusModel, serviceName, targetName, slackURL) {
         slackAlert(data.methodName, data.responseTime, avg, stDev, slackURL);
         data.flag = true;
       }
-      // } else {
-      //   saveTrace(data);
-      // }
-      // save trace to horus DB (maybe only acceptable traces to not mess up with normal distribution?)
+      saveTrace(data, horusModel, serviceName, targetName, );
     }
   });
 }
@@ -77,7 +67,6 @@ function slackAlert(methodName, time, avgTime, stDev, slackURL) {
         text: {
           type: "mrkdwn",
           text: `\n :interrobang: \n '${methodName}' method took ${time}ms which is above the 2 Standard Deviation Treshold   \n :interrobang: \n`,
-          // text: `\n :interrobang: \n Check your '${service}' container, your time is ${time}ms which is above the 2 Standard Deviation Treshold   \n :interrobang: \n`,
         },
         accessory: {
           type: "image",
@@ -95,9 +84,6 @@ function slackAlert(methodName, time, avgTime, stDev, slackURL) {
       },
     ],
   };
-  // move out the link to .env file
-  // const slackURL = `${process.env.SLACK_URL}`;
-  // const slackURL = slackURL;
   request.post({
     uri: slackURL,
     body: JSON.stringify(obj),
@@ -157,7 +143,6 @@ function makeMethods(
           targetName,
           slackURL
         );
-        saveTrace(metadata[name], horusModel, serviceName, targetName);
         writeToFile(file, metadata[name]);
         callback(error, response);
       }).on("metadata", (metadataFromServer) => {
@@ -174,7 +159,6 @@ class HorusClientWrapper {
     this.metadata = {};
     const names = Object.keys(service.service);
     this.model = horusModelConstructor(mongoURL);
-    // this.slackURL = slackURL;
     makeMethods(
       this,
       client,

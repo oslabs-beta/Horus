@@ -6,7 +6,7 @@
   "scripts": {
     "build": "NODE_ENV=production webpack",
     "start": "NODE_ENV=production nodemon MockFrontEnd/server/server.js",
-    "serviceServers": "concurrently \"npm run booksServer\" \"npm run customersServer\" \"npm run build\"",
+    "services": "concurrently \"npm run booksServer\" \"npm run customersServer\" \"npm run build\"",
     "booksServer": "nodemon books/booksServer.js",
     "customersServer": "nodemon customers/customersServer.js",
     "test": "jest --verbose"
