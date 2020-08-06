@@ -6,10 +6,10 @@
   "scripts": {
     "build": "NODE_ENV=production webpack",
     "start": "NODE_ENV=production nodemon MockFrontEnd/server/server.js",
-    "runServiceServers": "concurrently \"npm run booksServer\" \"npm run customersServer\" \"npm run build\"",
+    "servers": "concurrently \"npm run booksServer\" \"npm run customersServer\" \"npm run build\"",
     "booksServer": "nodemon books/booksServer.js",
     "customersServer": "nodemon customers/customersServer.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --verbose"
   },
   "author": "Horus",
   "license": "ISC",
@@ -24,6 +24,7 @@
     "express": "^4.17.1",
     "grpc": "^1.24.3",
     "grpc-web": "^1.2.0",
+    "jest": "^26.2.2",
     "mathjs": "^7.1.0",
     "moment": "^2.27.0",
     "mongoose": "^5.9.27",

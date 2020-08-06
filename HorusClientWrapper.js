@@ -104,7 +104,7 @@ function slackAlert(methodName, time, avgTime, stDev) {
 function saveTrace(data, horusModel, serviceName, targetName) {
   const alert = data.flag ? true : false;
   const request = {
-    client: serviceName, 
+    client: serviceName,
     server: targetName,
     timestamp: moment(Date.now()).format('MMMM Do YYYY, h:mm:ss a'),
     flag: alert,
