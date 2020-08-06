@@ -866,3 +866,45 @@ ID : 6315f619-5708-40ef-af81-a7c28a4a6eee
 Timestamp : undefined
 Trace : no additional routes
 
+----------------------------------------------------------------------------------------------------
+Method : GetBookByID
+Response Time : 193.104ms
+ID : 45a33bdc-9a44-42ee-b1a6-2324e5b57c02
+Timestamp : undefined
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 37.393ms
+ID : 49dd0fc3-5294-42d5-a721-47822e694a50
+Timestamp : undefined
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 189.572ms
+ID : 390a4899-01ae-485e-b141-ee75ba92c28f
+Timestamp : undefined
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : DeleteBook
+Response Time : 236.668ms
+ID : 1d6dd683-db70-4b2f-97db-7fa8ad88824e
+Timestamp : undefined
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 33.148ms
+ID : e777112d-a35c-4340-ad5c-b828f986261f
+Timestamp : undefined
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : DeleteBook
+Response Time : 26.300ms
+ID : a786df36-e01c-46f8-89e7-9cb7f88537a6
+Timestamp : undefined
+Trace : no additional routes
+

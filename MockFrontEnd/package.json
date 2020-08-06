@@ -12,31 +12,13 @@
   "author": "Horus",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "nodemon": "^2.0.4",
-    "path": "^0.12.7",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "uuid": "^8.2.0"
+    "react-dom": "^16.13.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.10.5",
-    "@babel/preset-env": "^7.10.4",
-    "@babel/preset-react": "^7.10.4",
-    "@grpc/proto-loader": "^0.5.5",
-    "babel-loader": "^8.1.0",
-    "css-loader": "^3.6.0",
-    "google-protobuf": "^4.0.0-rc.2",
-    "grpc": "^1.24.3",
-    "grpc-loader": "^2.0.1",
-    "grpc-web": "^1.2.0",
-    "grpc-webpack-plugin": "^0.2.78",
-    "html-webpack-plugin": "^4.3.0",
-    "style-loader": "^1.2.1",
-    "webpack": "^4.44.0",
-    "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.0"
+    "webpack": "^4.44.0"
   },
   "keywords": []
 }

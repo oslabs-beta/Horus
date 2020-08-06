@@ -476,3 +476,23 @@ ID : 50eb784f-96db-4213-b6fd-ba79121d7f8c
 Timestamp : undefined
 Trace : 
 		--------------------------------------------------
+----------------------------------------------------------------------------------------------------
+Method : GetCustomer
+Response Time : 445.698ms
+ID : 1df29225-79f3-4a06-81e0-c24aea7ab2a9
+Timestamp : undefined
+Trace : 
+		--------------------------------------------------
+		Method : GetBookByID
+		Response Time : 193.104ms
+		ID : 45a33bdc-9a44-42ee-b1a6-2324e5b57c02
+		Timestamp : undefined
+		Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : CreateCustomer
+Response Time : 216.706ms
+ID : 17bdfd0e-b804-4a79-98b6-825b892427a3
+Timestamp : undefined
+Trace : no additional routes
+
