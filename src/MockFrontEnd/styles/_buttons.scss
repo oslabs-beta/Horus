@@ -1,0 +1,66 @@
+button {
+    font-family: sans-serif;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 5px 5px 5px;
+    cursor: pointer;
+    outline: none;
+}
+
+button:active {
+    transform: translateY(3px)
+}
+
+    #getCustomerbutton {
+        background: #1aa260;
+        color: white;
+    }
+
+    #getCustomerbutton:hover{
+        background-color: #289460;
+    }
+
+    #createCustomerButton {
+        background: #4c8bf5;
+        color: white;
+    }
+
+    #createCustomerButton:hover {
+        background: #5d8fe4; 
+    }
+
+    #deleteCustomerButton {
+        background: #db4a39;
+        color: white;
+    }
+
+    #deleteCustomerButton:hover {
+        background: #cb5749;
+    }
+
+    #getBooksbutton {
+        background: #1aa260;
+        color: white;
+    }
+
+    #getBooksbutton:hover {
+        background-color: #289460;
+    }
+
+    #createBookButton {
+        background: #4c8bf5;
+        color: white;
+    }
+
+    #createBookButton:hover {
+    background: #5d8fe4;
+    }
+
+    #deleteBooksbutton {
+        background: #db4a39;
+        color: white;
+    }
+
+    #deleteBooksbutton:hover {
+        background: #cb5749;
+    }

@@ -1,0 +1,50 @@
+@import 'buttons.scss';
+
+body {
+    margin: 0;
+}
+
+.MainBody {
+    display: flex;
+    height: 100%;
+}
+
+.MainContainer {
+    background: rgb(144, 221, 238);
+    width: 67%;
+    overflow: scroll;
+}
+
+.TopContainer {
+    border-bottom: solid 1px black;
+    background: navy;
+    height: 100px;
+    width: 100%;
+    color: white;
+}
+
+.LeftContainer {
+    background: rgb(224, 110, 110);
+    border-right: solid 1px;
+    height: 100%;
+    width: 33%;
+    .createCustomerForm {
+        background: rgb(224, 110, 110);
+    }
+    .CreateBookForm {
+        background: rgb(224, 110, 110);
+    }
+}
+
+.bookBox {
+    height: 200px;
+    width: 300px;
+    border: solid black;
+}
+
+.custProfile {
+    border: solid black;
+    height: 350px;
+    width: 300px;
+
+}
