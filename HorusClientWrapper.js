@@ -36,28 +36,51 @@ function writeToFile(file, data, tabs = 0, first = true) {
 }
 
 function checkTime(data, horusModel, serviceName, targetName, slackURL) {
-  const query = horusModel.find({ methodName: `${data.methodName}` });
-  // perform DB query pulling out the history of response times for specific method
+  data.flag = false;
+  const query = horusModel.find({
+    methodName: `${data.methodName}`,
+    flag: false,
+  });
+  // perform DB query pulling out the history of response times for specific method without flag on them
   query.exec((err, docs) => {
     if (err) console.log("Error retrieving data for specific method", err);
-    if (docs.length) {
-      const times = docs.map((doc) => doc.responseTime);
+    if (docs.length > 2) {
+      let times = docs.map((doc) => doc.responseTime);
+      times = times.slice(1);
       const avg = math.mean(times).toFixed(3);
       const stDev = math.std(times, "uncorrected").toFixed(3);
-      const minT = (Number(avg) - Number(stDev)).toFixed(3);
-      const maxT = (Number(avg) + Number(stDev)).toFixed(3);
+      const minT = (Number(avg) - 2 * Number(stDev)).toFixed(3);
+      const maxT = (Number(avg) + 2 * Number(stDev)).toFixed(3);
       // compare current response time to the range
       // slack alert if outside the range
       if (data.responseTime < minT || data.responseTime > maxT) {
-        slackAlert(data.methodName, data.responseTime, avg, stDev, slackURL);
+        slackAlert(
+          data.methodName,
+          data.responseTime,
+          avg,
+          stDev,
+          serviceName,
+          targetName,
+          slackURL
+        );
         data.flag = true;
       }
-      saveTrace(data, horusModel, serviceName, targetName, );
+      saveTrace(data, horusModel, serviceName, targetName);
+    } else {
+      saveTrace(data, horusModel, serviceName, targetName);
     }
   });
 }
 
-function slackAlert(methodName, time, avgTime, stDev, slackURL) {
+function slackAlert(
+  methodName,
+  time,
+  avgTime,
+  stDev,
+  serviceName,
+  targetName,
+  slackURL
+) {
   const obj = {
     text: "\n :interrobang: \n ALERT \n :interrobang: \n ",
     blocks: [
@@ -66,7 +89,7 @@ function slackAlert(methodName, time, avgTime, stDev, slackURL) {
         block_id: "section567",
         text: {
           type: "mrkdwn",
-          text: `\n :interrobang: \n '${methodName}' method took ${time}ms which is above the 2 Standard Deviation Treshold   \n :interrobang: \n`,
+          text: `\n :interrobang: \n '${methodName}' method (${serviceName} --> ${targetName}) took ${time}ms which is above/below 2 Standard Deviation Threshold \n :interrobang: \n`,
         },
         accessory: {
           type: "image",
@@ -79,7 +102,7 @@ function slackAlert(methodName, time, avgTime, stDev, slackURL) {
         type: "section",
         text: {
           type: "mrkdwn",
-          text: `the Average time is: ${avgTime}; standard deviation: ${stDev}`,
+          text: `Average time is: ${avgTime}; Standard Deviation: ${stDev}`,
         },
       },
     ],
