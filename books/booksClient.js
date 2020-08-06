@@ -1,7 +1,7 @@
-const bookStub = require("./stubs/booksStub.js");
-const bookInitiator = {};
+const bookStub = require("../stubs/booksStub.js");
+const booksClient = {};
 
-bookInitiator.createBook = (req, res, next) => {
+booksClient.createBook = (req, res, next) => {
   const book = {
     title: req.body.title, 
     author: req.body.author,
@@ -17,7 +17,7 @@ bookInitiator.createBook = (req, res, next) => {
   bookStub.CreateBook(book, callback)
 }
 
-bookInitiator.getBooks = (req, res, next) => {
+booksClient.getBooks = (req, res, next) => {
   const callback = (error, data) => {
     res.locals.books = data
     if (error) console.log('sorry, there was an error', error)
@@ -26,7 +26,7 @@ bookInitiator.getBooks = (req, res, next) => {
   bookStub.GetBooks({}, callback)
 }
 
-bookInitiator.deleteBook = (req, res, next) => {
+booksClient.deleteBook = (req, res, next) => {
   bookId = {bookId: req.params.bookId}
   const callback = (error, data) => {
     if (error) console.log('sorry, there was an error', error)
@@ -35,4 +35,4 @@ bookInitiator.deleteBook = (req, res, next) => {
   bookStub.DeleteBook(bookId, callback)
 }
 
-module.exports = bookInitiator;
+module.exports = booksClient;
