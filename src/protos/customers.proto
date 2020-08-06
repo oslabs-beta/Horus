@@ -6,13 +6,6 @@ service CustomersService {
     rpc DeleteCustomer (CustomerID) returns (Empty) {}
 }
 
-// message Customer {
-//     int32 custId = 1;
-//     string name = 2;
-//     string age = 3;
-//     string address = 4;
-// }
-
 message CustomerReq {
     int32 custId = 1;
     string name = 2;
