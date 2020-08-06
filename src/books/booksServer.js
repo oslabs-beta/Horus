@@ -1,9 +1,10 @@
-const path = require("path");
-const grpc = require("grpc");
-const protoLoader = require("@grpc/proto-loader");
-const controller = require("./booksController.js");
-const HorusServerWrapper = require("@horustracer/serverwrapper");
-const PROTO_PATH = path.join(__dirname, "../protos/books.proto");
+const path = require('path');
+const grpc = require('grpc');
+const protoLoader = require('@grpc/proto-loader');
+const HorusServerWrapper = require('@horustracer/serverwrapper');
+const controller = require('./booksController.js');
+
+const PROTO_PATH = path.join(__dirname, '../protos/books.proto');
 
 const packageDefinition = protoLoader.loadSync(PROTO_PATH, {
   keepCase: true,
@@ -26,10 +27,10 @@ const ServerWrapper = new HorusServerWrapper(
     CreateBook: async (call, callback) => {
       const result = await controller.createBook(call.request);
 
-      if (result === "error") {
+      if (result === 'error') {
         return callback({
           code: grpc.status.STATUS_UNKNOWN,
-          message: "There was an error writing to the database",
+          message: 'There was an error writing to the database',
         });
       }
 
@@ -44,10 +45,10 @@ const ServerWrapper = new HorusServerWrapper(
     DeleteBook: async (call, callback) => {
       const result = await controller.deleteBook(call.request);
 
-      if (result === "error") {
+      if (result === 'error') {
         return callback({
           code: grpc.status.STATUS_UNKNOWN,
-          message: "There was an error deleting from the database",
+          message: 'There was an error deleting from the database',
         });
       }
 
@@ -60,10 +61,10 @@ const ServerWrapper = new HorusServerWrapper(
     },
     GetBookByID: async (call, callback) => {
       const result = await controller.getBookByID(call.request, callback);
-      if (result === "error") {
+      if (result === 'error') {
         return callback({
           code: grpc.status.STATUS_UNKNOWN,
-          message: "There was an error reading from the database",
+          message: 'There was an error reading from the database',
         });
       }
       callback(null, {
@@ -74,12 +75,12 @@ const ServerWrapper = new HorusServerWrapper(
         bookId: result.bookId,
       });
     },
-  }
+  },
 );
 
-server.bind("127.0.0.1:30043", grpc.ServerCredentials.createInsecure());
-console.log("booksServer.js running at http://127.0.0.1:30043");
+server.bind('127.0.0.1:30043', grpc.ServerCredentials.createInsecure());
+console.log('booksServer.js running at http://127.0.0.1:30043');
 
-console.log("call from books server");
+console.log('call from books server');
 
 server.start();

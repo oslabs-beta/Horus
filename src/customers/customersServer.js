@@ -1,11 +1,12 @@
-const path = require("path");
-const grpc = require("grpc");
-const protoLoader = require("@grpc/proto-loader");
-const controller = require("./customersController.js");
-const HorusServerWrapper = require("@horustracer/serverwrapper");
-const booksStub = require(path.join(__dirname, "../stubs/booksStub.js"));
+const path = require('path');
+const grpc = require('grpc');
+const protoLoader = require('@grpc/proto-loader');
+const HorusServerWrapper = require('@horustracer/serverwrapper');
+const controller = require('./customersController.js');
 
-const PROTO_PATH = path.join(__dirname, "../protos/customers.proto");
+const booksStub = require(path.join(__dirname, '../stubs/booksStub.js'));
+
+const PROTO_PATH = path.join(__dirname, '../protos/customers.proto');
 const packageDefinition = protoLoader.loadSync(PROTO_PATH, {
   keepCase: true,
   longs: String,
@@ -19,8 +20,8 @@ const server = new grpc.Server();
 function GetBookIdAsPromise(bookId, server) {
   return new Promise((resolve, reject) => {
     booksStub.GetBookByID(bookId, (error, response) => {
-      if (error) resolve("error");
-      booksStub.makeHandShakeWithServer(server, "GetBookByID");
+      if (error) resolve('error');
+      booksStub.makeHandShakeWithServer(server, 'GetBookByID');
       resolve({ book: response });
     });
   });
@@ -37,10 +38,10 @@ const ServerWrapper = new HorusServerWrapper(
     CreateCustomer: async (call, callback) => {
       const result = await controller.createCustomer(call.request);
 
-      if (result === "error") {
+      if (result === 'error') {
         return callback({
           code: grpc.status.STATUS_UNKNOWN,
-          message: "There was an error writing to the database",
+          message: 'There was an error writing to the database',
         });
       }
       callback(null, {
@@ -54,32 +55,32 @@ const ServerWrapper = new HorusServerWrapper(
     DeleteCustomer: async (call, callback) => {
       const result = await controller.deleteCustomer(call.request.custId);
 
-      if (result === "error") {
+      if (result === 'error') {
         return callback({
           code: grpc.status.STATUS_UNKNOWN,
-          message: "There was an error deleting from the database",
+          message: 'There was an error deleting from the database',
         });
       }
       callback(null, {});
     },
     GetCustomer: async (call, callback) => {
       const customer = await controller.getCustomer(call.request);
-      if (customer === "error") {
+      if (customer === 'error') {
         return callback({
           code: grpc.status.STATUS_UNKNOWN,
-          message: "There was an error querying the database",
+          message: 'There was an error querying the database',
         });
       }
 
       const responseFromGetBookById = await GetBookIdAsPromise(
         { bookId: customer.favBookId },
-        ServerWrapper
+        ServerWrapper,
       );
 
-      if (responseFromGetBookById === "error") {
+      if (responseFromGetBookById === 'error') {
         return callback({
           code: grpc.status.STATUS_UNKNOWN,
-          message: "There was an error making an intraservice request to books",
+          message: 'There was an error making an intraservice request to books',
         });
       }
 
@@ -91,11 +92,11 @@ const ServerWrapper = new HorusServerWrapper(
       customerWithFavBook.favBook = responseFromGetBookById.book;
       callback(null, customerWithFavBook);
     },
-  }
+  },
 );
 
-server.bind("127.0.0.1:40043", grpc.ServerCredentials.createInsecure());
-console.log("customerServer.js running at http://127.0.0.1:40043");
-console.log("call from customer server");
+server.bind('127.0.0.1:40043', grpc.ServerCredentials.createInsecure());
+console.log('customerServer.js running at http://127.0.0.1:40043');
+console.log('call from customer server');
 
 server.start();

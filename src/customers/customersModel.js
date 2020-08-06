@@ -13,7 +13,6 @@ mongoose.connect(customers_db_uri, { useNewUrlParser: true, useUnifiedTopology: 
   .then(() => console.log('Connected!!!********* Customer Database is live!!!'))
   .catch((err) => console.log('Connection Error ', err));
 
-
 //  Schema for the database
 const CustomerSchema = new Schema({
   custId: {
@@ -32,10 +31,10 @@ const CustomerSchema = new Schema({
     type: String,
     required: true,
   },
-  favBookId:{
+  favBookId: {
     type: Number,
-    required:true
-  }
+    required: true,
+  },
 });
 
 // create model and ship out

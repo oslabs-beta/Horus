@@ -54,3 +54,31 @@ ID : a786df36-e01c-46f8-89e7-9cb7f88537a6
 Timestamp : undefined
 Trace : no additional routes
 
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 172.009ms
+ID : 387be300-9326-44f1-86a5-6dcfb6700927
+Timestamp : undefined
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBookByID
+Response Time : 34.089ms
+ID : 2cae65f4-ddd1-41cc-8b46-fed350062258
+Timestamp : undefined
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBooks
+Response Time : 28.887ms
+ID : a5a6101f-c095-4087-8407-2f3d0b9cfc32
+Timestamp : undefined
+Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetBookByID
+Response Time : 24.257ms
+ID : acc0a098-a765-4c49-9012-1b6278a2b787
+Timestamp : undefined
+Trace : no additional routes
+

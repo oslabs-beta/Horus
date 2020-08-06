@@ -1,10 +1,11 @@
-const path = require("path");
-const grpc = require("grpc");
-require("dotenv").config();
-const protoLoader = require("@grpc/proto-loader");
+const path = require('path');
+const grpc = require('grpc');
+require('dotenv').config();
+const protoLoader = require('@grpc/proto-loader');
 
-const HorusClientWrapper = require("@horustracer/clientwrapper");
-const PROTO_PATH = path.join(__dirname, "../protos/customers.proto");
+const HorusClientWrapper = require('@horustracer/clientwrapper');
+
+const PROTO_PATH = path.join(__dirname, '../protos/customers.proto');
 
 const packageDefinition = protoLoader.loadSync(PROTO_PATH, {
   keepCase: true,
@@ -17,8 +18,8 @@ const CustomersService = grpc.loadPackageDefinition(packageDefinition)
   .CustomersService;
 
 const client = new CustomersService(
-  "localhost:40043",
-  grpc.credentials.createInsecure()
+  'localhost:40043',
+  grpc.credentials.createInsecure(),
 );
 
 // The Client Wrapper "wraps" all the methods within the client object
@@ -27,10 +28,10 @@ const client = new CustomersService(
 const ClientWrapper = new HorusClientWrapper(
   client,
   CustomersService,
-  "customers.txt",
-  "main",
+  'customers.txt',
+  'main',
   `${process.env.HORUS_DB}`,
-  `${process.env.SLACK_URL}`
+  `${process.env.SLACK_URL}`,
 );
 
 // Export the Client Wrapper rather than the server object

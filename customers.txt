@@ -18,3 +18,29 @@ Trace :
 		Timestamp : undefined
 		Trace : no additional routes
 
+----------------------------------------------------------------------------------------------------
+Method : GetCustomer
+Response Time : 230.900ms
+ID : 28a72006-e6ac-4602-9cea-274524a02d06
+Timestamp : undefined
+Trace : 
+		--------------------------------------------------
+		Method : GetBookByID
+		Response Time : 34.089ms
+		ID : 2cae65f4-ddd1-41cc-8b46-fed350062258
+		Timestamp : undefined
+		Trace : no additional routes
+
+----------------------------------------------------------------------------------------------------
+Method : GetCustomer
+Response Time : 46.773ms
+ID : c349ad00-5633-4069-bf6d-6ab868d0d1e8
+Timestamp : undefined
+Trace : 
+		--------------------------------------------------
+		Method : GetBookByID
+		Response Time : 24.257ms
+		ID : acc0a098-a765-4c49-9012-1b6278a2b787
+		Timestamp : undefined
+		Trace : no additional routes
+

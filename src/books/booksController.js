@@ -1,4 +1,5 @@
-const booksModel = require("./booksModel.js");
+const booksModel = require('./booksModel.js');
+
 const booksController = {};
 
 booksController.createBook = async (book) => {
@@ -6,7 +7,7 @@ booksController.createBook = async (book) => {
     .create(book)
     .then((response) => response)
     .catch((error) => {
-      console.log("ERROR from createBook controller : ", error);
+      console.log('ERROR from createBook controller : ', error);
       return "error";
     });
 };
@@ -16,8 +17,8 @@ booksController.deleteBook = async (bookId) => {
     .findOneAndDelete(bookId)
     .then((response) => response)
     .catch((error) => {
-      console.log("ERROR from deleteBook controller : ", error);
-      return "error";
+      console.log('ERROR from deleteBook controller : ', error);
+      return 'error';
     });
 };
 
@@ -26,8 +27,8 @@ booksController.getBookByID = async (bookId, callback) => {
     .findOne(bookId)
     .then((response) => response)
     .catch((error) => {
-      console.log("ERROR from getBookbyID controller : ", error);
-      return "error";
+      console.log('ERROR from getBookbyID controller : ', error);
+      return 'error';
     });
 };
 
@@ -48,7 +49,7 @@ booksController.getBooks = async () => {
       return arr;
     })
     .catch((error) => {
-      console.log("ERROR from the getBooks controller : ", error);
+      console.log('ERROR from the getBooks controller : ', error);
     });
 };
 
