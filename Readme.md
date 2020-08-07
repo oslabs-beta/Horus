@@ -744,6 +744,12 @@ Any way that can spread word or improve Horus will really go a long way for us! 
 
 [MIT](https://github.com/oslabs-beta/Horus/blob/master/LICENSE) 
 
+<br/>
+
+[↥Back to top](#Table-Of-Contents)
+
+<br/>
+
 # Authors 
 
 - [Alexander Young](https://github.com/youngalexj00)
