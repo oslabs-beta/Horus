@@ -643,7 +643,7 @@ An alert will be sent out with these key metrics:
 
 [INSERT_EXTRA_DB_TO_STORE_TRACING_DATA]_DB = '[ENTER URI STRING]'
 
-SLACK_URL='[Enter Slack Hooks Link]'
+SLACK_URL='[Enter Slack Webhooks Link]'
 ```
 
 <b>Mock store Application Example .env file: </b>
@@ -651,8 +651,8 @@ SLACK_URL='[Enter Slack Hooks Link]'
 ```env
 BOOKS_DB= '[Enter URI String]'
 CUSTOMERS_DB= '[Enter URI String]'
-HORUS_DB=  '[Enter URI String]'
-SLACK_URL= '[Enter URI String]'
+EXTRA_DB_FOR_TRACING =  '[Enter URI String]'
+SLACK_URL= '[Enter Slack Webhooks link]'
 ```
 
 
