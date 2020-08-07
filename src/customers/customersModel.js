@@ -5,9 +5,6 @@ const { Schema } = mongoose;
 
 // DB link for customers data.
 const customers_db_uri = `${process.env.CUSTOMERS_DB}`;
-// const customers_db_uri = 'mongodb+srv://tinyturtle2:horuspass@cluster0-4egmg.mongodb.net/customers?retryWrites=true&w=majority'
-
-// const URI = process.env.MONGO_URI || myURI;
 
 mongoose.connect(customers_db_uri, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('Connected!!!********* Customer Database is live!!!'))
