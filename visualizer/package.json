@@ -1,0 +1,15 @@
+{
+  "name": "@horustracer/visualizer",
+  "version": "1.0.2",
+  "description": "<p align=\"center\">   <img src=\"./Assets/Horus-Circular-Logo.png\" width=\"250px\" height\"250px\"/> </p> </br> <h1 align=\"center\">HORUS</h1>",
+  "main": "HorusVisualizer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "NY19",
+  "license": "MIT",
+  "dependencies": {
+    "mongoose": "^5.9.27",
+    "neo4j-driver": "^4.1.1"
+  }
+}
