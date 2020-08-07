@@ -60,7 +60,7 @@ And yes, it does support intraservice gRPC requests! (Check out our setup tutori
 
 * [Branch Information](#Branch-Information)
 
-* [Step-by-Step Tutorial](#Step-By-Step-Tutorial)
+* [Step-by-Step Tutorial for Horus](#Step-By-Step-Tutorial-for-Horus) 
 
 * [Monitoring Features and Setup](#Monitoring-Features-and-Setup)
 
@@ -222,8 +222,10 @@ Click [here](#Contributing) to see different ways of contributing.
 <br/>
 
 
-# Step-by-Step Tutorial 
+# Step-by-Step Tutorial For Horus
 
+<b> *Note: This does NOT include setting up the Mock Microservice Application. Check that section below, if you're interested in running the mock microservice application with the Horus Tool.* </b>
+<br/>
 
 Installing Horus into your application is quick and easy. 
 Follow the steps below to set up the <b>ClientWrapper</b>, <b>ServerWrapper</b>, and any <b>intraservice handshake functions</b> you may need.
