@@ -740,7 +740,7 @@ Any way that can spread word or improve Horus will really go a long way for us! 
 
 <br/>
 
-# Licenses
+# License
 
 [MIT](https://github.com/oslabs-beta/Horus/blob/master/LICENSE) 
 
