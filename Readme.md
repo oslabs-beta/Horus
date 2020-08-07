@@ -47,8 +47,6 @@ Our team aims to provide the user a seamless experience in adding tracing and mo
 
 And yes, it does support intraservice gRPC requests! (Check out our setup tutorial in the table of contents below).
 
-
-<b>You can check out our API Documentation Here: </b> https://github.com/oslabs-beta/Horus/
 <br/>
 <br/>
 
