@@ -48,12 +48,10 @@ Our team aims to provide the user a seamless experience in adding tracing and mo
 And yes, it does support intraservice gRPC requests! (Check out our setup tutorial in the table of contents below).
 
 <br/>
-<br/>
 
 *All modules can be found under the npm organization @horustracer.*
 *If you have any questions, please reach out to the team at: HorusTracerOfficial@gmail.com*
 
-<br/>
 <br/>
 
 ## Table of Contents
