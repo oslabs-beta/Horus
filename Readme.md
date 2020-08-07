@@ -638,8 +638,23 @@ An alert will be sent out with these key metrics:
 [INSERT_SERVICE_1_NAME]_DB='[Enter URI String]'
 [INSERT_SERVICE_2_NAME]_DB='[Enter URI String]'
 [INSERT_SERVICE_3_NAME]_DB='[Enter URI String]'
+...
+[INSERT_SERVICE_'N'_NAME]_DB='[Enter URI String]'
+
+[INSERT_EXTRA_DB_TO_STORE_TRACING_DATA]_DB = '[ENTER URI STRING]'
+
 SLACK_URL='[Enter Slack Hooks Link]'
 ```
+
+<b>Mock store Application Example .env file: </b>
+
+```env
+BOOKS_DB= '[Enter URI String]'
+CUSTOMERS_DB= '[Enter URI String]'
+HORUS_DB=  '[Enter URI String]'
+SLACK_URL= '[Enter URI String]'
+```
+
 
 <br/>
 
@@ -651,6 +666,7 @@ SLACK_URL='[Enter Slack Hooks Link]'
 
 In this setup, you will need to set up 3 MongoDB Databases (1 for Books Service, 1 for Customers Service, 1 for storing tracing data).
 (Optional) If you want to integrate our monitoring feature, you will need to follow the steps in the [above](#Monitoring-Features-Setup).
+
 
 <b>The Mock-Microservice app. is a bookstore app. with the following services: </b>
 - Books Service
