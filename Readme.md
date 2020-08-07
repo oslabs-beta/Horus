@@ -5,7 +5,7 @@
 <h1 align="center">HORUS</h1>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-v1.0.0.beta%20-brightgreen" />
+  <img src="https://img.shields.io/badge/version-v1.0.3.beta%20-brightgreen" />
    <img src="https://img.shields.io/badge/license-MIT-green" />
    <a href="https://github.com/Rchan0100/Test-README/edit/master/README.md">
     <img src="https://img.shields.io/badge/PRs-welcome-blue" />
@@ -92,9 +92,9 @@ Installing Horus into your application is quick and easy.
 
 <b>NPM Installation: </b>
 ```js
-npm install @horustracer/ClientWrapper (Mandatory)
-npm install @horustracer/ServerWrapper (Mandatory)
-npm install @horustracer/Visualizer (optional, for Neo4J integration to visualize request data.)
+npm install @horustracer/ClientWrapper //(Mandatory)
+npm install @horustracer/ServerWrapper //(Mandatory)
+npm install @horustracer/Visualizer //(optional, for Neo4J integration to visualize request data.)
             
 or 
             
