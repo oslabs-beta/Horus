@@ -90,12 +90,13 @@ Installing Horus into your application is quick and easy.
 
 <b>NPM Installation: </b>
 ```js
-npm install @horustracer/ClientWrapper
-npm install @horustracer/ServerWrapper
+npm install @horustracer/ClientWrapper (Mandatory)
+npm install @horustracer/ServerWrapper (Mandatory)
+npm install @horustracer/Visualizer (optional, for Neo4J integration to visualize request data.)
             
 or 
             
-npm install @horustracer/ClientWrapper @horustracer/ServerWrapper 
+npm install @horustracer/ClientWrapper @horustracer/ServerWrapper @horustracer/Visualizer
 ```
 <br/>
 
