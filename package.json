@@ -15,8 +15,9 @@
   "license": "ISC",
   "dependencies": {
     "@grpc/proto-loader": "^0.5.5",
-    "@horustracer/clientwrapper": "^1.0.1",
-    "@horustracer/visualizer": "^1.0.1",
+    "@horustracer/clientwrapper": "^1.0.3",
+    "@horustracer/serverwrapper": "^1.0.3",
+    "@horustracer/visualizer": "^1.0.3",
     "concurrently": "^5.2.0",
     "dotenv": "^8.2.0",
     "eslint": "^7.5.0",
