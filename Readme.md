@@ -58,6 +58,8 @@ And yes, it does support intraservice gRPC requests! (Check out our setup tutori
 
 * [Installation](#Installation)
 
+* [Branch Information](#Branch-Information)
+
 * [Step-by-Step Tutorial](#Step-By-Step-Tutorial)
 
 * [Monitoring Features and Setup](#Monitoring-Features-and-Setup)
@@ -196,6 +198,28 @@ Once you have completed this step for your intraservice requests, you're all don
 [↥Back to top](#Table-Of-Contents)
 
 <br/>
+
+
+# Branch Information
+
+- Master - Includes Mock-Microservice, supports Intraservice Request.
+- Staging - Staged version of master. Think of it like a draft of the master branch. .
+- Package Branch - Includes source code for our 3 NPM packages.
+    1. @horustracer/ClientWrapper
+    2. @horustracer/ServerWrapper
+    3. @horustracer/Visualizer
+    
+  To iterate fork to your own repository and submit PRs. 
+  
+  Click [here](#Contributing) to see different ways of contributing.
+
+
+<br/>
+
+[↥Back to top](#Table-Of-Contents)
+
+<br/>
+
 
 # Step-by-Step Tutorial 
 
