@@ -306,7 +306,6 @@ Export the new instance of your ClientWrapper, rather than the gRPC client objec
 <br/>
 
 ```js
-
 const HorusClientWrapper = require('@horustracer/ClientWrapper');
 const grpc = require("grpc");
 const protoLoader = require("@grpc/proto-loader");
@@ -345,9 +344,8 @@ module.exports = ClientWrapper;
 Install the ServerWrapper by running npm install @horustracer/ServerWrapper. Then "require" the ServerWrapper into your server file.
 
 ```js
+// run "npm install @horustracer/ServerWrapper" in your terminal 
 const HorusServerWrapper = require('@horustracer/ServerWrapper);
-
-// run "npm install @horustracer/ServerWrapper" in your terminal
 ```
 <br/>
 
@@ -613,7 +611,7 @@ Pass in the username and password for that local database instance to the "usern
 
 *Get Alerted by [Slack](https://slack.com)*
 
-Leave out the uncertainty of whether your application is running normally or abnormally with the integration of recieving slack notification. When processing time of any routes results in a time greater than two standard deviations from the norm, an automated slack message will be notified to your select channel or through direct message to your slack account. 
+Leave out the uncertainty of whether your application is running normally or abnormally with the integration of receiving slack notifications. When the processing time of any of your routes results in (+/-) two standard deviations from the norm (rolling average), an automated slack message will be notified to your select channel or through direct message to your slack account. 
 
 In addtion, all routes processed will have the time taken stored in a non-relational database (e.g. mongoDB) to have a running log of the historic times used in dynically updating the alerting threshold.
 
@@ -651,6 +649,8 @@ SLACK_URL='[Enter Slack Hooks Link]'
 
 # Setting up Mock-Microservice with Horus
 
+In this setup, you will need to set up 3 MongoDB Databases (1 for Books Service, 1 for Customers Service, 1 for storing tracing data).
+(Optional) If you want to integrate our monitoring feature, you will need to follow the steps in the [above](#Monitoring-Features-Setup).
 
 <b>The Mock-Microservice app. is a bookstore app. with the following services: </b>
 - Books Service
@@ -686,10 +686,15 @@ git pull upstream master
 ```
 
 - <b>By now you should have all the files in the Horus upstream master branch pulled down to your directory.</b> 
-- Add .env files to each service (check sample above) and in the root directory as well.
-- Go into each service directory and type: 'npm install' to download all the node modules for each service. Also npm install in the root directory.
-- Go to the root directory and run 'npm run Services' to run all the servers of each service, as well as run the build for webpack. 
-- Finally, run 'npm run start'. 
+- Add .env files to each service (check sample above) and in the root directory as well. 
+```
+*Please don't forget to set up your Mongo Databases for each service (Books, Customers) + an extra database for storing tracing data. 
+
+Also if you want to use the slack integration, follow the steps in the 'Monitoring Features' Section.
+```
+- Go into each service directory and type: 'npm install' to download all the node modules for each service. Also npm install in the root directory. This includes the mockFrontEnd, Customers, and Books services.
+- Go to the root directory and run 'npm run servers' to run all the servers of each service, as well as run the build for webpack. (You can check the "scripts" key in the package.json for all the different scripts that are available). This should concurrently run all your services' servers, and build the webpack.
+- Open up another terminal and run 'npm run start'. 
 - Go to localhost:3000, and interact with the frontend! 
 - Check out the customers.txt and books.txt file in the root directory for your response information :smile: ! Also your database should also have a history of all the response data as well.
 
