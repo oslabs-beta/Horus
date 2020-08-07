@@ -72,6 +72,8 @@ And yes, it does support intraservice gRPC requests! (Check out our setup tutori
 
 * [Contributing](#Contributing)
 
+* [License](#License)
+
 * [Authors](#Authors)
 
 <br/>
@@ -738,6 +740,9 @@ Any way that can spread word or improve Horus will really go a long way for us! 
 
 <br/>
 
+# Licenses
+
+[MIT](https://github.com/oslabs-beta/Horus/blob/master/LICENSE) 
 
 # Authors 
 
