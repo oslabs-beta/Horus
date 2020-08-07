@@ -1,15 +1,14 @@
 {
   "name": "@horustracer/clientwrapper",
-  "version": "1.0.2",
-  "description": "<p align=\"center\">   <img src=\"./Assets/Horus-Circular-Logo.png\" width=\"250px\" height\"250px\"/> </p> </br> <h1 align=\"center\">HORUS</h1>",
+  "version": "1.0.3",
+  "description": "Horus's ClientWrapper",
   "main": "HorusClientWrapper.js",
-  "dependencies": {
-    "mathjs": "^7.1.0"
-  },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "NY19",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "mathjs": "^7.1.0"
+  }
 }
