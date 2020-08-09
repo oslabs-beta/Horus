@@ -45,7 +45,7 @@ Our team aims to provide the user a seamless experience in adding tracing and mo
 - Customers Service
 <br/>
 
-<b>\*\*\*Check out our GitHub Repo for Step-By-Step Guides, Explanations, API, and more: https://github.com/oslabs-beta/Horus/\*\*\*</b>
+<b>\*\*\*Check out our GitHub Repo for Step-By-Step Guides, Explanations, API, and more: https://github.com/oslabs-beta/Horus/ \*\*\*</b>
 
 And yes, it does support intraservice gRPC requests! (Check out our setup tutorial in the table of contents below).
 
