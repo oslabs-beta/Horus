@@ -130,7 +130,9 @@ const client = new BooksService (
   grpc.credentials.createInsecure()
 );
 
-const ClientWrapper = new HorusClientWrapper(client, BooksService, 'books.txt');
+//process.env.HORUS_DB utilizes environment variables. You can replace it with your MongoDB URI.
+//process.env.SLACK_URL utilizes environment variables. You can replace it with your SLACK URL.
+const ClientWrapper = new HorusClientWrapper(client, BooksService, 'books.txt', 'main', `${process.env.HORUS_DB}`, `${process.env.SLACK_URL}`);
 
 module.exports = ClientWrapper;
 ```
@@ -248,6 +250,7 @@ Install the ClientWrapper by running npm install @horustracer/ClientWrapper. The
 ```js
 
 // run "npm install @horustracer/ClientWrapper" in your terminal
+
 const HorusClientWrapper = require('@horustracer/ClientWrapper')
 
 ```
@@ -328,7 +331,9 @@ const client = new BooksService (
   grpc.credentials.createInsecure()
 );
 
-const ClientWrapper = new HorusClientWrapper(client, BooksService, 'books.txt');
+//process.env.HORUS_DB utilizes environment variables. You can replace it with your MongoDB URI.
+//process.env.SLACK_URL utilizes environment variables. You can replace it with your SLACK URL.
+const ClientWrapper = new HorusClientWrapper(client, BooksService, 'books.txt', 'main', `${process.env.HORUS_DB}`, `${process.env.SLACK_URL}`);
 
 module.exports = ClientWrapper;
 
@@ -565,13 +570,15 @@ Once you've added in handshake functions for your intraservice requests, you're 
   - gRPC package (object)
   - output file name (string)
   - service name (string)
-  - mongodb url (string)
+  - mongodb URI (string)
+  - slack url (string) 
   
 The "output file name" parameter is the name of the file you want to output request data to. <br/>
 The ClientWrapper will create that file in your directory if it does not already exist. <br/>
 The "service name" and database (MongoDB) url parameters are tracing and visualizing your requests. <br/>
 "Service name" is the name of the service which is using the stub (i.e the customers service might use the books stub). <br/>
 Horus currently only supports NoSQL (mongoDB) databases. Pass the connection link to your database in the "mongodb url" parameter. 
+The mongoDB URI is the Database for tracing request data. Do not include your service database. 
 
 <br/>
 
@@ -584,7 +591,11 @@ The "methods" object is an object containing the defintions of your server metho
 
 <br/>
 
-<b>Visualizing Object: </b>logAverages
+<b>Visualizer Object: </b>
+
+<br/>
+
+<b>logAverages</b>
 - mongodb url (string)
 
 Horus supports NoSQL databases (MongoDB). Pass the connection link to the database with your request data in the "mongodb" parameter. (This should be the same database that you provide to the ClientWrapper)
@@ -592,7 +603,7 @@ Horus supports NoSQL databases (MongoDB). Pass the connection link to the databa
 <br/>
 
 <b>mapAveragesToNeo4j</b>
- - mongodb url (string)
+ - mongodb URI (string) - Not your service's DB, the DB for storing request data. 
  - neo4j url (string)
  - username (string)
  - password (string)
