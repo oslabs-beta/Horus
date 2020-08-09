@@ -710,7 +710,7 @@ After following each step you will be spinning up our frontend, interact with th
 - Git add remote of our repository, and pull the files from the Horus master branch from the upstream repository (main Horus repository). Check the commands below.
 
 ```
-git remote add upstream github.com/open-source-labs/Horus 
+git remote add upstream https://github.com/oslabs-beta/Horus   
 git pull upstream master 
 ```
 
