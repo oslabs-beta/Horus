@@ -826,5 +826,3 @@ Any way that can spread word or improve Horus will really go a long way for us! 
 
 <br/>
 <br/>
-
-<b>Horus and Hoodwinking!</b>
